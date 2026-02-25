@@ -2,8 +2,7 @@ package aromara.events.front;
 
 import java.util.Random;
 
-import aromara.network.packets.ExamplePacket;
-import aromara.root.Aromara;
+import aromara.root.Main;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;

@@ -1,39 +1,14 @@
 package aromara.events.back;
 
+import aromara.init.BlockInit;
+import aromara.init.ItemInit;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.potion.Potion;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.world.biome.Biome;
-import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.eventhandler.EventPriority;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.EntityEntry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import thaumcraft.api.potions.PotionFluxTaint;
-import thaumcraft.api.potions.PotionVisExhaust;
-import thaumcraft.common.config.ConfigBlocks;
-import thaumcraft.common.config.ConfigEntities;
-import thaumcraft.common.config.ConfigItems;
-import thaumcraft.common.config.ConfigRecipes;
-import thaumcraft.common.config.ModConfig;
-import thaumcraft.common.lib.SoundsTC;
-import thaumcraft.common.lib.potions.PotionBlurredVision;
-import thaumcraft.common.lib.potions.PotionDeathGaze;
-import thaumcraft.common.lib.potions.PotionInfectiousVisExhaust;
-import thaumcraft.common.lib.potions.PotionSunScorned;
-import thaumcraft.common.lib.potions.PotionThaumarhia;
-import thaumcraft.common.lib.potions.PotionUnnaturalHunger;
-import thaumcraft.common.lib.potions.PotionWarpWard;
-import thaumcraft.common.world.biomes.BiomeGenEerie;
-import thaumcraft.common.world.biomes.BiomeGenEldritch;
-import thaumcraft.common.world.biomes.BiomeGenMagicalForest;
-import thaumcraft.common.world.biomes.BiomeHandler;
-import thaumcraft.proxies.ProxyBlock;
 
+@EventBusSubscriber
 public class RegistryEvents {
 
     //SOURCE: thaumcraft.Registrar
@@ -43,6 +18,7 @@ public class RegistryEvents {
         //        ConfigBlocks.initBlocks(event.getRegistry());
         //        ConfigBlocks.initTileEntities();
         //        ConfigBlocks.initMisc();
+        BlockInit.initBlocks();
     }
 
     //    @SideOnly(Side.CLIENT)
@@ -54,7 +30,7 @@ public class RegistryEvents {
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
         //        ConfigItems.preInitSeals();
-        ConfigItems.initItems(event.getRegistry());
+        ItemInit.initItems(event.getRegistry());
         //        ConfigItems.initMisc();
     }
 

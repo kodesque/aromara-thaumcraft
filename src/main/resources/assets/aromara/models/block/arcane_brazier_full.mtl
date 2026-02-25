@@ -1,0 +1,12 @@
+# Made in Blockbench 5.0.7
+newmtl m_124d271d-9a57-d078-a095-90c035b78e9d
+map_Kd thaumcraft:blocks/base_wood_grain
+newmtl m_f8383e48-3a1d-0cbb-c7ed-840e10f1e370
+map_Kd aromara:blocks/faces
+newmtl m_03fa98e4-924a-4c82-ba2c-502cc026d3d5
+map_Kd thaumcraft:blocks/base_stone
+newmtl m_01e5bb01-e4b1-c40c-11b7-2737ca0914b7
+map_Kd aromara:blocks/base_stone_burned
+newmtl m_e9741a16-3bf6-bd0d-2e54-27c968c74147
+map_Kd minecraft:blocks/coal_block
+newmtl none

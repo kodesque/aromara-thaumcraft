@@ -1,0 +1,20 @@
+#CREATIVE TAB
+itemGroup.tabAromara=Aromara Thaumcraft
+
+#ITEMS
+item.aromara.alchemical_clay.name=Alchemical Clay
+item.aromara.liquid_tallow.name=Liquid Tallow
+item.aromara.ceramic_phial.name=Ceramic Phial
+
+#BLOCKS
+tile.aromara.arcane_brazier.name=Arcane Brazier
+tile.aromara.pressing_stone.name=Pressing Stone
+
+#RESEARCHES
+tc.research_category.SCENTMIXING=Scentmixing
+
+research.TCA:BASESCENTMIXING.title=Miasma Theory
+research.TCA:BASESCENTMIXING.stage.1=Since discovering alchemy, I've become accustomed to ignoring the smells emanating from the crucible. Most of the materials I work with have a pleasant aroma on their own, especially when combined with the aspects that lead to alchemical balance and product formation. Flux, however, is something, dare I say it, incredible. Its stench, which smells unlike anything I know, fills the vast space around it and makes my muscles twitch. When I first smelled this scent, I tried to cover it with the first thing I could find - parchment stained with aspect-bearing ink. When I inhaled its aroma, my headache went away. I must research this further.
+research.TCA:BASESCENTMIXING.stage.2=I dived, we dove, they doven
+
+research.TCA:LORE:DISTURBINGTHOUGHTS.stage.1=I've long been haunted by a question... if taint is, in fact, a consequence of aspect pollution in the air, which I call flux, then why does it have such extreme mutagenic properties? Furthermore, the abominations that lurk near taint hotspots are completely unlike anything native to the Overworld. I have a theory about their true nature, but... no, I'm just laying on the colors too thickly.

@@ -1,6 +1,6 @@
 package aromara.init;
 
-import aromara.common.items.ItemsTCA;
+import aromara.common.objects.TCAItems;
 import aromara.common.templates.ItemTCABase;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -10,7 +10,9 @@ import thaumcraft.common.items.ItemTCBase;
 public class ItemInit {
 
     public static void initItems(IForgeRegistry<Item> iForgeRegistry) {
-        iForgeRegistry.register((ItemsTCA.vishroom_soup = new ItemTCABase("vishroom_soup")));
+        iForgeRegistry.register((TCAItems.alchemical_clay = new ItemTCABase("alchemical_clay")));
+        iForgeRegistry.register((TCAItems.ceramic_phial = new ItemTCABase("ceramic_phial")));
+        iForgeRegistry.register((TCAItems.liquid_tallow = new ItemTCABase("liquid_tallow")));
     }
 
 }

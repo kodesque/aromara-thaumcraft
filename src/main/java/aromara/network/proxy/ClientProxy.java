@@ -1,19 +1,18 @@
 package aromara.network.proxy;
 
-import java.util.HashMap;
-import java.util.UUID;
-
-import net.minecraft.client.Minecraft;
-
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityArrow;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraftforge.client.MinecraftForgeClient;
+import aromara.client.renderer.tiles.RendererPressingStone;
+import aromara.common.tiles.TilePressingStone;
+import aromara.root.Main;
+import net.minecraftforge.client.model.obj.OBJLoader;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class ClientProxy extends CommonProxy {
+
+    @Override
+    public void preInit(FMLPreInitializationEvent event) {
+        OBJLoader.INSTANCE.addDomain(Main.MODID);
+        //        ClientRegistry.bindTileEntitySpecialRenderer(TilePressingStone.class, new RendererPressingStone());
+    }
 
 }

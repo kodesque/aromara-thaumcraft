@@ -1,0 +1,5 @@
+{
+  "loader": "forge:obj",
+  "model": "aromara:models/arcane_brazier.obj",
+  "flip-v": true
+}
