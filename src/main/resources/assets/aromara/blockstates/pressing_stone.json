@@ -1,5 +1,10 @@
 {
   "variants": {
-    "normal": { "model": "aromara:pressing_stone" }
+    "is_down=false": {
+      "model": "aromara:pressing_stone"
+    },
+    "is_down=true": {
+      "model": "aromara:pressing_stone_down"
+    }
   }
 }

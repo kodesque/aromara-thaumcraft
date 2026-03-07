@@ -2,13 +2,15 @@ package aromara.events.back;
 
 import aromara.init.BlockInit;
 import aromara.init.ItemInit;
+import aromara.init.RecipeInit;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@EventBusSubscriber
+@Mod.EventBusSubscriber
 public class RegistryEvents {
 
     //SOURCE: thaumcraft.Registrar
@@ -32,6 +34,12 @@ public class RegistryEvents {
         //        ConfigItems.preInitSeals();
         ItemInit.initItems(event.getRegistry());
         //        ConfigItems.initMisc();
+    }
+
+    @SubscribeEvent
+    public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
+        RecipeInit.initializeArcaneRecipes(event.getRegistry());
+
     }
 
     //    @SideOnly(Side.CLIENT)

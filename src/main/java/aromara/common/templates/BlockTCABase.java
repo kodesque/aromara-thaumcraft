@@ -11,7 +11,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockTCABase extends Block{
+public class BlockTCABase extends Block {
 
     public BlockTCABase(Material material, String name) {
         super(material);

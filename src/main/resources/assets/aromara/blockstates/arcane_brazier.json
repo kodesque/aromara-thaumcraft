@@ -4,7 +4,12 @@
       "model" : "aromara:arcane_brazier_full.obj",
       "transform": "forge:default-block"
   },
-    "variants": {
-      "normal": { "model": "aromara:arcane_brazier_full.obj" }
+  "variants": {
+    "is_full=false": {
+      "model": "aromara:arcane_brazier_empty.obj"
+    },
+    "is_full=true": {
+      "model": "aromara:arcane_brazier_full.obj"
     }
+  }
   }

@@ -1,0 +1,39 @@
+{
+    "entries" :[
+        
+        {
+            
+        "key": "TCA_BASESCENTMIXING",
+        "name": "research.TCA_BASESCENTMIXING.title",         
+        "icons": [ "aromara:textures/research/basescentmixing.png"],
+        "category": "SCENTMIXING",
+        "parents": [ "WARP" ], 
+        "meta": [ "ROUND", "SPIKY","HIDDEN" ],
+        "location": [ 0,0 ],
+        
+        "stages": [
+                {
+                    "text": "research.TCA_BASESCENTMIXING.text.stage.1",
+                    "required_item":["minecraft:stick;1;0"]
+                }
+            ]
+        },
+        
+        {
+            
+        "key": "TCA_CRUDESCENTS",
+        "name": "research.TCA_SCENTBURNING.title",         
+        "icons": [ "aromara:textures/items/arcane_brazier_item.png", "aromara:pressing_stone;1;0"],
+        "category": "SCENTMIXING",
+        "parents": [ "TCA_BASESCENTMIXING" ], 
+        "location": [ -2,0 ],
+
+        "stages": [
+                {
+                    "text": "research.TCA_CRUDESCENTS.text.stage.1",
+                    "required_item":["minecraft:stick;1;0"]
+                }
+            ]
+        }
+    ]
+}

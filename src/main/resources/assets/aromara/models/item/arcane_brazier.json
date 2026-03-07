@@ -1,5 +1,6 @@
 {
-  "loader": "forge:obj",
-  "model": "aromara:models/arcane_brazier.obj",
-  "flip-v": true
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "aromara:items/arcane_brazier_item"
+    }
 }

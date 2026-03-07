@@ -6,6 +6,8 @@ item.aromara.alchemical_clay.name=Alchemical Clay
 item.aromara.liquid_tallow.name=Liquid Tallow
 item.aromara.ceramic_phial.name=Ceramic Phial
 
+item.aromara.redolent_bundle.name=Redolent Bundle
+
 #BLOCKS
 tile.aromara.arcane_brazier.name=Arcane Brazier
 tile.aromara.pressing_stone.name=Pressing Stone
@@ -13,8 +15,10 @@ tile.aromara.pressing_stone.name=Pressing Stone
 #RESEARCHES
 tc.research_category.SCENTMIXING=Scentmixing
 
-research.TCA:BASESCENTMIXING.title=Miasma Theory
-research.TCA:BASESCENTMIXING.stage.1=Since discovering alchemy, I've become accustomed to ignoring the smells emanating from the crucible. Most of the materials I work with have a pleasant aroma on their own, especially when combined with the aspects that lead to alchemical balance and product formation. Flux, however, is something, dare I say it, incredible. Its stench, which smells unlike anything I know, fills the vast space around it and makes my muscles twitch. When I first smelled this scent, I tried to cover it with the first thing I could find - parchment stained with aspect-bearing ink. When I inhaled its aroma, my headache went away. I must research this further.
-research.TCA:BASESCENTMIXING.stage.2=I dived, we dove, they doven
+research.TCA_BASESCENTMIXING.title=Miasma Theory
+research.TCA_BASESCENTMIXING.text.stage.1=Since discovering alchemy, I've become accustomed to ignoring the smells emanating from the crucible, as most of the materials I work with have a pleasant aroma on their own. Flux, however, is something extraordinary. Its stench, which is unlike to anything I know, makes my muscles twitch in pain. When I first smelled it, I tried to cover my face with the first thing I could find - a parchment stained with aspect-bearing ink. And then... my headache went away?<BR>I must research this further.
+research.TCA_BASESCENTMIXING.text.stage.2=Apparently, my theory has been confirmed: the stench of flux affects the body on a physical level, distorting the structure of vis in the cells of internal organs. And the brain is primarily affected. This may be the key to explaining these strange visions...<BR>I also began researching the nature of vis, and it seems as if it was once quite different: vis was divided into six types, corresponding to the primordial aspects. Compared to the liquid form, they were easier to store and transport, but more difficult to produce. Over time, this balance was disrupted, leading to the degradation of the aura to a single, unified type.<BR>However, I discovered strange formations in it that may indicate that the process is still ongoing. These are essentially volatile forms of aspects, something between gas and pure energy. "Aspectoids," as I called them, can combine the properties of several aspects at once, without being composed of them.<BR>It's hard to understand and even harder to describe, but I'm definitely getting closer to something particularly fascinating
 
 research.TCA:LORE:DISTURBINGTHOUGHTS.stage.1=I've long been haunted by a question... if taint is, in fact, a consequence of aspect pollution in the air, which I call flux, then why does it have such extreme mutagenic properties? Furthermore, the abominations that lurk near taint hotspots are completely unlike anything native to the Overworld. I have a theory about their true nature, but... no, I'm just laying on the colors too thickly.
+
+research.TCA_SCENTBURNING.title=Burning Scents
