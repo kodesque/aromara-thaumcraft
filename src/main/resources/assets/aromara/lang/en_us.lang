@@ -8,6 +8,8 @@ item.aromara.ceramic_phial.name=Ceramic Phial
 
 item.aromara.redolent_bundle.name=Redolent Bundle
 
+item.aromara.icon.name=Icon
+
 #BLOCKS
 tile.aromara.arcane_brazier.name=Arcane Brazier
 tile.aromara.pressing_stone.name=Pressing Stone

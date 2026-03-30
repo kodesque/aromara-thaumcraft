@@ -17,7 +17,7 @@ public class BlockTCABase extends Block {
         super(material);
         this.setRegistryName(Main.MODID, name);
         this.setTranslationKey(Main.MODID + "." + name);
-        this.setCreativeTab(Main.TABTCA);
+        //        this.setCreativeTab(Main.TABTCA);
     }
 
     public BlockTCABase(Material mat, String name, SoundType st) {

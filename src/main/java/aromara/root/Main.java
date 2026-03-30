@@ -1,5 +1,8 @@
 package aromara.root;
 
+import aromara.client.renderer.tiles.RendererPressingStone;
+import aromara.common.objects.TCAItems;
+import aromara.common.tiles.TilePressingStone;
 import aromara.events.front.GenericEventHandler;
 import aromara.init.TileInit;
 import aromara.network.proxy.CommonProxy;
@@ -8,6 +11,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -17,14 +21,10 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
-import thaumcraft.api.crafting.ShapedArcaneRecipe;
 import thaumcraft.api.internal.CommonInternals;
-import thaumcraft.api.items.ItemsTC;
 import thaumcraft.api.research.ResearchCategories;
-import thaumcraft.common.config.ConfigRecipes;
 
 @Mod(modid = Main.MODID, dependencies = "required-after:thaumcraft", version = Main.VERSION, name = Main.NAME)
 public class Main {
@@ -64,15 +64,13 @@ public class Main {
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
 
-
-
     }
 
     public static CreativeTabs TABTCA = new CreativeTabs("tabAromara") {
         @Override
         @SideOnly(Side.CLIENT)
         public ItemStack createIcon() {
-            return new ItemStack(Items.DIAMOND);
+            return new ItemStack(TCAItems.icon);
         }
     };
 

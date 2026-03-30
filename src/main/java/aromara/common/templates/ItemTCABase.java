@@ -20,7 +20,7 @@ public class ItemTCABase extends Item implements IThaumcraftItems {
 
         this.setRegistryName(Main.MODID, name);
         this.setTranslationKey(Main.MODID + "." + name);
-        this.setCreativeTab(Main.TABTCA);
+        //        this.setCreativeTab(Main.TABTCA);
         this.setNoRepair();
         this.setHasSubtypes(variants.length > 1);
         this.BASE_NAME = name;
@@ -45,16 +45,16 @@ public class ItemTCABase extends Item implements IThaumcraftItems {
 
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
-        if (tab == Main.TABTCA || tab == CreativeTabs.SEARCH) {
-            if (!this.getHasSubtypes()) {
-                super.getSubItems(tab, items);
-            }
-            else {
-                for (int meta = 0; meta < this.VARIANTS.length; ++meta) {
-                    items.add(new ItemStack(this, 1, meta));
-                }
-            }
-        }
+        //        if (tab == Main.TABTCA || tab == CreativeTabs.SEARCH) {
+        //            if (!this.getHasSubtypes()) {
+        //                super.getSubItems(tab, items);
+        //            }
+        //            else {
+        //                for (int meta = 0; meta < this.VARIANTS.length; ++meta) {
+        //                    items.add(new ItemStack(this, 1, meta));
+        //                }
+        //            }
+        //        }
     }
 
     @Override

@@ -12,7 +12,7 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void preInit(FMLPreInitializationEvent event) {
         OBJLoader.INSTANCE.addDomain(Main.MODID);
-        //        ClientRegistry.bindTileEntitySpecialRenderer(TilePressingStone.class, new RendererPressingStone());
+        ClientRegistry.bindTileEntitySpecialRenderer(TilePressingStone.class, new RendererPressingStone());
     }
 
 }

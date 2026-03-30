@@ -45,6 +45,13 @@ public class ItemRedolentBundle extends ItemTCABase{
         return stack;
     }
 
+    public static ItemStack getExample(boolean isDried) {
+
+        ItemStack stack = getBundleFromComponent(plants[0]);
+
+        return isDried ? stack : getBundleDried(stack);
+    }
+
     public static ItemStack getComponentFromBundle(ItemStack stack) {
 
         NBTTagCompound nbt = stack.getSubCompound(Main.MODID);

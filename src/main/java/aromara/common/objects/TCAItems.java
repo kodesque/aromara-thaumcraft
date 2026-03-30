@@ -11,6 +11,7 @@ public class TCAItems {
     /* "raw", "dry" */
     public static Item redolent_bundle;
 
+    public static Item icon;
 
 
 }
