@@ -1,6 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "aromara:blocks/vishroom_block_skin_stem"
-  }
-}

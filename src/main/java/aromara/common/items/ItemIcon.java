@@ -26,7 +26,8 @@ public class ItemIcon extends ItemTCABase {
         items.add(new ItemStack (Item.getItemFromBlock(TCABlocks.arcane_brazier)));
         items.add(new ItemStack (Item.getItemFromBlock(TCABlocks.pressing_stone)));
 
-        items.add(new ItemStack (Item.getItemFromBlock(TCABlocks.vishroom_block)));
+        items.add(new ItemStack (Item.getItemFromBlock(TCABlocks.vishroom_block_cap)));
+        items.add(new ItemStack (Item.getItemFromBlock(TCABlocks.vishroom_block_stem)));
 
         items.add(new ItemStack (TCAItems.alchemical_clay));
         items.add(new ItemStack (TCAItems.ceramic_phial));

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "is_bottom=false": {
+      "model": "aromara:vishroom_block_cap"
+    },
+    "is_bottom=true": {
+      "model": "aromara:vishroom_block_cap_variant"
+    }
+  }
+}

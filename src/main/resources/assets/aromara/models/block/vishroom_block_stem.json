@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "aromara:blocks/vishroom_block_stem_bottom",
+        "side": "aromara:blocks/vishroom_block_stem_side"
+    }
+}

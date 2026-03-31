@@ -14,6 +14,9 @@ item.aromara.icon.name=Icon
 tile.aromara.arcane_brazier.name=Arcane Brazier
 tile.aromara.pressing_stone.name=Pressing Stone
 
+tile.aromara.vishroom_block_cap.name=Huge Vishroom Cap
+tile.aromara.vishroom_block_stem.name=Huge Vishroom Stem
+
 #RESEARCHES
 tc.research_category.SCENTMIXING=Scentmixing
 
@@ -24,3 +27,7 @@ research.TCA_BASESCENTMIXING.text.stage.2=Apparently, my theory has been confirm
 research.TCA:LORE:DISTURBINGTHOUGHTS.stage.1=I've long been haunted by a question... if taint is, in fact, a consequence of aspect pollution in the air, which I call flux, then why does it have such extreme mutagenic properties? Furthermore, the abominations that lurk near taint hotspots are completely unlike anything native to the Overworld. I have a theory about their true nature, but... no, I'm just laying on the colors too thickly.
 
 research.TCA_SCENTBURNING.title=Burning Scents
+
+# TOOLTIPS
+
+tooltip.aromara.redolent_bundle.unknown=Arcane Plant

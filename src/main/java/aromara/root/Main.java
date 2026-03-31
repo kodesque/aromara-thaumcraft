@@ -56,9 +56,9 @@ public class Main {
                 new ResourceLocation(Main.MODID + ":textures/research/" + "background.png")
                 );
 
-        GameRegistry.registerWorldGenerator(new WorldGenVishroomHuge(), 3);
-
         registerResearchLocation(new ResourceLocation("aromara:research/scentmixing"));
+
+        GameRegistry.registerWorldGenerator(new WorldGenVishroomHuge(), 3);
     }
 
     @EventHandler
