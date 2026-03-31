@@ -1,17 +1,14 @@
 package aromara.root;
 
-import aromara.client.renderer.tiles.RendererPressingStone;
 import aromara.common.objects.TCAItems;
-import aromara.common.tiles.TilePressingStone;
+import aromara.common.worldgen.WorldGenVishroomHuge;
 import aromara.events.front.GenericEventHandler;
 import aromara.init.TileInit;
 import aromara.network.proxy.CommonProxy;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -19,6 +16,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.aspects.Aspect;
@@ -57,6 +55,8 @@ public class Main {
                 new ResourceLocation(Main.MODID + ":textures/research/" + "scentmixing" + ".png"),
                 new ResourceLocation(Main.MODID + ":textures/research/" + "background.png")
                 );
+
+        GameRegistry.registerWorldGenerator(new WorldGenVishroomHuge(), 3);
 
         registerResearchLocation(new ResourceLocation("aromara:research/scentmixing"));
     }

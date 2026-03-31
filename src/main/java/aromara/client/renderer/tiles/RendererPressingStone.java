@@ -37,7 +37,7 @@ public class RendererPressingStone extends TileEntitySpecialRenderer<TilePressin
         GlStateManager.scale(0.6f,0.6f,0.6f);
 
         if (is_down) {
-            GlStateManager.translate(0.5/0.6, 0.5, 0.5/0.6);
+            GlStateManager.translate(0.5/0.6, 0.5/0.6, 0.5/0.6);
         } else {
             GlStateManager.translate(0.5/0.6, 1/0.6, 0.5/0.6);
         }

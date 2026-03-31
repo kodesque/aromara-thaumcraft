@@ -23,7 +23,7 @@
             
         "key": "TCA_CRUDESCENTS",
         "name": "research.TCA_SCENTBURNING.title",         
-        "icons": [ "aromara:textures/items/arcane_brazier_item.png", "aromara:pressing_stone;1;0"],
+        "icons": [ "aromara:arcane_brazier;1;0", "aromara:pressing_stone;1;0"],
         "category": "SCENTMIXING",
         "parents": [ "TCA_BASESCENTMIXING" ], 
         "location": [ -2,0 ],
