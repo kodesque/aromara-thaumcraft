@@ -43,11 +43,14 @@
                 }        
             ],
     
-    "is_full=false": {
+    "status=0": {
       "model": "aromara:arcane_brazier_empty.obj"
     },
-    "is_full=true": {
+    "status=1": {
       "model": "aromara:arcane_brazier_full.obj"
+    },
+    "status=2": {
+      "model": "aromara:arcane_brazier_burning.obj"
     }
   }
   }

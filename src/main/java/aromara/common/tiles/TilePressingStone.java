@@ -20,11 +20,7 @@ public class TilePressingStone extends TileThaumcraftInventory {
 
     public int dryingTime;
     public static String dryingTimeKey = "dryingTime";
-    public int dryingTimeMax;
-    public static String maxDryingTimeKey = "dryingTimeMax";
-
-    public int activeTicks;
-    public boolean isChanging;
+    public int dryingTimeMax = 3600;
 
     public AspectList toPull;
 
@@ -33,7 +29,6 @@ public class TilePressingStone extends TileThaumcraftInventory {
     public TilePressingStone() {
         super(2);
         this.syncedSlots = new int[] {0, 1};
-        this.dryingTime = 0;
         this.dryingTimeMax = 0;
     }
 
@@ -55,7 +50,6 @@ public class TilePressingStone extends TileThaumcraftInventory {
             ItemStack flower = this.getStackInSlot(1);
             ItemStack shards = this.getStackInSlot(0);
             if (!flower.isEmpty() && !shards.isEmpty() && !this.isDown()) {
-                this.dryingTimeMax = 3600;
                 this.dryingTime = this.dryingTimeMax;
                 this.toPull = AspectHelper.getObjectAspects(ItemRedolentBundle.getComponentFromBundle(flower));
                 this.world.setBlockState(this.pos, this.world.getBlockState(this.pos).withProperty(BlockPressingStone.IS_DOWN, true));
@@ -89,12 +83,10 @@ public class TilePressingStone extends TileThaumcraftInventory {
 
         if (!this.world.isRemote) {
 
-
             if (this.dryingTime <= 0 && this.isDown()) {
                 ItemStack insides = this.getStackInSlot(1);
                 this.setInventorySlotContents(1, ItemRedolentBundle.getBundleDried(insides));
                 this.world.setBlockState(this.pos, this.world.getBlockState(this.pos).withProperty(BlockPressingStone.IS_DOWN, false));
-                this.dryingTimeMax = 0;
             }
 
             if (this.dryingTime > 0) {
