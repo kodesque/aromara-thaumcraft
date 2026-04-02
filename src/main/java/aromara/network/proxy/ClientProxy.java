@@ -1,6 +1,8 @@
 package aromara.network.proxy;
 
+import aromara.client.renderer.tiles.RendererArcaneBrazier;
 import aromara.client.renderer.tiles.RendererPressingStone;
+import aromara.common.tiles.TileArcaneBrazier;
 import aromara.common.tiles.TilePressingStone;
 import aromara.root.Main;
 import net.minecraftforge.client.model.obj.OBJLoader;
@@ -13,6 +15,7 @@ public class ClientProxy extends CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         OBJLoader.INSTANCE.addDomain(Main.MODID);
         ClientRegistry.bindTileEntitySpecialRenderer(TilePressingStone.class, new RendererPressingStone());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileArcaneBrazier.class, new RendererArcaneBrazier());
     }
 
 }

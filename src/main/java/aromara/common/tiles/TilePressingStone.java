@@ -29,48 +29,34 @@ public class TilePressingStone extends TileThaumcraftInventory {
     public TilePressingStone() {
         super(2);
         this.syncedSlots = new int[] {0, 1};
-        this.dryingTimeMax = 0;
     }
 
     @Override
     public void readFromNBT(NBTTagCompound nbttagcompound) {
         super.readFromNBT(nbttagcompound);
         this.dryingTime = nbttagcompound.getShort(dryingTimeKey);
+        this.toPull.readFromNBT(nbttagcompound);
     }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound nbttagcompound) {
         super.writeToNBT(nbttagcompound);
         nbttagcompound.setShort(dryingTimeKey, (short) this.dryingTime);
+        this.toPull.writeToNBT(nbttagcompound);
         return nbttagcompound;
     }
 
     public void sendDown() {
-        if (this.dryingTimeMax <= 0) {
-            ItemStack flower = this.getStackInSlot(1);
-            ItemStack shards = this.getStackInSlot(0);
-            if (!flower.isEmpty() && !shards.isEmpty() && !this.isDown()) {
-                this.dryingTime = this.dryingTimeMax;
-                this.toPull = AspectHelper.getObjectAspects(ItemRedolentBundle.getComponentFromBundle(flower));
-                this.world.setBlockState(this.pos, this.world.getBlockState(this.pos).withProperty(BlockPressingStone.IS_DOWN, true));
 
-                for (int j = 0; j < 1 * 8; ++j)
-                {
-                    float f = this.world.rand.nextFloat() * ((float)Math.PI * 2F);
-                    float f1 = this.world.rand.nextFloat() * 0.5F + 0.5F;
-                    float f2 = MathHelper.sin(f) * 0.5F * f1;
-                    float f3 = MathHelper.cos(f) * 0.5F * f1;
-                    World world = this.world;
-                    EnumParticleTypes enumparticletypes = EnumParticleTypes.SLIME;
-                    double d0 = this.pos.getX() + (double)f2;
-                    double d1 = this.pos.getZ() + (double)f3;
-                    world.spawnParticle(enumparticletypes, d0, this.pos.getY(), d1, 0.0D, 0.0D, 0.0D);
-                }
+        ItemStack flower = this.getStackInSlot(1);
+        ItemStack shards = this.getStackInSlot(0);
+        if (!flower.isEmpty() && !shards.isEmpty() && !this.isDown()) {
+            this.dryingTime = this.dryingTimeMax;
+            this.toPull = AspectHelper.getObjectAspects(ItemRedolentBundle.getComponentFromBundle(flower));
+            this.world.setBlockState(this.pos, this.world.getBlockState(this.pos).withProperty(BlockPressingStone.IS_DOWN, true));
 
-                //                this.playSound(this.getSquishSound(), this.getSoundVolume(), ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 1.0F) / 0.8F);
-                //TODO: add your own custom sound later on
-            }
         }
+
     }
 
     public boolean isDown() {

@@ -33,8 +33,9 @@ public class ItemIcon extends ItemTCABase {
         items.add(new ItemStack (TCAItems.ceramic_phial));
         items.add(new ItemStack(TCAItems.liquid_tallow));
 
-        items.add(ItemRedolentBundle.getExample(false));
-        items.add(ItemRedolentBundle.getExample(true));
+        for (Item plant : ItemRedolentBundle.plants) {
+            items.add(ItemRedolentBundle.getBundleDried(ItemRedolentBundle.getBundleFromComponent(plant)));
+        }
     }
 
 }

@@ -23,13 +23,10 @@ public class ItemRedolentBundle extends ItemTCABase{
 
     public static String key = "redolent_bundle";
 
-    TextComponentTranslation unknown = new TextComponentTranslation("tooltip." + Main.MODID + "." + key + ".unknown");
-
     public static Item[] plants = {
             Item.getItemFromBlock(BlocksTC.cinderpearl),
             Item.getItemFromBlock(BlocksTC.shimmerleaf),
-            Item.getItemFromBlock(BlocksTC.vishroom),
-            Item.getItemFromBlock(BlocksTC.saplingSilverwood)
+            Item.getItemFromBlock(BlocksTC.vishroom)
     };
 
     public ItemRedolentBundle(String name, String... variants) {
@@ -47,13 +44,6 @@ public class ItemRedolentBundle extends ItemTCABase{
         nbt.setString("type", set);
 
         return stack;
-    }
-
-    public static ItemStack getExample(boolean isDried) {
-
-        ItemStack stack = getBundleFromComponent(null);
-
-        return isDried ? stack : getBundleDried(stack);
     }
 
     public static ItemStack getComponentFromBundle(ItemStack stack) {
@@ -92,10 +82,6 @@ public class ItemRedolentBundle extends ItemTCABase{
                 if (nbt.getString("type").equals(plant.getRegistryName().toString())) {
                     tooltip.add(TextFormatting.DARK_PURPLE + new ItemStack(plant).getDisplayName());
                 }
-            }
-
-            if (nbt.getString("type").equals("null")) {
-                tooltip.add(TextFormatting.DARK_PURPLE + this.unknown.getFormattedText());
             }
 
         }

@@ -11,16 +11,14 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import thaumcraft.api.casters.ICaster;
 import thaumcraft.api.items.ItemsTC;
-import thaumcraft.common.lib.SoundsTC;
 
 public class BlockPressingStone extends BlockTCADevice {
 
@@ -56,7 +54,7 @@ public class BlockPressingStone extends BlockTCADevice {
 
             if (!held.isEmpty()) {
 
-                if (held.getItem().equals(ItemsTC.casterBasic) && !state.getValue(IS_DOWN)) {
+                if (held.getItem() instanceof ICaster && !state.getValue(IS_DOWN)) {
                     tile.sendDown();
 
                 } else if (held.getItem().equals(ItemsTC.nuggets) && held.getMetadata() == 9) {

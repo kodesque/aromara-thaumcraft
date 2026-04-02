@@ -20,7 +20,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import thaumcraft.api.casters.FocusEffect;
 import thaumcraft.api.casters.FocusPackage;
-import thaumcraft.api.items.ItemsTC;
+import thaumcraft.api.casters.ICaster;
 import thaumcraft.common.items.casters.ItemCaster;
 import thaumcraft.common.items.casters.ItemFocus;
 import thaumcraft.common.items.casters.foci.FocusEffectFire;
@@ -53,22 +53,21 @@ public class BlockArcaneBrazier extends BlockTCADevice {
 
             if (!held.isEmpty()) {
 
-                //this should be done differently, because if you simply right-click the block with a gauntlet the spell won't be casted
+                if (held.getItem() instanceof ICaster) {
+                    if (!tile.getStackInSlot(0).isEmpty() && !tile.getStackInSlot(1).isEmpty()) {
+                        ItemCaster caster = (ItemCaster) held.getItem();
+                        ItemStack focusStack = caster.getFocusStack(held);
+                        FocusPackage pack = ItemFocus.getPackage(focusStack);
 
-                if (held.getItem().equals(ItemsTC.casterBasic) && state.getValue(STATUS) == 1) {
-                    ItemCaster caster = (ItemCaster) held.getItem();
-                    ItemFocus focus = caster.getFocus(held);
-                    FocusPackage pack = ItemFocus.getPackage(held);
+                        if (focusStack == null || pack == null)
+                            return false;
 
-                    if (focus == null || pack == null)
-                        return false;
+                        FocusEffect[] effects = pack.getFocusEffects();
 
-                    FocusEffect[] effects = pack.getFocusEffects();
-
-                    for (FocusEffect effect : effects) {
-                        if (effect instanceof FocusEffectFire) {
-                            tile.ignite();
-                            return true;
+                        for (FocusEffect effect : effects) {
+                            if (effect instanceof FocusEffectFire) {
+                                tile.ignite();
+                            }
                         }
                     }
                 } else if (held.getItem().equals(Items.COAL)) {
@@ -97,9 +96,9 @@ public class BlockArcaneBrazier extends BlockTCADevice {
                     tile.removeStackFromSlot(0);
                     if (!player.addItemStackToInventory(give)) {
                         player.dropItem(give, false);
-
-                        world.setBlockState(pos, state.withProperty(BlockArcaneBrazier.STATUS, 0));
                     }
+
+                    world.setBlockState(pos, state.withProperty(BlockArcaneBrazier.STATUS, 0));
                 }
 
             }
@@ -108,7 +107,7 @@ public class BlockArcaneBrazier extends BlockTCADevice {
             tile.syncTile(true);
         }
 
-        return false;
+        return true;
     }
 
     @Override
