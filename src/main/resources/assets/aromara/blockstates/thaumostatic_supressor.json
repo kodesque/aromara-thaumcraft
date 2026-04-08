@@ -1,0 +1,60 @@
+{
+  "forge_marker" : 1,
+  "defaults" : {
+      "model" : "aromara:thaumostatic_supressor.obj",
+      "transform": "forge:default-block"
+  },
+  "variants": {
+    
+    "normal": {"model": "aromara:thaumostatic_supressor.obj"},        
+            "inventory":
+            [
+                {
+                    "transform" :
+                     {
+                        "thirdperson_righthand": {
+                            "rotation": [75, 45, 0],
+                            "scale": [0.375, 0.375, 0.375]
+                        },
+                        "thirdperson_lefthand": {
+                            "rotation": [75, 45, 0],
+                            "scale": [0.375, 0.375, 0.375]
+                        },
+                        "firstperson_righthand": {
+                            "rotation": [0, -135, 0],
+                            "scale": [0.4, 0.4, 0.4]
+                        },
+                        "firstperson_lefthand": {
+                            "rotation": [0, -135, 0],
+                            "scale": [0.4, 0.4, 0.4]
+                        },
+                        "ground": {
+                            "scale": [0.25, 0.25, 0.25]
+                        },
+                        "gui": {
+                            "rotation": [30, -135, 0],
+                            "scale": [0.5, 0.5, 0.5]
+                        },
+                        "fixed": {
+                            "scale": [0.5, 0.5, 0.5]
+                        }
+
+                     }
+                }        
+            ],
+    
+            "facing=north,upper_part=true": { "model": "aromara:thaumostatic_supressor.obj", "x": 90},
+            "facing=south,upper_part=true": { "model": "aromara:thaumostatic_supressor.obj", "x": 90, "y": 180},
+            "facing=west,upper_part=true":  { "model": "aromara:thaumostatic_supressor.obj", "x": 90, "y": 270},
+            "facing=east,upper_part=true":  { "model": "aromara:thaumostatic_supressor.obj", "x": 90, "y": 90},
+            "facing=up,upper_part=true":    { "model": "aromara:thaumostatic_supressor.obj"},
+            "facing=down,upper_part=true":  { "model": "aromara:thaumostatic_supressor.obj"},
+
+            "facing=north,upper_part=false": { "model": "aromara:dumdum", "x": 90},
+            "facing=south,upper_part=false": { "model": "aromara:dumdum", "x": 90, "y": 180},
+            "facing=west,upper_part=false":  { "model": "aromara:dumdum", "x": 90, "y": 270},
+            "facing=east,upper_part=false":  { "model": "aromara:dumdum", "x": 90, "y": 90},
+            "facing=up,upper_part=false":    { "model": "aromara:dumdum"},
+            "facing=down,upper_part=false":  { "model": "aromara:dumdum"}
+  }
+  }

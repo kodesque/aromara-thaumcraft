@@ -18,7 +18,7 @@
         
         {
             
-        "key": "TCA_CRUDESCENTS",
+        "key": "TCA_SCENTBURNING",
         "name": "research.TCA_SCENTBURNING.title",         
         "icons": [ "aromara:arcane_brazier;1;0", "aromara:pressing_stone;1;0"],
         "category": "SCENTMIXING",
@@ -27,17 +27,17 @@
 
         "stages": [
                 {
-                    "text": "research.TCA_CRUDESCENTS.text.stage.1",
+                    "text": "research.TCA_SCENTBURNING.text.stage.1",
                     "required_item":["thaumcraft:shimmerleaf", "thaumcraft:cinderpearl", "thaumcraft:vishroom"]
                 },
                 {
-                    "text": "research.TCA_CRUDESCENTS.text.stage.2",
+                    "text": "research.TCA_SCENTBURNING.text.stage.2",
                     "recipes": ["aromara:pressing_stone", "aromara:redolent_bundle-0","aromara:redolent_bundle-1", "aromara:redolent_bundle-2"],
                     "required_item": ["minecraft:blaze_rod"]
                 },
                 {
-                    "text": "research.TCA_CRUDESCENTS.text.stage.3",
-                    "recipes": ["aromara:arcane_brazier", "aromara:redolent_bundle-0","aromara:redolent_bundle-1", "aromara:redolent_bundle-2"]
+                    "text": "research.TCA_SCENTBURNING.text.stage.3",
+                    "recipes": ["aromara:arcane_brazier", "aromara:pressing_stone", "aromara:redolent_bundle-0","aromara:redolent_bundle-1", "aromara:redolent_bundle-2"]
                 }
             ]
         }

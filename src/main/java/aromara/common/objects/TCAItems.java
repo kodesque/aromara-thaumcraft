@@ -8,6 +8,8 @@ public class TCAItems {
     public static Item ceramic_phial;
     public static Item liquid_tallow;
 
+    public static Item impetus_fuse;
+
     /* "raw", "dry" */
     public static Item redolent_bundle;
 

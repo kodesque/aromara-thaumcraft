@@ -24,6 +24,8 @@ import thaumcraft.api.capabilities.ThaumcraftCapabilities;
 import thaumcraft.api.entities.ITaintedMob;
 import thaumcraft.common.entities.monster.mods.ChampionModifier;
 import thaumcraft.common.tiles.TileThaumcraftInventory;
+import thecodex6824.thaumicaugmentation.api.impetus.CapabilityImpetusStorage;
+import thecodex6824.thaumicaugmentation.api.impetus.IImpetusStorage;
 
 public class TileArcaneBrazier extends TileThaumcraftInventory {
 
@@ -46,6 +48,7 @@ public class TileArcaneBrazier extends TileThaumcraftInventory {
         super(2);
         this.syncedSlots = new int[] {0, 1};
         this.burningTimeMax = 64 * this.factor;
+
     }
 
     @Override

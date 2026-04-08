@@ -65,6 +65,8 @@ processResources {
 
 dependencies {
 	deobfCompile "curse.maven:thaumcraft-223628:2629023"
+	deobfCompile "curse.maven:thaumic-augmentation-319441:6047659"
+	deobfCompile "curse.maven:jei-238222:3040523"
 }
 
 task devJar(type: Jar) {

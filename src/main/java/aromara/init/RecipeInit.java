@@ -4,6 +4,7 @@ import aromara.common.items.ItemRedolentBundle;
 import aromara.common.objects.TCABlocks;
 import aromara.root.Main;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -28,7 +29,7 @@ public class RecipeInit {
                     new ResourceLocation("aromara:redolent_bundle" + "-" + i),
                     new ShapelessArcaneRecipe(
                             baseGroup,
-                            "TCA_CRUDESCENTS",
+                            "TCA_SCENTBURNING",
                             25,
                             new AspectList().add(Aspect.ORDER, 1).add(Aspect.EARTH, 1),
                             ItemRedolentBundle.getBundleFromComponent(ItemRedolentBundle.plants[i]),
@@ -37,7 +38,7 @@ public class RecipeInit {
                                     new ItemStack(ItemRedolentBundle.plants[i]),
                                     new ItemStack(ItemRedolentBundle.plants[i]),
                                     new ItemStack(ItemRedolentBundle.plants[i]),
-                                    new ItemStack(ItemsTC.fabric)
+                                    new ItemStack(Items.STRING)
                             }
                             )
                     );
@@ -47,7 +48,7 @@ public class RecipeInit {
                 new ResourceLocation("aromara:arcane_brazier"),
                 new ShapedArcaneRecipe(
                         baseGroup,
-                        "TCA_CRUDESCENTS",
+                        "TCA_SCENTBURNING",
                         50,
                         new AspectList().add(Aspect.FIRE, 2),
                         Item.getItemFromBlock(TCABlocks.arcane_brazier),
@@ -69,7 +70,7 @@ public class RecipeInit {
                 new ResourceLocation("aromara:pressing_stone"),
                 new ShapedArcaneRecipe(
                         baseGroup,
-                        "TCA_CRUDESCENTS",
+                        "TCA_SCENTBURNING",
                         50,
                         null,
                         new ItemStack(Item.getItemFromBlock(TCABlocks.pressing_stone)),

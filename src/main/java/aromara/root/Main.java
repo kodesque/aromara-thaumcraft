@@ -53,7 +53,8 @@ public class Main {
                 "FIRSTSTEPS",
                 new AspectList().add(Aspect.ALCHEMY, 5).add(Aspect.SENSES, 5),
                 new ResourceLocation(Main.MODID + ":textures/research/" + "scentmixing" + ".png"),
-                new ResourceLocation(Main.MODID + ":textures/research/" + "background.png")
+                new ResourceLocation(Main.MODID + ":textures/research/" + "background.png"),
+                new ResourceLocation(Main.MODID + ":textures/research/" + "background_overlay.png")
                 );
 
         registerResearchLocation(new ResourceLocation("aromara:research/scentmixing"));

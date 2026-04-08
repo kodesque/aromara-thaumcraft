@@ -17,6 +17,8 @@ public class ItemInit {
         iForgeRegistry.register((TCAItems.ceramic_phial = new ItemTCABase("ceramic_phial")));
         iForgeRegistry.register((TCAItems.liquid_tallow = new ItemTCABase("liquid_tallow")));
 
+        iForgeRegistry.register(TCAItems.impetus_fuse = new ItemTCABase("impetus_fuse"));
+
         iForgeRegistry.register((TCAItems.redolent_bundle = new ItemRedolentBundle("redolent_bundle", "raw", "dry")));
 
 
