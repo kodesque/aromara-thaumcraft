@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "aromara:items/impetus_fuse"
+        "layer0": "aromara:items/causality_shackles"
     }
 }

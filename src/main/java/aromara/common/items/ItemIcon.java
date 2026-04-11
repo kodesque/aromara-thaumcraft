@@ -3,13 +3,11 @@ package aromara.common.items;
 import aromara.common.objects.TCABlocks;
 import aromara.common.objects.TCAItems;
 import aromara.common.templates.ItemTCABase;
-import aromara.init.ItemInit;
 import aromara.root.Main;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-import thaumcraft.api.blocks.BlocksTC;
 
 public class ItemIcon extends ItemTCABase {
 
@@ -36,6 +34,10 @@ public class ItemIcon extends ItemTCABase {
         for (Item plant : ItemRedolentBundle.plants) {
             items.add(ItemRedolentBundle.getBundleDried(ItemRedolentBundle.getBundleFromComponent(plant)));
         }
+
+        items.add(new ItemStack (Item.getItemFromBlock(TCABlocks.thaumostatic_supressor)));
+        items.add(new ItemStack (TCAItems.impetus_resonator));
+        items.add(new ItemStack (TCAItems.causality_shackles));
     }
 
 }

@@ -6,6 +6,9 @@ item.aromara.alchemical_clay.name=Alchemical Clay
 item.aromara.liquid_tallow.name=Liquid Tallow
 item.aromara.ceramic_phial.name=Ceramic Phial
 
+item.aromara.impetus_resonator.name=Impetus Resonator
+item.aromara.causality_shackles.name=Causality Shackles
+
 item.aromara.redolent_bundle.name=Redolent Bundle
 
 item.aromara.icon.name=Icon
@@ -13,6 +16,8 @@ item.aromara.icon.name=Icon
 #BLOCKS
 tile.aromara.arcane_brazier.name=Arcane Brazier
 tile.aromara.pressing_stone.name=Pressing Stone
+
+tile.aromara.thaumostatic_supressor.name=Thaumostatic Supressor
 
 tile.aromara.vishroom_block_cap.name=Huge Vishroom Cap
 tile.aromara.vishroom_block_stem.name=Huge Vishroom Stem
