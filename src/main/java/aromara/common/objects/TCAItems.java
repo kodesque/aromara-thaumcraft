@@ -10,6 +10,8 @@ public class TCAItems {
 
     public static Item impetus_resonator;
     public static Item causality_shackles;
+    public static Item glyph_piece;
+    public static Item glyphed_tablet;
 
     /* "raw", "dry" */
     public static Item redolent_bundle;

@@ -35,6 +35,8 @@ public class ItemIcon extends ItemTCABase {
             items.add(ItemRedolentBundle.getBundleDried(ItemRedolentBundle.getBundleFromComponent(plant)));
         }
 
+        items.add(new ItemStack (TCAItems.glyph_piece));
+        items.add(new ItemStack (TCAItems.glyphed_tablet));
         items.add(new ItemStack (Item.getItemFromBlock(TCABlocks.thaumostatic_supressor)));
         items.add(new ItemStack (TCAItems.impetus_resonator));
         items.add(new ItemStack (TCAItems.causality_shackles));

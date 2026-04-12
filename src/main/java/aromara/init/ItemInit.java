@@ -2,6 +2,7 @@ package aromara.init;
 
 import aromara.common.items.ItemIcon;
 import aromara.common.items.ItemRedolentBundle;
+import aromara.common.items.ItemTablet;
 import aromara.common.objects.TCAItems;
 import aromara.common.templates.ItemTCABase;
 import net.minecraft.item.Item;
@@ -19,6 +20,8 @@ public class ItemInit {
 
         iForgeRegistry.register(TCAItems.impetus_resonator = new ItemTCABase("impetus_resonator"));
         iForgeRegistry.register(TCAItems.causality_shackles = new ItemTCABase("causality_shackles"));
+        iForgeRegistry.register(TCAItems.glyph_piece = new ItemTCABase("glyph_piece"));
+        iForgeRegistry.register(TCAItems.glyphed_tablet = new ItemTablet("glyph_tablet"));
 
         iForgeRegistry.register((TCAItems.redolent_bundle = new ItemRedolentBundle("redolent_bundle", "raw", "dry")));
 
