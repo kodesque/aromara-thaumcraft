@@ -20,10 +20,12 @@ public class ItemInit {
 
         iForgeRegistry.register(TCAItems.impetus_resonator = new ItemTCABase("impetus_resonator"));
         iForgeRegistry.register(TCAItems.causality_shackles = new ItemTCABase("causality_shackles"));
-        iForgeRegistry.register(TCAItems.glyph_piece = new ItemTCABase("glyph_piece"));
         iForgeRegistry.register(TCAItems.glyphed_tablet = new ItemTablet("glyph_tablet"));
+        iForgeRegistry.register(TCAItems.perspective = new ItemTCABase("perspective"));
 
-        iForgeRegistry.register((TCAItems.redolent_bundle = new ItemRedolentBundle("redolent_bundle", "raw", "dry")));
+        iForgeRegistry.register(TCAItems.seal_printed = new ItemTCABase("seal_printed", "tablet", "sigil", "tome", "blade"));;
+
+        iForgeRegistry.register(TCAItems.redolent_bundle = new ItemRedolentBundle("redolent_bundle", "raw", "dry"));
 
 
     }

@@ -130,7 +130,7 @@ public class RecipeInit {
                         "PBP",
                         "PPP",
                         'P',
-                        new ItemStack(TCAItems.glyph_piece),
+                        new ItemStack(Items.DIAMOND),
                         'B',
                         new ItemStack(ItemsTC.brain)
                         )
