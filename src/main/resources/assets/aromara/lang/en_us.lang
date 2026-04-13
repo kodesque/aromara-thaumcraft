@@ -10,7 +10,7 @@ item.aromara.impetus_resonator.name=Impetus Resonator
 item.aromara.causality_shackles.name=Causality Shackles
 item.aromara.glyph_piece.name=Glyph Sliver
 item.aromara.glyph_tablet.name=Reconstructed Tablet
-item.aromara.perspective.name=Adjusted Perspective
+item.aromara.perspective.name=Aided Eye Augment
 
 item.aromara.redolent_bundle.name=Redolent Bundle
 item.aromara.seal_printed.name=Printed Seal
@@ -27,7 +27,7 @@ tile.aromara.vishroom_block_cap.name=Huge Vishroom Cap
 tile.aromara.vishroom_block_stem.name=Huge Vishroom Stem
 
 #RESEARCHES
-tc.research_category.SCENTMIXING=Scentmixing
+tc.research_category.SCENTMIXING=Aromara Thaumcraft
 
 research.TCA_BASESCENTMIXING.title=Miasma Theory
 research.TCA_BASESCENTMIXING.text.stage.1=Since discovering alchemy, I've become accustomed to ignoring the smells emanating from the crucible, as most of the materials I work with have a pleasant aroma on their own. Flux, however, is something extraordinary. Its stench, which is unlike to anything I know, makes my muscles twitch in pain. When I first smelled it, I tried to cover my face with the first thing I could find - a parchment stained with aspect-bearing ink. And then... my headache went away?<BR>I must research this further.
@@ -62,10 +62,10 @@ tooltip.aromara.relic.5.1=§6§othe slaughter goes without stopping. The flashes
 tooptip.aromara.relic.5.2=§6§oand §k???§r§6§o flicker here all day long. It doesn't matter who's left standing
 tooltip.aromara.relic.5.3=§6§othe flood will consume everything
 
-tooltip.aromara.relic.6.1=§6§owhen I look up at the scorched wasteland, my §k???§r§6§o
-tooltip.aromara.relic.6.2=§6§obleeds. If anyone remains after us
+tooltip.aromara.relic.6.1=§6§owhen I look up at the scorched wasteland, my §k???§r§6§o bleeds
+tooltip.aromara.relic.6.2=§6§oIf anyone remains after us
 tooltip.aromara.relic.6.3=§6§othey'll have to §k???§r§6§o an infinitely vast knowledge §k???§r§6§o from scratch
 
 tooltip.aromara.relic.7.1=§6§othe flames consume everything. The bricks of the spire now resemble
-tooltip.aromara.relic.7.2=§6§ocharred bones. If we fail to §k???§r§6§o, we will cleanse the soil of this filth that has
-tooltip.aromara.relic.7.3=§6§odestroyed everything that could satisfy §k???§r§6§o
+tooltip.aromara.relic.7.2=§6§ocharred bones. If we fail to §k???§r§6§o, we will cleanse the soil from this filth that has
+tooltip.aromara.relic.7.3=§6§odestroyed everything that could satisfy ones hunger

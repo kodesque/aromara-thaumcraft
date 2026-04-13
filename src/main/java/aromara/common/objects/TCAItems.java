@@ -4,13 +4,13 @@ import net.minecraft.item.Item;
 
 public class TCAItems {
 
-    public static Item alchemical_clay;
-    public static Item ceramic_phial;
-    public static Item liquid_tallow;
-
-    public static Item impetus_resonator;
+    //    public static Item alchemical_clay;
+    //    public static Item ceramic_phial;
+    //    public static Item liquid_tallow;
+    //
+    //    public static Item impetus_resonator;
     public static Item causality_shackles;
-    public static Item glyphed_tablet;
+    public static Item glyph_tablet;
     public static Item perspective;
 
     /* "tablet", "sigil", "tome", "blade" */

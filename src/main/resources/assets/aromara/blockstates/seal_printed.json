@@ -13,12 +13,12 @@
         "tome": {
             "model": "forge:item-layer", "transform": "forge:default-item",
             "textures": { "layer0": "aromara:items/seal_tome" }
-            }
-        },
+            },
         "blade": {
             "model": "forge:item-layer", "transform": "forge:default-item",
             "textures": { "layer0": "aromara:items/seal_blade" }
             }
-           }
-    }
+  }
 }
+    
+

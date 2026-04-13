@@ -99,22 +99,48 @@ public class RecipeInit {
                 );
 
         ThaumcraftApi.addArcaneCraftingRecipe(
-                new ResourceLocation("aromara:impetus_resonator"),
+                new ResourceLocation("aromara:pressing_stone"),
                 new ShapedArcaneRecipe(
                         baseGroup,
                         "TCA_SCENTBURNING",
                         50,
-                        new AspectList().add(Aspect.ORDER, 1).add(Aspect.ENTROPY, 1),
-                        new ItemStack(TCAItems.impetus_resonator),
-                        "VIV",
-                        "VFV",
-                        "VIV",
-                        'V',
-                        "plateVoid",
+                        null,
+                        new ItemStack(Item.getItemFromBlock(TCABlocks.pressing_stone)),
+                        "SRS",
+                        "PNP",
+                        "SRS",
+                        'P',
+                        "plateIron",
+                        'N',
+                        "nitor",
+                        'S',
+                        new ItemStack(Item.getItemFromBlock(BlocksTC.stoneArcane)),
+                        'R',
+                        new ItemStack(ItemsTC.visResonator)
+                        )
+                );
+
+        ThaumcraftApi.addArcaneCraftingRecipe(
+                new ResourceLocation("aromara:perspective"),
+                new ShapedArcaneRecipe(
+                        baseGroup,
+                        "TCA_SCENTBURNING",
+                        25,
+                        new AspectList().add(Aspect.AIR, 2),
+                        new ItemStack(TCAItems.perspective),
+                        "TRT",
+                        "QIQ",
+                        "TET",
+                        'T',
+                        "plateThaumium",
+                        'R',
+                        new ItemStack(ItemsTC.morphicResonator),
+                        'Q',
+                        new ItemStack(ItemsTC.quicksilver),
                         'I',
                         new ItemStack(TAItems.MATERIAL, 1, 5),
-                        'F',
-                        new ItemStack(ItemsTC.focus1)
+                        'E',
+                        new ItemStack(Items.ENDER_EYE)
                         )
                 );
 
@@ -123,14 +149,14 @@ public class RecipeInit {
                 new ShapedArcaneRecipe(
                         baseGroup,
                         "TCA_SCENTBURNING",
-                        10,
-                        null,
-                        new ItemStack(TCAItems.glyphed_tablet),
+                        25,
+                        new AspectList().add(Aspect.ORDER, 5).add(Aspect.FIRE, 5),
+                        new ItemStack(TCAItems.glyph_tablet),
                         "PPP",
                         "PBP",
                         "PPP",
                         'P',
-                        new ItemStack(Items.DIAMOND),
+                        new ItemStack(TCAItems.seal_printed),
                         'B',
                         new ItemStack(ItemsTC.brain)
                         )

@@ -29,6 +29,8 @@ public class TilePressingStone extends TileThaumcraftInventory {
     public TilePressingStone() {
         super(2);
         this.syncedSlots = new int[] {0, 1};
+        this.dryingTime = 0;
+        this.toPull = new AspectList();
     }
 
     @Override

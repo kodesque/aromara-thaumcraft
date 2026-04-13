@@ -26,18 +26,19 @@ public class ItemIcon extends ItemTCABase {
 
         items.add(new ItemStack (Item.getItemFromBlock(TCABlocks.vishroom_block_cap)));
         items.add(new ItemStack (Item.getItemFromBlock(TCABlocks.vishroom_block_stem)));
-
-        items.add(new ItemStack (TCAItems.alchemical_clay));
-        items.add(new ItemStack (TCAItems.ceramic_phial));
-        items.add(new ItemStack(TCAItems.liquid_tallow));
-
         for (Item plant : ItemRedolentBundle.plants) {
             items.add(ItemRedolentBundle.getBundleDried(ItemRedolentBundle.getBundleFromComponent(plant)));
         }
 
-        items.add(new ItemStack (TCAItems.glyphed_tablet));
+        for (int i = 0; i < 4; i++) {
+            ItemStack stack = new ItemStack (TCAItems.seal_printed);
+            stack.setItemDamage(i);
+            items.add((stack));
+        }
+
+        items.add(new ItemStack (TCAItems.glyph_tablet));
         items.add(new ItemStack (Item.getItemFromBlock(TCABlocks.thaumostatic_supressor)));
-        items.add(new ItemStack (TCAItems.impetus_resonator));
+        items.add(new ItemStack (TCAItems.perspective));
         items.add(new ItemStack (TCAItems.causality_shackles));
     }
 

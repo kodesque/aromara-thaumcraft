@@ -24,7 +24,7 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.internal.CommonInternals;
 import thaumcraft.api.research.ResearchCategories;
 
-@Mod(modid = Main.MODID, dependencies = "required-after:thaumcraft", version = Main.VERSION, name = Main.NAME)
+@Mod(modid = Main.MODID, dependencies = "required-after:thaumcraft, required-after:thaumic-augmentation", version = Main.VERSION, name = Main.NAME)
 public class Main {
     public static final String MODID = "aromara";
     public static final String NAME = "Aromara Thaumcraft";
@@ -51,8 +51,8 @@ public class Main {
         ResearchCategories.registerCategory(
                 "SCENTMIXING",
                 "FIRSTSTEPS",
-                new AspectList().add(Aspect.ALCHEMY, 5).add(Aspect.SENSES, 5),
-                new ResourceLocation(Main.MODID + ":textures/research/" + "scentmixing" + ".png"),
+                new AspectList().add(Aspect.ALCHEMY, 5),
+                new ResourceLocation(Main.MODID + ":textures/research/" + "basescentmixing" + ".png"),
                 new ResourceLocation(Main.MODID + ":textures/research/" + "background.png"),
                 new ResourceLocation(Main.MODID + ":textures/research/" + "background_overlay.png")
                 );

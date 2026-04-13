@@ -14,13 +14,8 @@ public class ItemInit {
 
         iForgeRegistry.register(TCAItems.icon = new ItemIcon("icon"));
 
-        iForgeRegistry.register((TCAItems.alchemical_clay = new ItemTCABase("alchemical_clay")));
-        iForgeRegistry.register((TCAItems.ceramic_phial = new ItemTCABase("ceramic_phial")));
-        iForgeRegistry.register((TCAItems.liquid_tallow = new ItemTCABase("liquid_tallow")));
-
-        iForgeRegistry.register(TCAItems.impetus_resonator = new ItemTCABase("impetus_resonator"));
         iForgeRegistry.register(TCAItems.causality_shackles = new ItemTCABase("causality_shackles"));
-        iForgeRegistry.register(TCAItems.glyphed_tablet = new ItemTablet("glyph_tablet"));
+        iForgeRegistry.register(TCAItems.glyph_tablet = new ItemTablet("glyph_tablet"));
         iForgeRegistry.register(TCAItems.perspective = new ItemTCABase("perspective"));
 
         iForgeRegistry.register(TCAItems.seal_printed = new ItemTCABase("seal_printed", "tablet", "sigil", "tome", "blade"));;
