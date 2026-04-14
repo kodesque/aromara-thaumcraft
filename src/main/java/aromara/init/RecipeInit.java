@@ -127,7 +127,7 @@ public class RecipeInit {
                         "TCA_SCENTBURNING",
                         25,
                         new AspectList().add(Aspect.AIR, 2),
-                        new ItemStack(TCAItems.perspective),
+                        new ItemStack(TCAItems.augment),
                         "TRT",
                         "QIQ",
                         "TET",

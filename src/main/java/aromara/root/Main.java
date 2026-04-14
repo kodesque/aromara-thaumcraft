@@ -24,7 +24,7 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.internal.CommonInternals;
 import thaumcraft.api.research.ResearchCategories;
 
-@Mod(modid = Main.MODID, dependencies = "required-after:thaumcraft, required-after:thaumic-augmentation", version = Main.VERSION, name = Main.NAME)
+@Mod(modid = Main.MODID, dependencies = "required-after:thaumcraft; required-after:thaumicaugmentation", version = Main.VERSION, name = Main.NAME)
 public class Main {
     public static final String MODID = "aromara";
     public static final String NAME = "Aromara Thaumcraft";

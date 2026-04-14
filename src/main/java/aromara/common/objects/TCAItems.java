@@ -11,7 +11,7 @@ public class TCAItems {
     //    public static Item impetus_resonator;
     public static Item causality_shackles;
     public static Item glyph_tablet;
-    public static Item perspective;
+    public static Item augment;
 
     /* "tablet", "sigil", "tome", "blade" */
     public static Item seal_printed;
