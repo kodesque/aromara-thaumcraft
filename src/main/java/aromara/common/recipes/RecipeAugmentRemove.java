@@ -2,6 +2,8 @@ package aromara.common.recipes;
 
 import aromara.common.items.ItemAidedEye;
 import aromara.common.objects.TCAItems;
+import aromara.util.NBTManager;
+import aromara.util.NBTManager.EnumGroups;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -22,7 +24,7 @@ public class RecipeAugmentRemove extends IForgeRegistryEntry.Impl<IRecipe> imple
             ItemStack stack = inv.getStackInSlot(i);
 
             if (!stack.isEmpty()) {
-                if (search != 1 && stack.getItem() instanceof ItemThaumometer && ItemAidedEye.hasAugment(stack)) {
+                if (search != 1 && stack.getItem() instanceof ItemThaumometer && !NBTManager.has(stack, EnumGroups.AUGMENT)) {
                     search = 1;
                 } else {
                     search = 0;
@@ -50,7 +52,7 @@ public class RecipeAugmentRemove extends IForgeRegistryEntry.Impl<IRecipe> imple
             ItemStack stack = inv.getStackInSlot(i);
 
             if (stack.getItem() instanceof ItemThaumometer) {
-                result.set(i, ItemAidedEye.removeAugment(stack));
+                result.set(i, NBTManager.remove(stack, EnumGroups.AUGMENT));
             }
         }
 

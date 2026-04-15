@@ -2,8 +2,11 @@ package aromara.common.recipes;
 
 import aromara.common.items.ItemAidedEye;
 import aromara.common.objects.TCAItems;
+import aromara.util.NBTManager;
+import aromara.util.NBTManager.EnumGroups;
+import aromara.util.NBTManager.EnumValueNames;
+import aromara.util.NBTManager.NameValuePair;
 import net.minecraft.inventory.InventoryCrafting;
-import net.minecraft.item.ItemSoup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.NonNullList;
@@ -24,7 +27,7 @@ public class RecipeAugmentAdd extends IForgeRegistryEntry.Impl<IRecipe> implemen
             ItemStack stack = inv.getStackInSlot(i);
 
             if (!stack.isEmpty()) {
-                if (search != 1 && stack.getItem() instanceof ItemThaumometer && !ItemAidedEye.hasAugment(stack)) {
+                if (search != 1 && stack.getItem() instanceof ItemThaumometer && !NBTManager.has(stack, EnumGroups.AUGMENT)) {
                     search = 1;
                 } else if (search != 2 && stack.getItem().equals(TCAItems.augment)) {
                     search = 2;
@@ -55,7 +58,7 @@ public class RecipeAugmentAdd extends IForgeRegistryEntry.Impl<IRecipe> implemen
             }
         }
 
-        return ItemAidedEye.applyAugment(thaumometer);
+        return NBTManager.apply(thaumometer, EnumGroups.AUGMENT, new NameValuePair(EnumValueNames.MAIN.getName(), TCAItems.augment.getRegistryName().toString()));
     }
 
     @Override
@@ -82,7 +85,7 @@ public class RecipeAugmentAdd extends IForgeRegistryEntry.Impl<IRecipe> implemen
 
     @Override
     public ItemStack getRecipeOutput() {
-        return ItemAidedEye.applyAugment(new ItemStack(ItemsTC.thaumometer));
+        return new ItemStack(ItemsTC.thaumometer);
     }
 
 }
