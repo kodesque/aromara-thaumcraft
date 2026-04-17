@@ -10,74 +10,116 @@ import net.minecraft.nbt.NBTTagCompound;
 
 public class NBTManager {
 
-    public enum EnumGroups {
-        AUGMENT("augment",
-                new NameTypePair(EnumValueNames.MAIN.getName(), String.class)),
-        MEMORY("memory",
-                new NameTypePair(EnumValueNames.MAIN.getName(), Integer.class),
-                new NameTypePair(EnumValueNames.SUB.getName(), Integer.class)),
-        SCENT("scent",
-                new NameTypePair(EnumValueNames.TOP_NOTES, String.class),
-                new NameTypePair(EnumValueNames.HEART_NOTES, String.class),
-                new NameTypePair(EnumValueNames.BASE_NOTES, String.class));
+    public interface INBTGroupType {
 
-        private final String groupName;
-        private final NameTypePair[] pair;
-        private final Class<?>[] clazz;
+        String getGroupName();
 
-        EnumGroups(EnumValueNames groupName, NameTypePair... pair) {
-            this.groupName = groupName;
-            this.pair = pair;
+        String getValueName();
 
-            this.clazz = null;
-        }
+        Class<?> getClazz();
+    }
 
-        EnumGroups(EnumValueNames groupName, Class<?>... clazz) {
-            this.groupName = groupName.getName();
+    public enum TypeAugment implements INBTGroupType {
+        MAIN(EnumGeneralNames.MAIN, String.class);
+
+        private static final String groupName = "augment";
+
+        private final String valueName;
+        private final Class<?> clazz;
+
+        TypeAugment(EnumGeneralNames valueName, Class<?> clazz) {
+            this.valueName = valueName.getName();
             this.clazz = clazz;
-
-            this.pair = null;
         }
 
-        public String getName() {
-            return this.groupName;
+        @Override
+        public String getGroupName() {
+            return groupName;
         }
 
-        public NameTypePair[] getAllPairs() {
-            return this.pair;
+        @Override
+        public String getValueName() {
+            return this.valueName;
         }
 
-        public NameTypePair getPair(String name) {
-            if (this.pair != null) {
-                for (NameTypePair element : this.pair) {
-                    if (element.getName().equals(name))
-                        return element;
-                }
-            }
-            return null;
+        @Override
+        public Class<?> getClazz() {
+            return this.clazz;
         }
 
-        public NameTypePair getPair(int i) {
-            if (this.pair != null)
-                return this.pair[i];
-            return null;
+    }
+
+    public enum TypeMemory implements INBTGroupType {
+        MAIN(EnumGeneralNames.MAIN, String.class),
+        SUB(EnumGeneralNames.SUB, String.class);
+
+        private static final String groupName = "memory";
+
+        private final String valueName;
+        private final Class<?> clazz;
+
+        TypeMemory(EnumGeneralNames valueName, Class<?> clazz) {
+            this.valueName = valueName.getName();
+            this.clazz = clazz;
         }
 
-        public Class getClazz(int index) {
-            return this.clazz != null ? this.clazz[index] : Object.class;
+        @Override
+        public String getGroupName() {
+            return groupName;
+        }
+
+        @Override
+        public String getValueName() {
+            return this.valueName;
+        }
+
+        @Override
+        public Class<?> getClazz() {
+            return this.clazz;
         }
     }
 
-    public enum EnumValueNames {
+    public enum TypeScent implements INBTGroupType {
+        TOP("top_note", String.class),
+        HEART("heart_note", String.class),
+        BASE("base_note", String.class);
+
+        private static final String groupName = "scent";
+
+        private final String valueName;
+        private final Class<?> clazz;
+
+        TypeScent(String valueName, Class<?> clazz) {
+            this.valueName = valueName;
+            this.clazz = clazz;
+        }
+
+        @Override
+        public String getGroupName() {
+            return groupName;
+        }
+
+        @Override
+        public String getValueName() {
+            return this.valueName;
+        }
+
+        @Override
+        public Class<?> getClazz() {
+            return this.clazz;
+        }
+    }
+
+
+
+
+    public enum EnumGeneralNames {
         MAIN("main"),
-        SUB("sub"),
-        TOP_NOTES("top_notes"),
-        HEART_NOTES("heart_notes"),
-        BASE_NOTES("base_notes");
+        SUB("sub");
 
         private final String value;
 
-        EnumValueNames(String value) {
+        EnumGeneralNames(String value) {
             this.value = value;
         }
 
@@ -86,136 +128,116 @@ public class NBTManager {
         }
     }
 
-    public static class NameTypePair {
+    public static class ValuePair<T> {
 
-        private final String valueName;
-        private final Class<?> clazz;
+        private final INBTGroupType type;
+        private final T value;
 
-        NameTypePair(String valueName, Class<?> clazz) {
-            this.valueName = valueName;
-            this.clazz = clazz;
-        }
-
-        public String getName() {
-            return this.valueName;
-        }
-
-        public Class<?> getClazz() {
-            return this.clazz;
-        }
-
-        @Nullable
-        NameTypePair getPair() {
-            return this;
-        }
-
-    }
-
-    public static class NameValuePair {
-
-        private final String valueName;
-        private final Object value;
-
-        public NameValuePair(String valueName, Object value) {
-            this.valueName = valueName;
+        public ValuePair(INBTGroupType type, T value) {
+            this.type = type;
             this.value = value;
-        }
-
-        public String getName() {
-            return this.valueName;
         }
 
         public Object getValue() {
             return this.value;
         }
+
+        public INBTGroupType getType() {
+            return this.type;
+        }
     }
 
-    public static ItemStack apply(ItemStack stack, EnumGroups group, @Nullable NameValuePair... value) {
+    public static ItemStack apply(ItemStack stack, ValuePair<?>... value) {
 
         ItemStack copy = stack.copy();
         NBTTagCompound copyTag = copy.getOrCreateSubCompound(Main.MODID);
-        if (value != null) {
 
-            copyTag = copyTag.getCompoundTag(group.getName());
+        for (ValuePair<?> element : value) {
+            if (!has(stack, value)) {
 
-            String[] names = new String[value.length];
+                NBTTagCompound group = copyTag.getCompoundTag(element.getType().getGroupName());
 
-            for (int i = 0; i < value.length; i++) {
-                names[i] = value[i].getName();
-            }
-            if (!has(stack, group, names)) {
-                for (NameValuePair element : value) {
-                    if (group.getPair(element.getName()) != null) {
-                        if (group.getPair(element.getName()).getClazz().equals(element.getValue().getClass())) {
-
-                            if (element.getValue().getClass().equals(Integer.class)) {
-
-                            } else if (element.getValue().getClass().isInstance(Double.class)) {
-                                copyTag.setDouble(element.getName(), (Double)element.getValue());
-                            } else if (element.getValue().getClass().isInstance(String.class)) {
-                                copyTag.setString(element.getName(), (String)element.getValue());
-                            } else if (element.getValue().getClass().isInstance(UUID.class)) {
-                                copyTag.setUniqueId(element.getName(), (UUID)element.getValue());;
-                            } else if (element.getValue().getClass().isInstance(Boolean.class)) {
-                                copyTag.setBoolean(element.getName(), (Boolean)element.getValue());
-                            }
-                        } else
-                            throw new IllegalArgumentException("NBTManager tried to use an incorrect data type");
-                    }
+                if (!copyTag.hasKey(element.getType().getGroupName())) {
+                    copyTag.setTag(element.getType().getGroupName(), group);
                 }
-            }
-        } else {
-            if (!has(stack, group)) {
-                copyTag.setTag(group.getName(), null);
+
+                if (element.getType().getClazz().equals(element.getValue().getClass())) {
+
+                    if (element.getValue().getClass().equals(Integer.class)) {
+
+                    } else if (Double.class.isInstance(element.getValue().getClass())) {
+                        copyTag.setDouble(element.getType().getValueName(), (Double)element.getValue());
+                    } else if (String.class.isInstance(element.getValue().getClass())) {
+                        copyTag.setString(element.getType().getValueName(), (String)element.getValue());
+                    } else if (UUID.class.isInstance(element.getValue().getClass())) {
+                        copyTag.setUniqueId(element.getType().getValueName(), (UUID)element.getValue());;
+                    } else if (Boolean.class.isInstance(element.getValue().getClass())) {
+                        copyTag.setBoolean(element.getType().getValueName(), (Boolean)element.getValue());
+                    }
+                } else
+                    throw new IllegalArgumentException("NBTManager tried to use an incorrect data type");
             }
         }
 
         return copy;
     }
 
-    public static ItemStack remove(ItemStack stack, @Nullable EnumGroups group, @Nullable String... value) {
+    public static ItemStack remove(ItemStack stack, ValuePair<?>... value) {
 
         ItemStack copy = stack.copy();
         NBTTagCompound copyTag = copy.getOrCreateSubCompound(Main.MODID);
 
-        if (value == null) {
-            copyTag.removeTag(group.getName());
-            return copy;
-        }
-        if (group == null) {
-            copy.removeSubCompound(Main.MODID);
-            return copy;
-        }
-
-        if (has(stack, group, value)) {
-            for (String element : value) {
-                copyTag.removeTag(element);
+        if (has(stack, value)) {
+            for (ValuePair<?> element : value) {
+                copyTag.removeTag(element.getType().getValueName());
             }
         }
 
         return copy;
     }
 
-    public static boolean has(ItemStack stack, EnumGroups group, @Nullable String... value) {
+    public static ItemStack remove(ItemStack stack, INBTGroupType group) {
 
+        ItemStack copy = stack.copy();
+        NBTTagCompound copyTag = copy.getOrCreateSubCompound(Main.MODID);
+
+        copyTag.removeTag(group.getGroupName());
+
+        return copy;
+
+    }
+
+    public static boolean has(ItemStack stack, ValuePair<?>... value) {
         int found = 0;
+
         NBTTagCompound nbt = stack.getSubCompound(Main.MODID);
-        if (nbt != null && value != null) {
-            nbt = nbt.getCompoundTag(group.getName());
-            if (nbt != null) {
-                for (String element : value) {
-                    if (nbt.hasKey(element)) {
+        if (nbt != null) {
+            for (ValuePair<?> element : value) {
+                NBTTagCompound group = nbt.getCompoundTag(element.getType().getGroupName());
+                if (group.hasKey(element.getType().getValueName())) {
+                    if (nbt.hasKey(element.getType().getValueName())) {
                         found++;
                     }
                 }
             }
-        } else if (nbt != null) {
-            if (nbt.getTag(group.getName()) != null) {
-                found = -1;
-            }
         }
 
-        return value != null ? (found == value.length) : (found == -1);
+
+        return found == value.length;
+    }
+
+    public static boolean has(ItemStack stack, INBTGroupType... type) {
+        int found = 0;
+
+        NBTTagCompound nbt = stack.getSubCompound(Main.MODID);
+        for (INBTGroupType element : type) {
+            if (nbt != null) {
+                if (nbt.getTag(element.getGroupName()) != null) {
+                    found++;
+                }
+            }
+        }
+        return found == type.length;
     }
 
 }

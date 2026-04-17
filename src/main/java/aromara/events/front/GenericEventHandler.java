@@ -1,8 +1,9 @@
 package aromara.events.front;
 
 import aromara.util.NBTManager;
-import aromara.util.NBTManager.EnumGroups;
-import aromara.util.NBTManager.EnumValueNames;
+import aromara.util.NBTManager.TypeAugment;
+import aromara.util.NBTManager.EnumGeneralNames;
+import aromara.util.NBTManager.ValuePair;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -20,9 +21,7 @@ public class GenericEventHandler {
                 ItemStack stack = entity.getItem();
 
                 if (stack.getItem().equals(TAItems.ELDRITCH_LOCK_KEY)) {
-                    NBTManager.apply(stack, EnumGroups.MEMORY, EnumValueNames.MAIN);
-
-                    //of course, there should be a value to apply
+                    NBTManager.apply(stack, new ValuePair<>(TypeAugment.MAIN, "bro"));
                 }
             }
         }

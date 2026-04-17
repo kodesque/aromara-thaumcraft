@@ -4,8 +4,8 @@ import aromara.common.items.ItemAidedEye;
 import aromara.common.objects.TCAItems;
 import aromara.util.NBTManager;
 import aromara.util.NBTManager.EnumGroups;
-import aromara.util.NBTManager.EnumValueNames;
-import aromara.util.NBTManager.NameValuePair;
+import aromara.util.NBTManager.EnumGeneralNames;
+import aromara.util.NBTManager.ValuePair;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -58,7 +58,7 @@ public class RecipeAugmentAdd extends IForgeRegistryEntry.Impl<IRecipe> implemen
             }
         }
 
-        return NBTManager.apply(thaumometer, EnumGroups.AUGMENT, new NameValuePair(EnumValueNames.MAIN.getName(), TCAItems.augment.getRegistryName().toString()));
+        return NBTManager.apply(thaumometer, EnumGroups.AUGMENT, new ValuePair(EnumGeneralNames.MAIN.getName(), TCAItems.augment.getRegistryName().toString()));
     }
 
     @Override
