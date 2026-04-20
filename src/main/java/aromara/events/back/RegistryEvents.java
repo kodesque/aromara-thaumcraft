@@ -1,11 +1,16 @@
 package aromara.events.back;
 
+import aromara.common.recipes.RecipeAugmentAdd;
+import aromara.common.recipes.RecipeAugmentRemove;
+import aromara.common.recipes.RecipeSealPrint;
 import aromara.init.BlockInit;
 import aromara.init.ItemInit;
 import aromara.init.RecipeInit;
+import aromara.root.Main;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -40,6 +45,9 @@ public class RegistryEvents {
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         RecipeInit.initializeArcaneRecipes(event.getRegistry());
 
+        event.getRegistry().register(new RecipeAugmentAdd().setRegistryName(new ResourceLocation(Main.MODID, RecipeAugmentAdd.id)));
+        event.getRegistry().register(new RecipeAugmentRemove().setRegistryName(new ResourceLocation(Main.MODID, RecipeAugmentRemove.id)));
+        event.getRegistry().register(new RecipeSealPrint().setRegistryName(new ResourceLocation(Main.MODID, RecipeSealPrint.id)));
     }
 
     //    @SideOnly(Side.CLIENT)

@@ -4,6 +4,7 @@ import aromara.common.items.ItemAidedEye;
 import aromara.common.objects.TCAItems;
 import aromara.util.NBTManager;
 import aromara.util.NBTManager.EnumGroups;
+import aromara.util.NBTManager.ValuePair;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -14,26 +15,28 @@ import thaumcraft.common.items.tools.ItemThaumometer;
 
 public class RecipeAugmentRemove extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
 
+    public static String id = "augment_remove";
+
     @Override
     public boolean matches(InventoryCrafting inv, World worldIn) {
 
-        int search = 0;
+        boolean hasThaumometer = false;
 
         for (int i = 0; i < inv.getSizeInventory(); i++) {
 
             ItemStack stack = inv.getStackInSlot(i);
 
             if (!stack.isEmpty()) {
-                if (search != 1 && stack.getItem() instanceof ItemThaumometer && !NBTManager.has(stack, EnumGroups.AUGMENT)) {
-                    search = 1;
+                if (!hasThaumometer && stack.getItem() instanceof ItemThaumometer && NBTManager.has(stack, EnumGroups.AUGMENT)) {
+                    hasThaumometer = true;
                 } else {
-                    search = 0;
+                    hasThaumometer = false;
                     break;
                 }
             }
         }
 
-        return search == 1;
+        return hasThaumometer;
     }
 
     @Override
@@ -51,8 +54,8 @@ public class RecipeAugmentRemove extends IForgeRegistryEntry.Impl<IRecipe> imple
 
             ItemStack stack = inv.getStackInSlot(i);
 
-            if (stack.getItem() instanceof ItemThaumometer) {
-                result.set(i, NBTManager.remove(stack, EnumGroups.AUGMENT));
+            if (stack.getItem() instanceof ItemThaumometer && NBTManager.has(stack, EnumGroups.AUGMENT)) {
+                result.set(i, NBTManager.mutateGroup(stack, EnumGroups.AUGMENT));
             }
         }
 

@@ -2,7 +2,7 @@ package aromara.root;
 
 import aromara.common.objects.TCAItems;
 import aromara.common.worldgen.WorldGenVishroomHuge;
-import aromara.events.front.GenericEventHandler;
+import aromara.events.front.MemoryEvents;
 import aromara.init.TileInit;
 import aromara.network.proxy.CommonProxy;
 import net.minecraft.creativetab.CreativeTabs;
@@ -38,11 +38,8 @@ public class Main {
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
 
-        MinecraftForge.EVENT_BUS.register(new GenericEventHandler());
-
         TileInit.initTiles();
         proxy.preInit(event);
-
     }
 
     @EventHandler

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import aromara.common.templates.ItemTCABase;
+import aromara.root.Main;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -20,7 +21,7 @@ import thecodex6824.thaumicaugmentation.api.TAMaterials;
 
 public class ItemTablet extends ItemTCABase implements IWarpingGear {
 
-    TextComponentTranslation desc = new TextComponentTranslation("tooltip.aromara.glyph_tablet");
+    TextComponentTranslation desc = new TextComponentTranslation("tooltip" + "." + Main.MODID + "." + "glyph_tablet");
 
     public ItemTablet(String name, String... variants) {
         super(name, variants);

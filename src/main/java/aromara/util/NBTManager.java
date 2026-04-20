@@ -15,6 +15,10 @@ public class NBTManager {
         String getValueName();
 
         Class<?> getClazz();
+
+        /* intended to use when "0" doesn't necessarily mean nothing, e.g translation means */
+
+        boolean isSpecialCase();
     }
 
     public enum EnumGroups {
@@ -32,6 +36,10 @@ public class NBTManager {
 
         public String getName() {
             return this.groupName;
+        }
+
+        public Class<? extends INBTGroupValues> getClazz() {
+            return this.clazz;
         }
 
         public enum ValuesAugment implements INBTGroupValues {
@@ -55,18 +63,31 @@ public class NBTManager {
                 return this.clazz;
             }
 
+            @Override
+            public boolean isSpecialCase() {
+                return false;
+            }
+
         }
 
         public enum ValuesMemory implements INBTGroupValues {
-            MAIN(EnumGeneralNames.MAIN, Integer.class),
-            SUB(EnumGeneralNames.SUB, Integer.class);
+            MAIN(EnumGeneralNames.MAIN, Integer.class, true),
+            SUB(EnumGeneralNames.SUB, Integer.class, true);
 
             private final String valueName;
             private final Class<?> clazz;
+            private final boolean gcflag;
 
             ValuesMemory(EnumGeneralNames valueName, Class<?> clazz) {
                 this.valueName = valueName.getName();
                 this.clazz = clazz;
+                this.gcflag = false;
+            }
+
+            ValuesMemory(EnumGeneralNames valueName, Class<?> clazz, boolean gcflag) {
+                this.valueName = valueName.getName();
+                this.clazz = clazz;
+                this.gcflag = gcflag;
             }
 
             @Override
@@ -77,6 +98,11 @@ public class NBTManager {
             @Override
             public Class<?> getClazz() {
                 return this.clazz;
+            }
+
+            @Override
+            public boolean isSpecialCase() {
+                return this.gcflag;
             }
         }
 
@@ -101,6 +127,11 @@ public class NBTManager {
             @Override
             public Class<?> getClazz() {
                 return this.clazz;
+            }
+
+            @Override
+            public boolean isSpecialCase() {
+                return false;
             }
         }
 
@@ -146,44 +177,57 @@ public class NBTManager {
         }
     }
 
-    public static NBTTagCompound applySmart(ItemStack stack, ValuePair<?>... value) {
+    public static NBTTagCompound apply(ItemStack stack, ValuePair<?>... value) {
 
         NBTTagCompound nbt = stack.getOrCreateSubCompound(Main.MODID);
 
         for (ValuePair<?> element : value) {
-            if (!has(stack, element)) {
 
-                NBTTagCompound group;
+            NBTTagCompound group;
 
-                if (nbt.hasKey(element.getGroup().getName())) {
-                    group = nbt.getCompoundTag(element.getGroup().getName());
-                } else {
-                    group = new NBTTagCompound();
-                    nbt.setTag(element.getGroup().getName(), group);
-                }
-
-                if (element.getType().getClazz().equals(element.getGroup().getClass())) {
-                    if (element.getType().getClazz().equals(element.getValue())) {
-
-                        if (element.getValue().getClass().equals(Integer.class)) {
-                            group.setInteger(element.getType().getValueName(), (Integer)element.getValue());
-                        } else if (Double.class.isInstance(element.getValue())) {
-                            group.setDouble(element.getType().getValueName(), (Double)element.getValue());
-                        } else if (String.class.isInstance(element.getValue())) {
-                            group.setString(element.getType().getValueName(), (String)element.getValue());
-                        } else if (UUID.class.isInstance(element.getValue())) {
-                            group.setUniqueId(element.getType().getValueName(), (UUID)element.getValue());;
-                        } else if (Boolean.class.isInstance(element.getValue())) {
-                            group.setBoolean(element.getType().getValueName(), (Boolean)element.getValue());
-                        }
-                    } else
-                        throw new IllegalArgumentException("NBTManager: Data type mismatch caught!");
-                } else
-                    throw new IllegalArgumentException("NBTManager: Class mismatch caught!");
+            if (has(stack, element.getGroup())) {
+                group = nbt.getCompoundTag(element.getGroup().getName());
+            } else {
+                group = new NBTTagCompound();
+                nbt.setTag(element.getGroup().getName(), group);
             }
+
+            if (element.getGroup().getClazz().equals(element.getType().getClass())) {
+                if (element.getType().getClazz().isInstance(element.getValue())) {
+                    if (Integer.class.isInstance(element.getValue())) {
+                        group.setInteger(element.getType().getValueName(), (Integer)element.getValue());
+                    } else if (Double.class.isInstance(element.getValue())) {
+                        group.setDouble(element.getType().getValueName(), (Double)element.getValue());
+                    } else if (String.class.isInstance(element.getValue())) {
+                        group.setString(element.getType().getValueName(), (String)element.getValue());
+                    } else if (UUID.class.isInstance(element.getValue())) {
+                        group.setUniqueId(element.getType().getValueName(), (UUID)element.getValue());;
+                    } else if (Boolean.class.isInstance(element.getValue())) {
+                        group.setBoolean(element.getType().getValueName(), (Boolean)element.getValue());
+                    }
+                } else
+                    throw new IllegalArgumentException("NBTManager: Data type mismatch caught!");
+            } else
+                throw new IllegalArgumentException("NBTManager: Class mismatch caught!");
+
         }
 
         collectGarbage(stack);
+
+        return nbt;
+    }
+
+    /* intended for special cases */
+
+    public static NBTTagCompound applySoft(ItemStack stack, ValuePair<?>... value) {
+
+        NBTTagCompound nbt = stack.getOrCreateSubCompound(Main.MODID);
+
+        for (ValuePair<?> element : value) {
+            if (!has(stack, element.getGroup())) {
+                apply(stack, value);
+            }
+        }
 
         return nbt;
     }
@@ -236,11 +280,13 @@ public class NBTManager {
         collectGarbage(stack);
     }
 
-    public static void remove(ItemStack stack, EnumGroups group) {
+    public static void remove(ItemStack stack, EnumGroups... group) {
 
         NBTTagCompound nbt = stack.getOrCreateSubCompound(Main.MODID);
 
-        nbt.removeTag(group.groupName);
+        for (EnumGroups value : group) {
+            nbt.removeTag(value.groupName);
+        }
 
         collectGarbage(stack);
     }
@@ -351,7 +397,7 @@ public class NBTManager {
                     }
                 }
 
-                if (shouldRemove) {
+                if (shouldRemove && !valueEnum.isSpecialCase()) {
                     group.removeTag(key);
                 } else {
                     groupEmpty = false;
@@ -368,24 +414,34 @@ public class NBTManager {
         }
     }
 
-    public enum EnumFunctions {
+    // crafting utils start
+
+    public enum EnumFunc {
         APPLY,
         REMOVE
     }
 
-    public static ItemStack getCopyMutated(ItemStack stack, EnumFunctions func, ValuePair<?> pair) {
+    public static ItemStack mutatePairs(ItemStack stack, EnumFunc func, ValuePair<?>... pair) {
         ItemStack copy = stack.copy();
 
-        if (func == EnumFunctions.APPLY) {
-            NBTManager.applySmart(copy, pair);
-        } else if (func == EnumFunctions.REMOVE) {
+        if (func == EnumFunc.APPLY) {
+            NBTManager.apply(copy, pair);
+        } else if (func == EnumFunc.REMOVE) {
             NBTManager.remove(copy, pair);
         }
 
         return copy;
     }
 
-    public static ItemStack getCopyMutated(ItemStack stack, EnumGroups group) {
+    public static ItemStack mutateMeta(ItemStack stack, int metadata) {
+        ItemStack copy = stack.copy();
+
+        copy.setItemDamage(metadata);
+
+        return copy;
+    }
+
+    public static ItemStack mutateGroup(ItemStack stack, EnumGroups... group) {
         ItemStack copy = stack.copy();
 
         if (group != null) {
