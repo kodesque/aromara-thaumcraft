@@ -6,11 +6,13 @@ import aromara.common.objects.TCAItems;
 import aromara.root.Main;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
@@ -144,22 +146,32 @@ public class RecipeInit {
                         )
                 );
 
-        ThaumcraftApi.addArcaneCraftingRecipe(
+        ItemStack[] sealStacks = new ItemStack[4];
+        for (int i = 0; i < 4; i++) {
+            ItemStack stack = new ItemStack(TCAItems.seal_printed);
+            stack.setItemDamage(i);
+            sealStacks[i] = stack;
+        }
+
+        ThaumcraftApi.addInfusionCraftingRecipe(
                 new ResourceLocation("aromara:glyph_tablet"),
-                new ShapedArcaneRecipe(
-                        baseGroup,
-                        "TCA_SCENTBURNING",
-                        25,
-                        new AspectList().add(Aspect.ORDER, 5).add(Aspect.FIRE, 5),
-                        new ItemStack(TCAItems.glyph_tablet),
-                        "PPP",
-                        "PBP",
-                        "PPP",
-                        'P',
-                        new ItemStack(TCAItems.seal_printed),
-                        'B',
-                        new ItemStack(ItemsTC.brain)
-                        )
+                new InfusionRecipe("TCA_SCENTBURNING",
+                        new ItemStack (TCAItems.glyph_tablet),
+                        8,
+                        new AspectList().add(Aspect.MIND, 64).add(Aspect.FIRE, 64).add(Aspect.ELDRITCH, 128).add(Aspect.DARKNESS, 32),
+                        new ItemStack(Item.getItemFromBlock(BlocksTC.jarBrain)),
+                        Ingredient.fromStacks(sealStacks),
+                        new ItemStack(ItemsTC.curio, 1, 1),
+                        Ingredient.fromStacks(sealStacks),
+                        new ItemStack(ItemsTC.scribingTools),
+                        Ingredient.fromStacks(sealStacks),
+                        new ItemStack(ItemsTC.curio, 1, 1),
+                        Ingredient.fromStacks(sealStacks),
+                        new ItemStack(ItemsTC.scribingTools),
+                        Ingredient.fromStacks(sealStacks),
+                        new ItemStack(ItemsTC.curio, 1, 1),
+                        Ingredient.fromStacks(sealStacks),
+                        new ItemStack(ItemsTC.scribingTools))
                 );
 
         ItemStack focus_1 = new ItemStack(TAItems.FOCUS_ANCIENT);

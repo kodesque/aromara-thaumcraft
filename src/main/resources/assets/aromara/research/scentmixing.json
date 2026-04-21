@@ -40,6 +40,48 @@
                     "recipes": ["aromara:arcane_brazier", "aromara:pressing_stone", "aromara:redolent_bundle-0","aromara:redolent_bundle-1", "aromara:redolent_bundle-2"]
                 }
             ]
+        },
+        
+        {
+            
+        "key": "TCA_MOREAUGMENTATION",
+        "name": "research.TCA_MOREAUGMENTATION.title",         
+        "icons": [ "aromara:augment;1;0"],
+        "category": "SCENTMIXING",
+        "parents": [ "TCA_BASESCENTMIXING", "GAUNTLET_AUGMENTATION", "IMPETUS" ], 
+        "location": [ 2,0 ],
+
+        "stages": [
+                {
+                    "text": "research.TCA_MOREAUGMENTATION.text.stage.1",
+                },
+                {
+                    "text": "research.TCA_MOREAUGMENTATION.text.stage.2",
+                    "recipes": ["aromara:perspective"]
+                }
+            ]
+        },
+        
+        {
+            
+        "key": "TCA_ANCIENTS",
+        "name": "research.TCA_ANCIENTS.title",         
+        "icons": [ "aromara:glyph_tablet;1;0"],
+        "category": "SCENTMIXING",
+        "parents": [ "TCA_MOREAUGMENTATION"], 
+        "meta": [ "ROUND", "SPIKY", "HIDDEN" ],
+        "location": [ 2,2 ],
+
+        "stages": [
+                {
+                    "text": "research.TCA_ANCIENTS.text.stage.1",
+                    "warp": 5
+                },
+                {
+                    "text": "research.TCA_ANCIENTS.text.stage.2"
+
+                }
+            ]
         }
     ]
 }

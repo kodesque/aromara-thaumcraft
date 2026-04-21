@@ -91,9 +91,11 @@ public class RecipeSealPrint extends IForgeRegistryEntry.Impl<IRecipe> implement
 
             ItemStack stack = inv.getStackInSlot(i);
 
-            if ((stack.getItem() instanceof ItemSealPlacer) && stack.getMetadata() == 0) {
-                result.set(i, ItemStack.EMPTY);
-                break;
+            if (!stack.isEmpty()) {
+
+                if (stack.getItem() instanceof ItemEldritchLockKey) {
+                    result.set(i, stack.copy());
+                }
             }
         }
 
