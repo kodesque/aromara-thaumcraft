@@ -15,6 +15,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -26,6 +27,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import thaumcraft.common.items.tools.ItemThaumometer;
 import thaumcraft.common.lib.SoundsTC;
 import thaumcraft.common.lib.utils.EntityUtils;
+import thecodex6824.thaumicaugmentation.api.impetus.ImpetusAPI;
 import thecodex6824.thaumicaugmentation.common.item.ItemEldritchLockKey;
 
 @Mod.EventBusSubscriber
@@ -117,6 +119,10 @@ public class AidedEyeEvents {
                                                 .setColor(TextFormatting.DARK_PURPLE)),
                                         true);
 
+                                for (int i = 0; i < 4; ++i) {
+                                    ImpetusAPI.createImpetusParticles(event.getWorld(), event.getEntityPlayer().getPositionVector().add(0, event.getEntityPlayer().height / 2, 0), new Vec3d(entity.getPosition()));
+                                }
+
                                 event.setCanceled(true);
                             }
                         }
@@ -149,12 +155,17 @@ public class AidedEyeEvents {
         List<String> tips = event.getToolTip();
         ItemStack stack = event.getItemStack();
 
-        if (stack.getItem() instanceof ItemEldritchLockKey || stack.getItem().equals(TCAItems.seal_printed)) {
+        if (stack.getItem() instanceof ItemEldritchLockKey) {
 
             if (NBTManager.has(stack, EnumGroups.MEMORY)) {
                 tips.add(1, new TextComponentTranslation("tooltip" + "." + Main.MODID + "." + "memory" + "." + NBTManager.get(stack, EnumGroups.MEMORY, EnumGroups.ValuesMemory.MAIN) + "." + NBTManager.get(stack, EnumGroups.MEMORY, EnumGroups.ValuesMemory.SUB)).getFormattedText());
+                tips.remove(2);
+            }
+        } else if (stack.getItem().equals(TCAItems.seal_printed)) {
+            if (NBTManager.has(stack, EnumGroups.MEMORY)) {
+                tips.add(1, new TextComponentTranslation("tooltip" + "." + Main.MODID + "." + "memory" + "." + NBTManager.get(stack, EnumGroups.MEMORY, EnumGroups.ValuesMemory.MAIN) + "." + NBTManager.get(stack, EnumGroups.MEMORY, EnumGroups.ValuesMemory.SUB)).getFormattedText());
             } else {
-                tips.add(1, new TextComponentTranslation("tooltip" + "." + Main.MODID + "." + "memory" + "null").getFormattedText());
+                tips.add(1, new TextComponentTranslation("tooltip" + "." + Main.MODID + "." + "memory" + "." + "null").getFormattedText());
             }
         }
     }

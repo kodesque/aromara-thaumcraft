@@ -28,7 +28,8 @@
         "stages": [
                 {
                     "text": "research.TCA_SCENTBURNING.text.stage.1",
-                    "required_item":["thaumcraft:shimmerleaf", "thaumcraft:cinderpearl", "thaumcraft:vishroom"]
+                    "required_item":["thaumcraft:shimmerleaf", "thaumcraft:cinderpearl", "thaumcraft:vishroom"],
+                    "required_knowledge":["OBSERVATION;AUROMANCY;1"]
                 },
                 {
                     "text": "research.TCA_SCENTBURNING.text.stage.2",
@@ -46,40 +47,94 @@
             
         "key": "TCA_MOREAUGMENTATION",
         "name": "research.TCA_MOREAUGMENTATION.title",         
-        "icons": [ "aromara:augment;1;0"],
+        "icons": [ "aromara:textures/research/r_augmentation.png"],
         "category": "SCENTMIXING",
-        "parents": [ "TCA_BASESCENTMIXING", "GAUNTLET_AUGMENTATION", "IMPETUS" ], 
+        "parents": [ "TCA_BASESCENTMIXING", "GAUNTLET_AUGMENTATION"], 
+        "meta": [ "ROUND" ],
         "location": [ 2,0 ],
 
         "stages": [
                 {
-                    "text": "research.TCA_MOREAUGMENTATION.text.stage.1",
-                },
-                {
-                    "text": "research.TCA_MOREAUGMENTATION.text.stage.2",
-                    "recipes": ["aromara:perspective"]
+                    "text": "research.TCA_MOREAUGMENTATION.text.stage.1"
+                    /* placeholder for the future */
                 }
             ]
         },
         
         {
             
-        "key": "TCA_ANCIENTS",
-        "name": "research.TCA_ANCIENTS.title",         
-        "icons": [ "aromara:glyph_tablet;1;0"],
+        "key": "TCA_LENSAUGMENTATION",
+        "name": "research.TCA_LENSAUGMENTATION.title",         
+        "icons": [ "thaumcraft:thaumometer;1;0"],
         "category": "SCENTMIXING",
         "parents": [ "TCA_MOREAUGMENTATION"], 
-        "meta": [ "ROUND", "SPIKY", "HIDDEN" ],
-        "location": [ 2,2 ],
+        "location": [ 3,-2 ],
 
         "stages": [
                 {
-                    "text": "research.TCA_ANCIENTS.text.stage.1",
+                    "text": "research.TCA_LENSAUGMENTATION.text.stage.1",
+                    "required_knowledge":["THEORY;AUROMANCY;1"]
+                },
+                {
+                    "text": "research.TCA_LENSAUGMENTATION.text.stage.2"
+                }
+            ],
+            
+       "addenda": [    
+                   {
+                       "text": "research.TCA_LENSAUGMENTATION.addenda.1",  
+                       "recipes": ["aromara:perspective"],  
+                       "required_research":["IMPETUS", "!EYES"]
+                   }
+               ]
+        },
+        
+        {
+            
+        "key": "TCA_ANCIENTS",
+        "name": "research.TCA_ANCIENTS.title",         
+        "icons": [ "aromara:augment;1;0"],
+        "category": "SCENTMIXING",
+        "parents": [ "TCA_LENSAUGMENTATION", "IMPETUS", "!EYES"], 
+        "meta": [ "ROUND", "SPIKY", "HIDDEN" ],
+        "location": [ 5,-2 ],
+
+        "stages": [
+                {
+                    "text": "research.TCA_ANCIENTS.text.stage.1",  
+                    "required_knowledge":["THEORY;ELDRITCH;3", "THEORY;AUROMANCY;1"],
+                    "required_research":["!KEY"]
+                },
+                {
+                    "text": "research.TCA_ANCIENTS.text.stage.2",
+                    "recipes": ["aromara:glyph_tablet"],
+                    "required_craft": ["aromara:glyph_tablet"],
                     "warp": 5
                 },
                 {
-                    "text": "research.TCA_ANCIENTS.text.stage.2"
+                    "text": "research.TCA_ANCIENTS.text.stage.3",
+                    "recipes": ["aromara:pale_stone", "aromara:destabilized_amber", "aromara:pure_shard", "aromara:pure_shard-1"]
+                }
+            ]
+        },
+        
+        {
+            
+        "key": "TCA_VOIDNODE",
+        "name": "research.TCA_VOIDNODE.title",         
+        "icons": [ "aromara:thaumostatic_supressor;1;0"],
+        "category": "SCENTMIXING",
+        "parents": [ "TCA_ANCIENTS", "FOCUS_SHIELD", "FOCUS_RIFT", "FOCUS_WARD"], 
+        "location": [ 7,-2 ],
 
+        "stages": [
+                {
+                    "text": "research.TCA_VOIDNODE.text.stage.1",
+                    "required_knowledge":["THEORY;AUROMANCY;1"]
+                },
+                {
+                    "text": "research.TCA_VOIDNODE.text.stage.2",
+                    "recipes": ["aromara:causality_shackles", "aromara:thaumostatic_supressor"]
                 }
             ]
         }

@@ -19,6 +19,7 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.casters.FocusPackage;
+import thaumcraft.api.crafting.CrucibleRecipe;
 import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.crafting.ShapedArcaneRecipe;
 import thaumcraft.api.crafting.ShapelessArcaneRecipe;
@@ -126,7 +127,7 @@ public class RecipeInit {
                 new ResourceLocation("aromara:perspective"),
                 new ShapedArcaneRecipe(
                         baseGroup,
-                        "TCA_SCENTBURNING",
+                        "TCA_LENSAUGMENTATION",
                         25,
                         new AspectList().add(Aspect.AIR, 2),
                         new ItemStack(TCAItems.augment),
@@ -155,10 +156,10 @@ public class RecipeInit {
 
         ThaumcraftApi.addInfusionCraftingRecipe(
                 new ResourceLocation("aromara:glyph_tablet"),
-                new InfusionRecipe("TCA_SCENTBURNING",
+                new InfusionRecipe("TCA_ANCIENTS",
                         new ItemStack (TCAItems.glyph_tablet),
                         8,
-                        new AspectList().add(Aspect.MIND, 64).add(Aspect.FIRE, 64).add(Aspect.ELDRITCH, 128).add(Aspect.DARKNESS, 32),
+                        new AspectList().add(Aspect.MIND, 50).add(Aspect.FIRE, 50).add(Aspect.ELDRITCH, 100),
                         new ItemStack(Item.getItemFromBlock(BlocksTC.jarBrain)),
                         Ingredient.fromStacks(sealStacks),
                         new ItemStack(ItemsTC.curio, 1, 1),
@@ -194,47 +195,81 @@ public class RecipeInit {
 
         ThaumcraftApi.addInfusionCraftingRecipe(
                 new ResourceLocation("aromara:causality_shackles"),
-                new InfusionRecipe("TCA_SCENTBURNING",
+                new InfusionRecipe("TCA_VOIDNODE",
                         new ItemStack (TCAItems.causality_shackles),
-                        8,
+                        6,
                         new AspectList().add(Aspect.ENERGY, 32).add(Aspect.TRAP, 32).add(Aspect.DESIRE, 32),
                         new ItemStack(ItemsTC.baubles, 1, 3),
                         focus_1,
                         new ItemStack(ItemsTC.curio, 1, 2),
-                        new ItemStack(Item.getItemFromBlock(TABlocks.BARS)),
+                        new ItemStack(TABlocks.BARS),
                         Ingredient.fromItem(ItemsTC.primordialPearl),
                         focus_2,
                         new ItemStack(ItemsTC.curio, 1, 2),
-                        new ItemStack(Item.getItemFromBlock(TABlocks.BARS)),
+                        new ItemStack(TABlocks.BARS),
                         Ingredient.fromItem(ItemsTC.primordialPearl),
                         focus_3,
                         new ItemStack(ItemsTC.curio, 1, 2),
-                        new ItemStack(Item.getItemFromBlock(TABlocks.BARS)),
+                        new ItemStack(TABlocks.BARS),
                         Ingredient.fromItem(ItemsTC.primordialPearl))
                 );
 
-        ThaumcraftApi.addInfusionCraftingRecipe(
+        ThaumcraftApi.addArcaneCraftingRecipe(
                 new ResourceLocation("aromara:thaumostatic_supressor"),
-                new InfusionRecipe("TCA_SCENTBURNING",
-                        new ItemStack (Item.getItemFromBlock(TCABlocks.thaumostatic_supressor)),
-                        5,
-                        new AspectList().add(Aspect.DARKNESS, 16).add(Aspect.MECHANISM, 16),
-                        new ItemStack(Item.getItemFromBlock(BlocksTC.brainBox)),
-                        new ItemStack(BlocksTC.stoneEldritchTile),
-                        new ItemStack(TAItems.MATERIAL, 1, 5),
+                new ShapedArcaneRecipe(
+                        baseGroup,
+                        "TCA_VOIDNODE",
+                        100,
+                        new AspectList().add(Aspect.ENTROPY, 5).add(Aspect.ORDER, 5),
+                        new ItemStack(TCABlocks.thaumostatic_supressor),
+                        "ASA",
+                        "MBM",
+                        "EVE",
+                        'S',
+                        new ItemStack(Items.NETHER_STAR),
+                        'A',
+                        new ItemStack(ItemsTC.alumentum),
+                        'M',
                         new ItemStack(ItemsTC.mechanismComplex),
-                        new ItemStack (Items.NETHER_STAR),
-                        new ItemStack (ItemsTC.alumentum),
+                        'E',
                         new ItemStack(BlocksTC.stoneEldritchTile),
-                        new ItemStack(TAItems.MATERIAL, 1, 5),
-                        new ItemStack(ItemsTC.mechanismComplex),
-                        new ItemStack (ItemsTC.alumentum),
+                        'V',
                         new ItemStack(BlocksTC.metalBlockVoid),
-                        new ItemStack(TAItems.MATERIAL, 1, 5),
-                        new ItemStack (ItemsTC.alumentum))
-                );;
+                        'B',
+                        new ItemStack(BlocksTC.brainBox)
+                        )
+                );
 
+        ThaumcraftApi.addCrucibleRecipe(
+                new ResourceLocation("aromara:pure_shard"),
+                new CrucibleRecipe("TCA_ANCIENTS",
+                        new ItemStack(TCAItems.pure_shard, 2),
+                        new ItemStack(TABlocks.STRANGE_CRYSTAL),
+                        new AspectList().merge(Aspect.ENTROPY, 30).merge(Aspect.EXCHANGE, 25).merge(Aspect.VOID, 30))
+                );
 
+        ThaumcraftApi.addCrucibleRecipe(
+                new ResourceLocation("aromara:pure_shard-1"),
+                new CrucibleRecipe("TCA_ANCIENTS",
+                        new ItemStack(TCAItems.pure_shard, 2),
+                        new ItemStack(TCAItems.pure_shard),
+                        new AspectList().merge(Aspect.AURA, 5).merge(Aspect.CRYSTAL, 5).merge(Aspect.COLD, 5))
+                );
 
+        ThaumcraftApi.addCrucibleRecipe(
+                new ResourceLocation("aromara:pale_stone"),
+                new CrucibleRecipe("TCA_ANCIENTS",
+                        new ItemStack(TCABlocks.pale_stone),
+                        new ItemStack(TCAItems.pure_shard),
+                        new AspectList().merge(Aspect.CRYSTAL, 10).merge(Aspect.METAL, 15).merge(Aspect.ALCHEMY, 10))
+                );
+
+        ThaumcraftApi.addCrucibleRecipe(
+                new ResourceLocation("aromara:destabilized_amber"),
+                new CrucibleRecipe("TCA_ANCIENTS",
+                        new ItemStack(TCAItems.destabilized_amber),
+                        "gemAmber",
+                        new AspectList().merge(Aspect.AVERSION, 10).merge(Aspect.LIGHT, 30).merge(Aspect.FIRE, 30))
+                );
     }
 }

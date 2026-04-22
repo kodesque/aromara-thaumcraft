@@ -2,24 +2,25 @@
 itemGroup.tabAromara=Aromara Thaumcraft
 
 #ITEMS
-item.aromara.alchemical_clay.name=Alchemical Clay
-item.aromara.liquid_tallow.name=Liquid Tallow
-item.aromara.ceramic_phial.name=Ceramic Phial
+item.aromara.redolent_bundle.name=Redolent Bundle
 
-item.aromara.impetus_resonator.name=Impetus Resonator
-item.aromara.causality_shackles.name=Causality Shackles
-item.aromara.glyph_piece.name=Glyph Sliver
-item.aromara.glyph_tablet.name=Reconstructed Tablet
+item.aromara.destabilized_amber.name=Destabilized Amber
+item.aromara.pure_shard.name=Pure Shard
+
 item.aromara.augment.name=Aided Eye Augment
 
-item.aromara.redolent_bundle.name=Redolent Bundle
 item.aromara.seal_printed.name=Printed Seal
+item.aromara.glyph_tablet.name=Reconstructed Tablet
+
+item.aromara.causality_shackles.name=Causality Shackles
 
 item.aromara.icon.name=Icon
 
 #BLOCKS
 tile.aromara.arcane_brazier.name=Arcane Brazier
 tile.aromara.pressing_stone.name=Pressing Stone
+
+tile.aromara.pale_stone.name=Pale Stone
 
 tile.aromara.vishroom_block_cap.name=Huge Vishroom Cap
 tile.aromara.vishroom_block_stem.name=Huge Vishroom Stem
@@ -33,10 +34,30 @@ research.TCA_BASESCENTMIXING.title=Miasma Theory
 research.TCA_BASESCENTMIXING.text.stage.1=Since discovering alchemy, I've become accustomed to ignoring the smells emanating from the crucible, as most of the materials I work with have a pleasant aroma on their own. Flux, however, is something extraordinary. Its stench, which is unlike to anything I know, makes my muscles twitch in pain. When I first smelled it, I tried to cover my face with the first thing I could find - a parchment stained with aspect-bearing ink. And then... my headache went away?<BR>I must research this further.
 research.TCA_BASESCENTMIXING.text.stage.2=Apparently, my theory has been confirmed: the stench of flux affects the body on a physical level, distorting the structure of vis in the cells of internal organs. And the brain is primarily affected. This may be the key to explaining these strange visions...<BR>I also began researching the nature of vis, and it seems as if it was once quite different: vis was divided into six types, corresponding to the primordial aspects. Compared to the liquid form, they were easier to store and transport, but more difficult to produce. Over time, this balance was disrupted, leading to the degradation of the aura to a single, unified type.<BR>However, I discovered strange formations in it that may indicate that the process is still ongoing. These are essentially volatile forms of aspects, something between gas and pure energy. "Aspectoids," as I called them, can combine the properties of several aspects at once, without being composed of them.<BR>It's hard to understand and even harder to describe, but I'm definitely getting closer to something particularly fascinating
 
-research.TCA_LORE_DISTURBINGTHOUGHTS.stage.1=I've long been haunted by a question... if taint is, in fact, a consequence of aspect pollution in the air, which I call flux, then why does it have such extreme mutagenic properties? Furthermore, the abominations that lurk near taint hotspots are completely unlike anything native to the Overworld. I have a theory about their true nature, but... no, I'm just laying on the colors too thickly.
-
 research.TCA_SCENTBURNING.title=Burning Scents
 research.TCA_SCENTBURNING.text.stage.3=Nitors are simple magical light sources, but how many hidden properties do they possess?<BR>While searching for a quick way to dry aromatic plants, I noticed that in the absence of air, nitors begin to displace aspects from objects. Under normal conditions, they simply become flux, but in the presence of a vis resonator, they seem to react to quartz...<PAGE>I applied this principle to the Pressing Stone.<BR>To use this device, I must insert quartz shards into it and place the Redolent Bundle underneath. Then, I should command it to descend, while wearing my gauntlet.<BR>The Pressing Stone always takes exactly two minutes to dry the Redolent Bundle. In the process, it will dispence crystals of the aspects from the Bundle into the world.<PAGE>The second device I created is the Arcane Brazier. Like a simple furnace, it requires fuel to operate, but I can't use wood or alumentum; only coal will do.<BR>Not only that, but according to my observations this thing consumes it two times faster than a normal furnace. Well, maybe it's worth it.<BR>By placing coal and a dried Redolent Bundle in the Brazier bowl I can set it alight. However, it seems a simple flint and steel isn't enough... I need a magical source.<BR>Perhaps a lens with the right effect will do the trick?<BR>Different plants burned in Brazier create different effects in the environment:<PAGE>Cinderpearl<BR><DIV>My goal is achieved. The vapors of this desert shrub ignite upon contact with taint in the atmosphere. Furthermore, any tainted abomination will also burn if nearby.<BR>But there's one thing that could backfire on me... what if it rains on the brazier that's condensing the taint? I don't want to end up in a pool of poison!<PAGE>Shimmerleaf<BR><DIV>The mercury vapor has a dual effect: on the one hand, I miraculously stop feeling hungry when near the brazier. On the other hand, the aura surrounding me gradually fades.<BR>Is it some kind of... alchemical metabolism? The wonders of equivalent exchange, I guess.<PAGE>Vishroom<BR><DIV>Unexpectedly, the nauseating mushrooms have done me a favor. Well... sort of. The aggressive entities around the burner seem to get lost in the vishroom vapors, unable to distinguish their own kind from their enemies. But with that in mind, I shouldn't forget about the creepers' properties...<BR>Also, why do I keep seeing "things" when I'm standing nearby?
+
+research.TCA_MOREAUGMENTATION.title=Further Augmentation Studies
+research.TCA_MOREAUGMENTATION.text.stage.1=The subfield of Auromancy, Augmentation, seems promising enough to prompt me to ask myself a rhetorical question. Is this technique truly only applicable to gauntlets? The possibility of expanding the properties of other magical devices I possess seems no less, if not more, appealing.<BR>Furthermore, there's another thing that prompted me to consider this. If I decide to finally overcome the problem of teint, I'll inevitably have to deal with more complex concepts than aspects. Therefore, the power of a standard Thaumometer may well not be sufficient.
+research.TCA_MOREAUGMENTATION.text.stage.2=
+
+research.TCA_LENSAUGMENTATION.title=Thaumometer Augmentation
+research.TCA_LENSAUGMENTATION.text.stage.1=
+research.TCA_LENSAUGMENTATION.text.stage.2= 
+research.TCA_LENSAUGMENTATION.addenda.1=
+
+research.TCA_ANCIENTS.title=Strange Thoughts
+research.TCA_ANCIENTS.text.stage.1=Sometimes I feel as if there are things that elude even my tenacious mind. I am increasingly haunted by a thought that seems to transcend any madness.<BR>Is it possible that the ancient revelations I've relied on until now are nothing more than a smokescreen? An illusion, a clever trick meant to distract me from something far more important?<BR>This knowledge is certainly impressive. It intrigues and shocks. However, the price one must pay for it often proves disproportionately high. It's as if the Void itself is playing a shell game with me.<BR>In search of answers, I have explored the darkest corners of the world. I have peered into its depths, traveled through the Nether, the End, the Outlands... and found nothing. Nothing that I haven't encountered before.<BR>Perhaps I should use the augmented Thaumometer to advance further?
+research.TCA_ANCIENTS.text.stage.2=What is this? It seems this augment has far more properties than I initially imagined. The Thaumometer revealed inscriptions on the keys from the labyrinth that I couldn't decipher without it. And the strangest thing is their language. I... understand it.
+But what worries me most is *what* is written. There's no coherent text here, only fragments, and even in those, some details seem irretrievably lost. But the things I can read shed light on this world's past.<BR>And if these artifacts, scratched as if in great haste, are true, everything is far more terrifying than I could have imagined.<BR>I should move deeper into the ancient structures. I can't keep the keys, as they are needed to open the doors – but I can take imprints from them using a blank seal. To do this, I simply combine it with the revealed key in the crafting grid and then try not to lose it.<BR>When I collect enough, I might finally be able to put the puzzle together. And I already know who will help me with it.
+research.TCA_ANCIENTS.text.stage.3=When the infusion was complete, I felt the air around me tremble and my hands shake. Had I really succeeded? Had I truly accomplished something great, and not fallen into yet another of the same delusions I'd repeatedly plucked from the void?<BR>I immediately grabbed the red tablet of hard wax and began to read its contents, not even reaching the research table. The text was written in several layers, words were often repeated, some were crossed out, and others were missing again, but my mind was crystal clear. I understood everything that was here...<BR>...<BR>No, this can't be...<BR>...<BR>Catastrophic mistake! Insane misinterpretation!<BR>Now I understand. The text on the tablet blinds me, passing through my eyes, burning the very connections in my brain, but I understand.<BR>Those beings I called Ancients never had anything to do with them. These mindless phantoms, rotting carcasses, delirious visions... Of course! How foolish was I to think so! Could they have collected libraries, studied and built altars, raised spires to the heavens, and, finally, resisted the void?<BR>Resisted, indeed. I doubted it before, but now I have irrefutable proof that the Outlands were destroyed by war. Although... no. The tablet's account speaks more of *total annihilation*. Constant ruptures of the void created this imitation of life, Eldritch, in the places where they touched matter. Waves of black-violet swarms engulfed the world until it was completely dismembered and digested.<BR>The Ancients... the data I've collected is scant on their inventions. However, I can say with certainty that the materials from which the keys are made are absolutely unique and have never been encountered before.<BR>And I know how to reproduce them.
+
+research.TCA_VOIDNODE.title=Subordinating the Void
+research.TCA_VOIDNODE.text.stage.1=
+research.TCA_VOIDNODE.text.stage.2=
+
+research.!EYES.text=Examine an obelisk who once saw the void
+research.!KEY.text=Examine an artifact that paves your way
 
 # TOOLTIPS
 
@@ -80,4 +101,4 @@ tooltip.aromara.glyph_tablet=§5§oI have to squint when I look at these inscrip
 # MESSAGES
 
 message.aromara.reveal=It seems like something has changed.
-message.aromara.gaze=Your piercing gaze tears enemies apart.
+message.aromara.gaze=Your piercing gaze tears the enemy apart.

@@ -12,6 +12,8 @@ public class TCAItems {
     public static Item causality_shackles;
     public static Item glyph_tablet;
     public static Item augment;
+    public static Item pure_shard;
+    public static Item destabilized_amber;
 
     /* "tablet", "sigil", "tome", "blade" */
     public static Item seal_printed;

@@ -21,11 +21,11 @@ public class ItemIcon extends ItemTCABase {
 
         items.clear();
 
-        items.add(new ItemStack (Item.getItemFromBlock(TCABlocks.arcane_brazier)));
-        items.add(new ItemStack (Item.getItemFromBlock(TCABlocks.pressing_stone)));
+        items.add(new ItemStack (TCABlocks.arcane_brazier));
+        items.add(new ItemStack (TCABlocks.pressing_stone));
 
-        items.add(new ItemStack (Item.getItemFromBlock(TCABlocks.vishroom_block_cap)));
-        items.add(new ItemStack (Item.getItemFromBlock(TCABlocks.vishroom_block_stem)));
+        items.add(new ItemStack (TCABlocks.vishroom_block_cap));
+        items.add(new ItemStack (TCABlocks.vishroom_block_stem));
         for (Item plant : ItemRedolentBundle.plants) {
             items.add(ItemRedolentBundle.getBundleDried(ItemRedolentBundle.getBundleFromComponent(plant)));
         }
@@ -37,7 +37,11 @@ public class ItemIcon extends ItemTCABase {
         }
 
         items.add(new ItemStack (TCAItems.glyph_tablet));
-        items.add(new ItemStack (Item.getItemFromBlock(TCABlocks.thaumostatic_supressor)));
+        items.add(new ItemStack(TCAItems.destabilized_amber));
+        items.add(new ItemStack(TCAItems.pure_shard));
+        items.add(new ItemStack(TCABlocks.pale_stone));
+
+        items.add(new ItemStack (TCABlocks.thaumostatic_supressor));
         items.add(new ItemStack (TCAItems.augment));
         items.add(new ItemStack (TCAItems.causality_shackles));
     }

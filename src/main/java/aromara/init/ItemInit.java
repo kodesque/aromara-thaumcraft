@@ -19,7 +19,9 @@ public class ItemInit {
         iForgeRegistry.register(TCAItems.glyph_tablet = new ItemTablet("glyph_tablet"));
         iForgeRegistry.register(TCAItems.augment = new ItemAidedEye("augment"));
 
-        iForgeRegistry.register(TCAItems.seal_printed = new ItemTCABase("seal_printed", "tablet", "sigil", "tome", "blade"));;
+        iForgeRegistry.register(TCAItems.seal_printed = new ItemTCABase("seal_printed", "tablet", "sigil", "tome", "blade"));
+        iForgeRegistry.register(TCAItems.pure_shard = new ItemTCABase("pure_shard"));
+        iForgeRegistry.register(TCAItems.destabilized_amber = new ItemTCABase("destabilized_amber"));
 
         iForgeRegistry.register(TCAItems.redolent_bundle = new ItemRedolentBundle("redolent_bundle", "raw", "dry"));
 

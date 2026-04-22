@@ -8,6 +8,7 @@ public class TCABlocks {
     public static Block pressing_stone;
 
     public static Block thaumostatic_supressor;
+    public static Block pale_stone;
 
     public static Block vishroom_block_cap;
     public static Block vishroom_block_stem;
