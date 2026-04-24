@@ -51,7 +51,7 @@
         "category": "SCENTMIXING",
         "parents": [ "TCA_BASESCENTMIXING", "GAUNTLET_AUGMENTATION"], 
         "meta": [ "ROUND" ],
-        "location": [ 2,0 ],
+        "location": [ 0,2 ],
 
         "stages": [
                 {
@@ -68,7 +68,7 @@
         "icons": [ "thaumcraft:thaumometer;1;0"],
         "category": "SCENTMIXING",
         "parents": [ "TCA_MOREAUGMENTATION"], 
-        "location": [ 3,-2 ],
+        "location": [ 1,1 ],
 
         "stages": [
                 {
@@ -97,7 +97,7 @@
         "category": "SCENTMIXING",
         "parents": [ "TCA_LENSAUGMENTATION", "IMPETUS", "!EYES"], 
         "meta": [ "ROUND", "SPIKY", "HIDDEN" ],
-        "location": [ 5,-2 ],
+        "location": [ 3,1 ],
 
         "stages": [
                 {
@@ -124,8 +124,8 @@
         "name": "research.TCA_VOIDNODE.title",         
         "icons": [ "aromara:thaumostatic_supressor;1;0"],
         "category": "SCENTMIXING",
-        "parents": [ "TCA_ANCIENTS", "FOCUS_SHIELD", "FOCUS_RIFT", "FOCUS_WARD"], 
-        "location": [ 7,-2 ],
+        "parents": [ "TCA_ANCIENTS", "FOCUS_SHIELD", "FOCUSRIFT", "FOCUS_WARD"], 
+        "location": [ 3,-1 ],
 
         "stages": [
                 {

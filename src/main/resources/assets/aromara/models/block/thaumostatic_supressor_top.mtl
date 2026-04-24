@@ -1,0 +1,8 @@
+# Made in Blockbench 5.1.3
+newmtl m_a7da3a5b-f4a9-a573-b49c-0ef45f1524c0
+map_Kd aromara:blocks/material_bars
+newmtl m_10575faa-c510-23c0-fc3f-7eef1357c5d4
+map_Kd aromara:blocks/impetus_coil_side
+newmtl m_88aca4f4-2340-8d8a-4da1-9c0491e8b886
+map_Kd aromara:blocks/impetus_coil_front
+newmtl none
