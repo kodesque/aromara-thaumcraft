@@ -23,6 +23,11 @@ public class ItemInit {
         iForgeRegistry.register(TCAItems.pure_shard = new ItemTCABase("pure_shard"));
         iForgeRegistry.register(TCAItems.destabilized_amber = new ItemTCABase("destabilized_amber"));
 
+        iForgeRegistry.register(TCAItems.alchemical_insulator = new ItemTCABase("alchemical_insulator"));
+        iForgeRegistry.register(TCAItems.cerebral_pearls = new ItemTCABase("cerebral_pearls"));
+        iForgeRegistry.register(TCAItems.gray_matter = new ItemTCABase("gray_matter"));
+        iForgeRegistry.register(TCAItems.mind_manufactured = new ItemTCABase("mind_manufactured"));
+
         iForgeRegistry.register(TCAItems.redolent_bundle = new ItemRedolentBundle("redolent_bundle", "raw", "dry"));
 
 

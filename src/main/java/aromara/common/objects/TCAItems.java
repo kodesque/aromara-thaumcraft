@@ -15,6 +15,11 @@ public class TCAItems {
     public static Item pure_shard;
     public static Item destabilized_amber;
 
+    public static Item cerebral_pearls;
+    public static Item gray_matter;
+    public static Item alchemical_insulator;
+    public static Item mind_manufactured;
+
     /* "tablet", "sigil", "tome", "blade" */
     public static Item seal_printed;
 

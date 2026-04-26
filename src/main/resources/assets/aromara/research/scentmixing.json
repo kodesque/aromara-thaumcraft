@@ -85,6 +85,10 @@
                        "text": "research.TCA_LENSAUGMENTATION.addenda.1",  
                        "recipes": ["aromara:perspective"],  
                        "required_research":["IMPETUS", "!EYES"]
+                   },
+                   {
+                       "text": "research.TCA_LENSAUGMENTATION.addenda.2",
+                       "required_research":["TCA_OVERCLOCK"]
                    }
                ]
         },
@@ -137,6 +141,47 @@
                     "recipes": ["aromara:causality_shackles", "aromara:thaumostatic_supressor"]
                 }
             ]
-        }
+        }, 
+        {    
+                "key": "TCA_OVERCLOCK",
+                "name": "research.TCA_OVERCLOCK.title",         
+                "icons": [ "aromara:textures/research/r_overclock.png"],
+                "category": "SCENTMIXING",
+                "parents": [ "~TCA_BASESCENTMIXING"], 
+                "meta": [ "ROUND", "HIDDEN"],
+                "location": [ 4,2 ],
+
+                "stages": [
+                        {
+                            "text": "research.TCA_OVERCLOCK.text.stage.1",
+                            "required_knowledge":["THEORY;AUROMANCY;1"]
+                        },
+                        {
+                            "text": "research.TCA_OVERCLOCK.text.stage.2"
+                        }
+                    ]
+         },
+         {    
+                 "key": "TCA_WARPDISCHARGE",
+                 "name": "research.TCA_WARPDISCHARGE.title",         
+                 "icons": [ "aromara:textures/items/warp_discharger.png"],
+                 "category": "SCENTMIXING",
+                 "parents": [ "TCA_LENSAUGMENTATION", "TCA_OVERCLOCK"], 
+                 "meta": [ "HIDDEN"],
+                 "location": [ 2,3 ],
+
+                 "stages": [
+                         {
+                             "text": "research.TCA_WARPDISCHARGE.text.stage.1",
+                             "required_knowledge":["THEORY;AUROMANCY;1"],
+                             "warp": 2
+                         },
+                         {
+                             "text": "research.TCA_WARPDISCHARGE.text.stage.2"
+                         }
+                     ]
+          }
+        
+        
     ]
 }

@@ -57,31 +57,31 @@ public class RendererThaumostaticSupressor extends TileEntitySpecialRenderer<Til
         GlStateManager.popMatrix();
     }
 
-    public void shootBolt(Trajectory trajectory) {
-        float range = 16.0f;
-        Vec3d end = trajectory.direction.normalize();
-        end = end.scale(range);
-        end = end.add(trajectory.source);
-        ray = getPackage().world.rayTraceBlocks(trajectory.source, end);
-        if (ray != null) {
-            end = ray.hitVec;
-        }
-
-        int r = 0;
-        int g = 0;
-        int b = 0;
-        for (FocusEffect ef : getPackage().getFocusEffects()) {
-            Color c = new Color(FocusEngine.getElementColor(ef.getKey()));
-            r += c.getRed();
-            g += c.getGreen();
-            b += c.getBlue();
-        }
-        r /= getPackage().getFocusEffects().length;
-        g /= getPackage().getFocusEffects().length;
-        b /= getPackage().getFocusEffects().length;
-        Color c2 = new Color(r, g, b);
-        PacketHandler.INSTANCE.sendToAllAround(new PacketFXZap(trajectory.source, end, c2.getRGB(), /* POWER */ 2 * 0.66f), new NetworkRegistry.TargetPoint(this.getWorld().provider.getDimension(), trajectory.source.x, trajectory.source.y, trajectory.source.z, 64.0));
-        return true;
-    }
+    //    public void shootBolt(Trajectory trajectory) {
+    //        float range = 16.0f;
+    //        Vec3d end = trajectory.direction.normalize();
+    //        end = end.scale(range);
+    //        end = end.add(trajectory.source);
+    //        ray = getPackage().world.rayTraceBlocks(trajectory.source, end);
+    //        if (ray != null) {
+    //            end = ray.hitVec;
+    //        }
+    //
+    //        int r = 0;
+    //        int g = 0;
+    //        int b = 0;
+    //        for (FocusEffect ef : getPackage().getFocusEffects()) {
+    //            Color c = new Color(FocusEngine.getElementColor(ef.getKey()));
+    //            r += c.getRed();
+    //            g += c.getGreen();
+    //            b += c.getBlue();
+    //        }
+    //        r /= getPackage().getFocusEffects().length;
+    //        g /= getPackage().getFocusEffects().length;
+    //        b /= getPackage().getFocusEffects().length;
+    //        Color c2 = new Color(r, g, b);
+    //        PacketHandler.INSTANCE.sendToAllAround(new PacketFXZap(trajectory.source, end, c2.getRGB(), /* POWER */ 2 * 0.66f), new NetworkRegistry.TargetPoint(this.getWorld().provider.getDimension(), trajectory.source.x, trajectory.source.y, trajectory.source.z, 64.0));
+    //        return true;
+    //    }
 
 }

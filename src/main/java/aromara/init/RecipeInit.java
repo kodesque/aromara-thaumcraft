@@ -240,12 +240,33 @@ public class RecipeInit {
                         )
                 );
 
+        ThaumcraftApi.addInfusionCraftingRecipe(
+                new ResourceLocation("aromara:mind_manufactured"),
+                new InfusionRecipe("TCA_WARPDISCHARGE",
+                        new ItemStack (TCAItems.mind_manufactured),
+                        2,
+                        new AspectList().add(Aspect.LIFE, 100).add(Aspect.MOTION, 50).add(Aspect.CRAFT, 50),
+                        new ItemStack(ItemsTC.mind),
+                        new ItemStack(TCAItems.alchemical_insulator),
+                        new ItemStack(TCAItems.cerebral_pearls),
+                        new ItemStack(TCAItems.alchemical_insulator),
+                        new ItemStack(TCAItems.gray_matter))
+                );
+
         ThaumcraftApi.addCrucibleRecipe(
                 new ResourceLocation("aromara:pure_shard"),
                 new CrucibleRecipe("TCA_ANCIENTS",
                         new ItemStack(TCAItems.pure_shard, 2),
                         new ItemStack(TABlocks.STRANGE_CRYSTAL),
                         new AspectList().merge(Aspect.ENTROPY, 30).merge(Aspect.EXCHANGE, 25).merge(Aspect.VOID, 30))
+                );
+
+        ThaumcraftApi.addCrucibleRecipe(
+                new ResourceLocation("aromara:alchemical_insulator"),
+                new CrucibleRecipe("TCA_ANCIENTS",
+                        new ItemStack(TCAItems.alchemical_insulator),
+                        new ItemStack(Blocks.BONE_BLOCK),
+                        new AspectList().merge(Aspect.ENTROPY, 30).merge(Aspect.PROTECT, 40).merge(Aspect.METAL, 30))
                 );
 
         ThaumcraftApi.addCrucibleRecipe(
