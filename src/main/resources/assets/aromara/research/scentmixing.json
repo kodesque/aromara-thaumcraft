@@ -3,7 +3,7 @@
         {
         "key": "TCA_BASESCENTMIXING",
         "name": "research.TCA_BASESCENTMIXING.title",         
-        "icons": [ "aromara:textures/research/basescentmixing.png"],
+        "icons": [ "aromara:textures/research/r_basescentmixing.png"],
         "category": "SCENTMIXING",
         "parents": [ "WARP" ], 
         "meta": [ "ROUND", "SPIKY", "HIDDEN" ],
@@ -18,7 +18,7 @@
         
         {
             
-        "key": "TCA_CRUDESCENTS",
+        "key": "TCA_SCENTBURNING",
         "name": "research.TCA_SCENTBURNING.title",         
         "icons": [ "aromara:arcane_brazier;1;0", "aromara:pressing_stone;1;0"],
         "category": "SCENTMIXING",
@@ -27,16 +27,12 @@
 
         "stages": [
                 {
-                    "text": "research.TCA_CRUDESCENTS.text.stage.1",
-                    "required_item":["thaumcraft:shimmerleaf", "thaumcraft:cinderpearl", "thaumcraft:vishroom"]
+                    "text": "research.TCA_SCENTBURNING.text.stage.1",
+                    "required_item":["thaumcraft:shimmerleaf", "thaumcraft:cinderpearl", "thaumcraft:vishroom"],
+                    "required_knowledge":["OBSERVATION;AUROMANCY;1"]
                 },
                 {
-                    "text": "research.TCA_CRUDESCENTS.text.stage.2",
-                    "recipes": ["aromara:pressing_stone", "aromara:redolent_bundle-0","aromara:redolent_bundle-1", "aromara:redolent_bundle-2"],
-                    "required_item": ["minecraft:blaze_rod"]
-                },
-                {
-                    "text": "research.TCA_CRUDESCENTS.text.stage.3",
+                    "text": "research.TCA_SCENTBURNING.text.stage.2",
                     "recipes": ["aromara:arcane_brazier", "aromara:redolent_bundle-0","aromara:redolent_bundle-1", "aromara:redolent_bundle-2"]
                 }
             ]

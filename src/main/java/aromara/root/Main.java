@@ -3,6 +3,7 @@ package aromara.root;
 import aromara.common.objects.TCAItems;
 import aromara.common.worldgen.WorldGenVishroomHuge;
 import aromara.events.front.GenericEventHandler;
+import aromara.init.ResearchInit;
 import aromara.init.TileInit;
 import aromara.network.proxy.CommonProxy;
 import net.minecraft.creativetab.CreativeTabs;
@@ -38,25 +39,16 @@ public class Main {
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
 
-        MinecraftForge.EVENT_BUS.register(new GenericEventHandler());
-
-        TileInit.initTiles();
         proxy.preInit(event);
+
+        TileInit.preInitTiles();
 
     }
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
 
-        ResearchCategories.registerCategory(
-                "SCENTMIXING",
-                "FIRSTSTEPS",
-                new AspectList().add(Aspect.ALCHEMY, 5).add(Aspect.SENSES, 5),
-                new ResourceLocation(Main.MODID + ":textures/research/" + "scentmixing" + ".png"),
-                new ResourceLocation(Main.MODID + ":textures/research/" + "background.png")
-                );
-
-        registerResearchLocation(new ResourceLocation("aromara:research/scentmixing"));
+        ResearchInit.initResearch();
 
         GameRegistry.registerWorldGenerator(new WorldGenVishroomHuge(), 3);
     }
@@ -70,7 +62,7 @@ public class Main {
         @Override
         @SideOnly(Side.CLIENT)
         public ItemStack createIcon() {
-            return new ItemStack(TCAItems.icon);
+            return new ItemStack(TCAItems.debug);
         }
     };
 

@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "aromara:items/alchemical_clay"
+        "layer0": "aromara:items/scent_phial"
     }
 }

@@ -11,17 +11,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import thaumcraft.api.blocks.BlocksTC;
 
-public class ItemIcon extends ItemTCABase {
+public class ItemDebug extends ItemTCABase {
 
-    public ItemIcon(String name, String... variants) {
+    public ItemDebug(String name, String... variants) {
         super(name, variants);
     }
 
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
-        if (tab != Main.TABTCA) return;
-
-        items.clear();
+        if (tab != Main.TABTCA && tab != CreativeTabs.SEARCH) return;
 
         items.add(new ItemStack (Item.getItemFromBlock(TCABlocks.arcane_brazier)));
         items.add(new ItemStack (Item.getItemFromBlock(TCABlocks.pressing_stone)));
@@ -29,13 +27,12 @@ public class ItemIcon extends ItemTCABase {
         items.add(new ItemStack (Item.getItemFromBlock(TCABlocks.vishroom_block_cap)));
         items.add(new ItemStack (Item.getItemFromBlock(TCABlocks.vishroom_block_stem)));
 
-        items.add(new ItemStack (TCAItems.alchemical_clay));
-        items.add(new ItemStack (TCAItems.ceramic_phial));
-        items.add(new ItemStack(TCAItems.liquid_tallow));
-
         for (Item plant : ItemRedolentBundle.plants) {
             items.add(ItemRedolentBundle.getBundleDried(ItemRedolentBundle.getBundleFromComponent(plant)));
         }
+
+        items.add(new ItemStack(TCAItems.liquid_tallow));
+        items.add(new ItemStack (TCAItems.scent_phial));
     }
 
 }

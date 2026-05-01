@@ -2,13 +2,11 @@
 itemGroup.tabAromara=Aromara Thaumcraft
 
 #ITEMS
-item.aromara.alchemical_clay.name=Alchemical Clay
-item.aromara.liquid_tallow.name=Liquid Tallow
-item.aromara.ceramic_phial.name=Ceramic Phial
-
 item.aromara.redolent_bundle.name=Redolent Bundle
 
-item.aromara.icon.name=Icon
+item.aromara.scent_phial.name=Wax Phial
+item.aromara.liquid_tallow.name=Liquid Tallow
+item.aromara.debug.name=Icon
 
 #BLOCKS
 tile.aromara.arcane_brazier.name=Arcane Brazier
@@ -22,10 +20,9 @@ tc.research_category.SCENTMIXING=Scentmixing
 
 research.TCA_BASESCENTMIXING.title=Miasma Theory
 research.TCA_BASESCENTMIXING.text.stage.1=Since discovering alchemy, I've become accustomed to ignoring the smells emanating from the crucible, as most of the materials I work with have a pleasant aroma on their own. Flux, however, is something extraordinary. Its stench, which is unlike to anything I know, makes my muscles twitch in pain. When I first smelled it, I tried to cover my face with the first thing I could find - a parchment stained with aspect-bearing ink. And then... my headache went away?<BR>I must research this further.
-research.TCA_BASESCENTMIXING.text.stage.2=Apparently, my theory has been confirmed: the stench of flux affects the body on a physical level, distorting the structure of vis in the cells of internal organs. And the brain is primarily affected. This may be the key to explaining these strange visions...<BR>I also began researching the nature of vis, and it seems as if it was once quite different: vis was divided into six types, corresponding to the primordial aspects. Compared to the liquid form, they were easier to store and transport, but more difficult to produce. Over time, this balance was disrupted, leading to the degradation of the aura to a single, unified type.<BR>However, I discovered strange formations in it that may indicate that the process is still ongoing. These are essentially volatile forms of aspects, something between gas and pure energy. "Aspectoids," as I called them, can combine the properties of several aspects at once, without being composed of them.<BR>It's hard to understand and even harder to describe, but I'm definitely getting closer to something particularly fascinating
-
-research.TCA_LORE_DISTURBINGTHOUGHTS.stage.1=I've long been haunted by a question... if taint is, in fact, a consequence of aspect pollution in the air, which I call flux, then why does it have such extreme mutagenic properties? Furthermore, the abominations that lurk near taint hotspots are completely unlike anything native to the Overworld. I have a theory about their true nature, but... no, I'm just laying on the colors too thickly.
 
 research.TCA_SCENTBURNING.title=Burning Scents
+research.TCA_SCENTBURNING.text.stage.1=If I want to seriously tackle flux using scent, I should study in more detail the three magical plants from which the alchemical components are derived. If my understanding is correct, their properties should be far more pronounced than those of ordinary flowers common in the non-arcana world.
+research.TCA_SCENTBURNING.text.stage.2=Nitors are simple magical light sources, but how many hidden properties do they possess?<BR>While searching for a quick way to dry found plants, I noticed that in the absence of air, nitors begin to displace aspects from objects. Under normal conditions, they simply become flux, but in the presence of a vis resonator, they seem to react to quartz...<PAGE>I applied this principle to the Pressing Stone.<BR>To use this device, I must insert quartz shards into it and place the Redolent Bundle underneath. Then, I should command it to descend, while wearing my gauntlet.<BR>The Pressing Stone always takes exactly two minutes to dry the Redolent Bundle. In the process, it will dispence crystals of the aspects from the Bundle into the world.<PAGE>The second device I created is the Arcane Brazier. Like a simple furnace, it requires fuel to operate, but I can't use wood or alumentum; only coal will do.<BR>Not only that, but according to my observations this thing consumes it two times faster than a normal furnace. Well, maybe it's worth it.<BR>By placing coal and a dried Redolent Bundle in the Brazier bowl I can set it alight. However, it seems a simple flint and steel isn't enough... I need a magical source.<BR>Perhaps a lens with the right effect will do the trick?<BR>Different plants burned in Brazier create different effects in the environment:<PAGE>Cinderpearl<BR><DIV>My goal is achieved. The vapors of this desert shrub ignite upon contact with taint in the atmosphere. Furthermore, any tainted abomination will also burn if nearby.<BR>But there's one thing that could backfire on me... what if it rains on the brazier that's condensing the taint? I don't want to end up in a pool of poison!<PAGE>Shimmerleaf<BR><DIV>The mercury vapor has a dual effect: on the one hand, I miraculously stop feeling hungry when near the brazier. On the other hand, the aura surrounding me gradually fades.<BR>Is it some kind of... alchemical metabolism? The wonders of equivalent exchange, I guess.<PAGE>Vishroom<BR><DIV>Unexpectedly, the nauseating mushrooms have done me a favor. Well... sort of. The aggressive entities around the burner seem to get lost in the vishroom vapors, unable to distinguish their own kind from their enemies. But with that in mind, I shouldn't forget about the creepers' properties...<BR>Also, why do I keep seeing "things" when I'm standing nearby?
 
 # TOOLTIPS

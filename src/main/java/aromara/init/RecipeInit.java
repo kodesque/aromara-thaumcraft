@@ -2,8 +2,10 @@ package aromara.init;
 
 import aromara.common.items.ItemRedolentBundle;
 import aromara.common.objects.TCABlocks;
+import aromara.common.objects.TCAItems;
 import aromara.root.Main;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -19,7 +21,7 @@ import thaumcraft.api.items.ItemsTC;
 
 public class RecipeInit {
 
-    public static void initializeArcaneRecipes(IForgeRegistry<IRecipe> iForgeRegistry) {
+    public static void initWorkbench(IForgeRegistry<IRecipe> iForgeRegistry) {
 
         ResourceLocation baseGroup = new ResourceLocation(Main.MODID, "base");
 
@@ -37,7 +39,7 @@ public class RecipeInit {
                                     new ItemStack(ItemRedolentBundle.plants[i]),
                                     new ItemStack(ItemRedolentBundle.plants[i]),
                                     new ItemStack(ItemRedolentBundle.plants[i]),
-                                    new ItemStack(ItemsTC.fabric)
+                                    new ItemStack(Items.STRING)
                             }
                             )
                     );
@@ -50,7 +52,7 @@ public class RecipeInit {
                         "TCA_CRUDESCENTS",
                         50,
                         new AspectList().add(Aspect.FIRE, 2),
-                        Item.getItemFromBlock(TCABlocks.arcane_brazier),
+                        TCABlocks.arcane_brazier,
                         "PPP",
                         "OSO",
                         "OLO",
@@ -72,7 +74,7 @@ public class RecipeInit {
                         "TCA_CRUDESCENTS",
                         50,
                         null,
-                        new ItemStack(Item.getItemFromBlock(TCABlocks.pressing_stone)),
+                        new ItemStack(TCABlocks.pressing_stone),
                         "SRS",
                         "PNP",
                         "SRS",
@@ -87,7 +89,29 @@ public class RecipeInit {
                         )
                 );
 
+        ThaumcraftApi.addArcaneCraftingRecipe(
+                new ResourceLocation("aromara:scent_phial"),
+                new ShapelessArcaneRecipe(
+                        baseGroup,
+                        "TCA_CRUDESCENTS",
+                        10,
+                        null,
+                        new ItemStack(TCAItems.scent_phial, 2),
+                        new Object[] {
+                                new ItemStack(ItemsTC.tallow),
+                                new ItemStack(Items.CLAY_BALL),
+                                new ItemStack(ItemsTC.salisMundus),
+                                new ItemStack(ItemsTC.phial)
+                        }
+                        )
+                );
+    }
 
+    public static void initInfusion(IForgeRegistry<IRecipe> iForgeRegistry) {
+
+    }
+
+    public static void initCrucible(IForgeRegistry<IRecipe> iForgeRegistry) {
 
     }
 }

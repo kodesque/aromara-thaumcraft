@@ -7,12 +7,15 @@ import javax.annotation.Nullable;
 import aromara.common.objects.TCAItems;
 import aromara.common.templates.ItemTCABase;
 import aromara.root.Main;
+import aromara.util.NBTManager;
+import aromara.util.NBTManager.EnumFunc;
+import aromara.util.NBTManager.EnumGroups;
+import aromara.util.NBTManager.ValuePair;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -35,15 +38,12 @@ public class ItemRedolentBundle extends ItemTCABase{
     }
 
     public static ItemStack getBundleFromComponent(@Nullable Item item) {
+
         ItemStack stack = new ItemStack(TCAItems.redolent_bundle);
 
-        NBTTagCompound nbt = stack.getOrCreateSubCompound(Main.MODID);
+        if (item == null) return null;
 
-        String set = item == null ? "null" : item.getRegistryName().toString();
-
-        nbt.setString("type", set);
-
-        return stack;
+        return NBTManager.mutatePairs(stack, EnumFunc.APPLY, new ValuePair<>(EnumGroups.SCENTCRUDE, EnumGroups.ValuesCrude.MAIN, item.getRegistryName().toString()));
     }
 
     public static ItemStack getComponentFromBundle(ItemStack stack) {
@@ -53,7 +53,7 @@ public class ItemRedolentBundle extends ItemTCABase{
         if (nbt != null) {
 
             for (Item plant : plants) {
-                if (nbt.getString("type").equals(plant.getRegistryName().toString()))
+                if (NBTManager.get(stack, EnumGroups.SCENTCRUDE, EnumGroups.ValuesCrude.MAIN).equals(plant.getRegistryName().toString()))
                     return new ItemStack(plant);
             }
         }
@@ -62,10 +62,8 @@ public class ItemRedolentBundle extends ItemTCABase{
     }
 
     public static ItemStack getBundleDried(ItemStack stack) {
-        ItemStack mutated = stack.copy();
-        mutated.setItemDamage(1);
 
-        return mutated;
+        return NBTManager.mutateMeta(stack, 1);
     }
 
     @Override
@@ -79,7 +77,7 @@ public class ItemRedolentBundle extends ItemTCABase{
         if (nbt != null) {
 
             for (Item plant : plants) {
-                if (nbt.getString("type").equals(plant.getRegistryName().toString())) {
+                if (NBTManager.get(stack, EnumGroups.SCENTCRUDE, EnumGroups.ValuesCrude.MAIN).equals(plant.getRegistryName().toString())) {
                     tooltip.add(TextFormatting.DARK_PURPLE + new ItemStack(plant).getDisplayName());
                 }
             }
