@@ -11,7 +11,10 @@ public class TCAItems {
     //    public static Item impetus_resonator;
     public static Item causality_shackles;
     public static Item glyph_tablet;
-    public static Item augment;
+
+    public static Item augment_eye;
+    public static Item augment_discharger;
+
     public static Item pure_shard;
     public static Item destabilized_amber;
 

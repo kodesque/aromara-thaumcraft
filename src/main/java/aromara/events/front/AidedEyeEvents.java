@@ -2,7 +2,7 @@ package aromara.events.front;
 
 import java.util.List;
 
-import aromara.common.items.ItemAidedEye;
+import aromara.common.items.ItemAugmentEye;
 import aromara.common.objects.TCAItems;
 import aromara.root.Main;
 import aromara.util.NBTManager;
@@ -47,7 +47,7 @@ public class AidedEyeEvents {
 
                     if (target != null && target instanceof EntityLiving) {
 
-                        if (ItemAidedEye.findAndExtract(event.getEntityPlayer(), gazeCost)) {
+                        if (ItemAugmentEye.findAndExtract(event.getEntityPlayer(), gazeCost)) {
 
                             EntityLiving entity = (EntityLiving)target;
                             entity.addPotionEffect(new PotionEffect(MobEffects.WITHER, 200, 1));
@@ -91,7 +91,7 @@ public class AidedEyeEvents {
 
                         if (stack.getItem() instanceof ItemEldritchLockKey) {
 
-                            if (ItemAidedEye.findAndExtract(event.getEntityPlayer(), memoryCost)) {
+                            if (ItemAugmentEye.findAndExtract(event.getEntityPlayer(), memoryCost)) {
 
                                 Integer main = event.getWorld().rand.nextInt(7);
                                 Integer sub = event.getWorld().rand.nextInt(3);
@@ -142,7 +142,7 @@ public class AidedEyeEvents {
 
         if (stack.getItem() instanceof ItemThaumometer && NBTManager.has(stack, EnumGroups.AUGMENT)) {
             tips.add(1,
-                    new TextComponentString((new ItemStack(TCAItems.augment)).getDisplayName())
+                    new TextComponentString((new ItemStack(TCAItems.augment_eye)).getDisplayName())
                     .setStyle(new Style()
                             .setColor(TextFormatting.DARK_PURPLE)
                             .setItalic(true))

@@ -83,12 +83,8 @@
        "addenda": [    
                    {
                        "text": "research.TCA_LENSAUGMENTATION.addenda.1",  
-                       "recipes": ["aromara:perspective"],  
+                       "recipes": ["aromara:augment_eye"],  
                        "required_research":["IMPETUS", "!EYES"]
-                   },
-                   {
-                       "text": "research.TCA_LENSAUGMENTATION.addenda.2",
-                       "required_research":["TCA_OVERCLOCK"]
                    }
                ]
         },
@@ -97,7 +93,7 @@
             
         "key": "TCA_ANCIENTS",
         "name": "research.TCA_ANCIENTS.title",         
-        "icons": [ "aromara:augment;1;0"],
+        "icons": [ "aromara:augment_eye;1;0"],
         "category": "SCENTMIXING",
         "parents": [ "TCA_LENSAUGMENTATION", "IMPETUS", "!EYES"], 
         "meta": [ "ROUND", "SPIKY", "HIDDEN" ],
@@ -155,16 +151,19 @@
                         {
                             "text": "research.TCA_OVERCLOCK.text.stage.1",
                             "required_knowledge":["THEORY;AUROMANCY;1"]
-                        },
-                        {
-                            "text": "research.TCA_OVERCLOCK.text.stage.2"
                         }
-                    ]
+                    ],
+                                
+                 "addenda": [    
+                        {
+                             "text": "research.TCA_OVERCLOCK.addenda.1"
+                         }
+                     ]
          },
          {    
                  "key": "TCA_WARPDISCHARGE",
                  "name": "research.TCA_WARPDISCHARGE.title",         
-                 "icons": [ "aromara:textures/items/warp_discharger.png"],
+                 "icons": [ "aromara:augment_discharger;1;0"],
                  "category": "SCENTMIXING",
                  "parents": [ "TCA_LENSAUGMENTATION", "TCA_OVERCLOCK"], 
                  "meta": [ "HIDDEN"],
@@ -178,6 +177,9 @@
                          },
                          {
                              "text": "research.TCA_WARPDISCHARGE.text.stage.2"
+                         },
+                         {
+                             "text": "research.TCA_WARPDISCHARGE.text.stage.3"
                          }
                      ]
           }

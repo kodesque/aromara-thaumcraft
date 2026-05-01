@@ -14,9 +14,9 @@ import thecodex6824.thaumicaugmentation.api.impetus.ImpetusAPI;
 import thecodex6824.thaumicaugmentation.common.item.ItemRiftEnergyCasterAugment;
 import thecodex6824.thaumicaugmentation.common.item.ItemTieredCasterGauntlet;
 
-public class ItemAidedEye extends ItemTCABase {
+public class ItemAugmentEye extends ItemTCABase {
 
-    public ItemAidedEye(String name, String... variants) {
+    public ItemAugmentEye(String name, String... variants) {
         super(name, variants);
 
         this.setMaxStackSize(1);

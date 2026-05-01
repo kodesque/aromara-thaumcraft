@@ -37,13 +37,20 @@ public class ItemIcon extends ItemTCABase {
         }
 
         items.add(new ItemStack (TCAItems.glyph_tablet));
-        items.add(new ItemStack(TCAItems.destabilized_amber));
-        items.add(new ItemStack(TCAItems.pure_shard));
         items.add(new ItemStack(TCABlocks.pale_stone));
 
         items.add(new ItemStack (TCABlocks.thaumostatic_supressor));
-        items.add(new ItemStack (TCAItems.augment));
+        items.add(new ItemStack (TCAItems.augment_eye));
         items.add(new ItemStack (TCAItems.causality_shackles));
+
+        items.add(new ItemStack(TCAItems.destabilized_amber));
+        items.add(new ItemStack(TCAItems.pure_shard));
+
+        items.add(new ItemStack(TCAItems.alchemical_insulator));
+        items.add(new ItemStack(TCAItems.gray_matter));
+        items.add(new ItemStack(TCAItems.cerebral_pearls));
+        items.add(new ItemStack(TCAItems.augment_discharger));
+        items.add(new ItemStack(TCAItems.mind_manufactured));
     }
 
 }

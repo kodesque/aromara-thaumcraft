@@ -1,6 +1,6 @@
 package aromara.common.recipes;
 
-import aromara.common.items.ItemAidedEye;
+import aromara.common.items.ItemAugmentEye;
 import aromara.common.objects.TCAItems;
 import aromara.util.NBTManager;
 import aromara.util.NBTManager.EnumGroups;
@@ -42,7 +42,7 @@ public class RecipeAugmentRemove extends IForgeRegistryEntry.Impl<IRecipe> imple
     @Override
     public ItemStack getCraftingResult(InventoryCrafting inv) {
 
-        return new ItemStack(TCAItems.augment);
+        return new ItemStack(TCAItems.augment_eye);
     }
 
     @Override
@@ -69,7 +69,7 @@ public class RecipeAugmentRemove extends IForgeRegistryEntry.Impl<IRecipe> imple
 
     @Override
     public ItemStack getRecipeOutput() {
-        return new ItemStack(TCAItems.augment);
+        return new ItemStack(TCAItems.augment_eye);
     }
 
 }

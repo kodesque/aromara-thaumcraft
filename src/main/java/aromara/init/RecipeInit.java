@@ -124,13 +124,13 @@ public class RecipeInit {
                 );
 
         ThaumcraftApi.addArcaneCraftingRecipe(
-                new ResourceLocation("aromara:perspective"),
+                new ResourceLocation("aromara:augment_eye"),
                 new ShapedArcaneRecipe(
                         baseGroup,
                         "TCA_LENSAUGMENTATION",
                         25,
                         new AspectList().add(Aspect.AIR, 2),
-                        new ItemStack(TCAItems.augment),
+                        new ItemStack(TCAItems.augment_eye),
                         "TRT",
                         "QIQ",
                         "TET",
@@ -144,6 +144,28 @@ public class RecipeInit {
                         new ItemStack(TAItems.MATERIAL, 1, 5),
                         'E',
                         new ItemStack(Items.ENDER_EYE)
+                        )
+                );
+
+        ThaumcraftApi.addArcaneCraftingRecipe(
+                new ResourceLocation("aromara:augment_discharger"),
+                new ShapedArcaneRecipe(
+                        baseGroup,
+                        "TCA_WARPDISCHARGE",
+                        100,
+                        new AspectList().add(Aspect.FIRE, 2).add(Aspect.ORDER, 1),
+                        new ItemStack(TCAItems.augment_discharger),
+                        "QMQ",
+                        "PRP",
+                        "QMQ",
+                        'Q',
+                        new ItemStack(Blocks.QUARTZ_BLOCK, 1, 2),
+                        'P',
+                        new ItemStack(Blocks.QUARTZ_BLOCK),
+                        'M',
+                        new ItemStack(TCAItems.mind_manufactured),
+                        'R',
+                        new ItemStack(ItemsTC.visResonator)
                         )
                 );
 
@@ -245,7 +267,7 @@ public class RecipeInit {
                 new InfusionRecipe("TCA_WARPDISCHARGE",
                         new ItemStack (TCAItems.mind_manufactured),
                         2,
-                        new AspectList().add(Aspect.LIFE, 100).add(Aspect.MOTION, 50).add(Aspect.CRAFT, 50),
+                        new AspectList().add(Aspect.LIFE, 100).add(Aspect.MOTION, 50).add(Aspect.MECHANISM, 50),
                         new ItemStack(ItemsTC.mind),
                         new ItemStack(TCAItems.alchemical_insulator),
                         new ItemStack(TCAItems.cerebral_pearls),
@@ -258,15 +280,23 @@ public class RecipeInit {
                 new CrucibleRecipe("TCA_ANCIENTS",
                         new ItemStack(TCAItems.pure_shard, 2),
                         new ItemStack(TABlocks.STRANGE_CRYSTAL),
-                        new AspectList().merge(Aspect.ENTROPY, 30).merge(Aspect.EXCHANGE, 25).merge(Aspect.VOID, 30))
+                        new AspectList().merge(Aspect.ENTROPY, 30))
                 );
 
         ThaumcraftApi.addCrucibleRecipe(
                 new ResourceLocation("aromara:alchemical_insulator"),
-                new CrucibleRecipe("TCA_ANCIENTS",
+                new CrucibleRecipe("TCA_WARPDISCHARGE",
                         new ItemStack(TCAItems.alchemical_insulator),
                         new ItemStack(Blocks.BONE_BLOCK),
-                        new AspectList().merge(Aspect.ENTROPY, 30).merge(Aspect.PROTECT, 40).merge(Aspect.METAL, 30))
+                        new AspectList().merge(Aspect.PROTECT, 40).merge(Aspect.METAL, 30))
+                );
+
+        ThaumcraftApi.addCrucibleRecipe(
+                new ResourceLocation("aromara:cerebral_pearls"),
+                new CrucibleRecipe("TCA_WARPDISCHARGE",
+                        new ItemStack(TCAItems.cerebral_pearls),
+                        new ItemStack(ItemsTC.brain),
+                        new AspectList().merge(Aspect.CRYSTAL, 20))
                 );
 
         ThaumcraftApi.addCrucibleRecipe(
@@ -274,7 +304,7 @@ public class RecipeInit {
                 new CrucibleRecipe("TCA_ANCIENTS",
                         new ItemStack(TCAItems.pure_shard, 2),
                         new ItemStack(TCAItems.pure_shard),
-                        new AspectList().merge(Aspect.AURA, 5).merge(Aspect.CRYSTAL, 5).merge(Aspect.COLD, 5))
+                        new AspectList().merge(Aspect.AURA, 50).merge(Aspect.CRYSTAL, 50))
                 );
 
         ThaumcraftApi.addCrucibleRecipe(
@@ -282,7 +312,7 @@ public class RecipeInit {
                 new CrucibleRecipe("TCA_ANCIENTS",
                         new ItemStack(TCABlocks.pale_stone),
                         new ItemStack(TCAItems.pure_shard),
-                        new AspectList().merge(Aspect.CRYSTAL, 10).merge(Aspect.METAL, 15).merge(Aspect.ALCHEMY, 10))
+                        new AspectList().merge(Aspect.VOID, 15).merge(Aspect.ALCHEMY, 10))
                 );
 
         ThaumcraftApi.addCrucibleRecipe(

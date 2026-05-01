@@ -1,6 +1,6 @@
 package aromara.common.recipes;
 
-import aromara.common.items.ItemAidedEye;
+import aromara.common.items.ItemAugmentEye;
 import aromara.common.objects.TCAItems;
 import aromara.util.NBTManager;
 import aromara.util.NBTManager.EnumFunc;
@@ -37,7 +37,7 @@ public class RecipeAugmentAdd extends IForgeRegistryEntry.Impl<IRecipe> implemen
                         return false;
                     hasThaumometer = true;
 
-                } else if (stack.getItem().equals(TCAItems.augment)) {
+                } else if (stack.getItem().equals(TCAItems.augment_eye)) {
                     if (hasAugment)
                         return false;
                     hasAugment = true;
@@ -79,7 +79,7 @@ public class RecipeAugmentAdd extends IForgeRegistryEntry.Impl<IRecipe> implemen
 
             ItemStack stack = inv.getStackInSlot(i);
 
-            if ((stack.getItem() instanceof ItemThaumometer && NBTManager.has(stack, EnumGroups.AUGMENT)) || stack.getItem().equals(TCAItems.augment)) {
+            if ((stack.getItem() instanceof ItemThaumometer && NBTManager.has(stack, EnumGroups.AUGMENT)) || stack.getItem().equals(TCAItems.augment_eye)) {
                 result.set(i, ItemStack.EMPTY);
             }
         }

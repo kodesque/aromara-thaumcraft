@@ -1,6 +1,7 @@
 package aromara.init;
 
-import aromara.common.items.ItemAidedEye;
+import aromara.common.items.ItemAugmentEye;
+import aromara.common.items.ItemAugmentDischarger;
 import aromara.common.items.ItemIcon;
 import aromara.common.items.ItemRedolentBundle;
 import aromara.common.items.ItemTablet;
@@ -17,7 +18,9 @@ public class ItemInit {
 
         iForgeRegistry.register(TCAItems.causality_shackles = new ItemTCABase("causality_shackles"));
         iForgeRegistry.register(TCAItems.glyph_tablet = new ItemTablet("glyph_tablet"));
-        iForgeRegistry.register(TCAItems.augment = new ItemAidedEye("augment"));
+
+        iForgeRegistry.register(TCAItems.augment_eye = new ItemAugmentEye("augment_eye"));
+        iForgeRegistry.register(TCAItems.augment_discharger = new ItemAugmentDischarger("augment_discharger"));
 
         iForgeRegistry.register(TCAItems.seal_printed = new ItemTCABase("seal_printed", "tablet", "sigil", "tome", "blade"));
         iForgeRegistry.register(TCAItems.pure_shard = new ItemTCABase("pure_shard"));
