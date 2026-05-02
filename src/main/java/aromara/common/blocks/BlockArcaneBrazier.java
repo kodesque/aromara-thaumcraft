@@ -37,8 +37,6 @@ public class BlockArcaneBrazier extends BlockTCADevice {
         this.setDefaultState(this.getDefaultState().withProperty(STATUS, 0));
     }
 
-    //shpuld be ignitable only with a fire-bearing lense
-
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state,
             EntityPlayer player, EnumHand hand,

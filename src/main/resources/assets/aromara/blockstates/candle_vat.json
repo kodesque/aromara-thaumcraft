@@ -1,0 +1,46 @@
+{
+    "multipart": [
+        {
+            "apply": {
+                "model": "aromara:candle_vat"
+            }
+        },
+        {   
+            "when": { 
+                "status": 1
+            },
+            "apply": {
+                "model": "aromara:candle_vat_full",
+                "textures": "thaumcraft:blocks/fleshblock"
+            }
+        },
+        {   
+            "when": {
+                "status": 2
+            },
+            "apply": {
+                "model": "aromara:candle_vat_full",
+                "textures": "aromara:blocks/liquid_tallow"
+            }
+        },
+        {   
+            "when": { 
+                "status": 3
+            },
+            "apply": {
+                "model": "aromara:candle_vat_full",
+                "textures": "aromara:blocks/liquid_tallow_rancid"
+            }
+        },
+        {   
+            "when": {
+                "status": 4
+            },
+            "apply": {
+                "model": "aromara:candle_vat_full",
+                "textures": "aromara:blocks/liquid_tallow_infused"
+            }
+        }
+    ]
+}
+

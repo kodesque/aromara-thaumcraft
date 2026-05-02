@@ -1,0 +1,104 @@
+package aromara.common.blocks;
+
+import java.util.List;
+
+import javax.annotation.Nullable;
+
+import aromara.common.objects.TCAItems;
+import aromara.common.templates.BlockTCADevice;
+import aromara.common.tiles.TileCandleVat;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.PropertyInteger;
+import net.minecraft.block.state.BlockFaceShape;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
+import thaumcraft.api.blocks.BlocksTC;
+import thaumcraft.api.items.ItemsTC;
+import thaumcraft.common.blocks.IBlockEnabled;
+import thaumcraft.common.entities.EntitySpecialItem;
+
+public class BlockCandleVat extends BlockTCADevice implements IBlockEnabled{
+
+    public static String id = "candle_vat";
+
+    /* 0 -> empty, 1 -> melted, 2 -> rancid, 3 -> imbued */
+
+    public static PropertyInteger STATUS = PropertyInteger.create("status", 0, 4);
+
+    protected static final AxisAlignedBB AABB_LEGS = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.3125D, 1.0D);
+    protected static final AxisAlignedBB AABB_WALL_NORTH = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 0.125D);
+    protected static final AxisAlignedBB AABB_WALL_SOUTH = new AxisAlignedBB(0.0D, 0.0D, 0.875D, 1.0D, 1.0D, 1.0D);
+    protected static final AxisAlignedBB AABB_WALL_EAST = new AxisAlignedBB(0.875D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
+    protected static final AxisAlignedBB AABB_WALL_WEST = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.125D, 1.0D, 1.0D);
+
+    public BlockCandleVat(Material mat, Class tc, String name) {
+        super(Material.IRON, TileCandleVat.class, name);
+    }
+
+    public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
+        if (!world.isRemote) {
+            TileCandleVat tile = (TileCandleVat)world.getTileEntity(pos);
+            if (tile != null && entity instanceof EntityItem && !(entity instanceof EntitySpecialItem)) {
+                ItemStack stack = ((EntityItem)entity).getItem();
+                Item item = stack.getItem();
+
+                /* what about actual entities?*/
+
+                if (item.equals(Item.getItemFromBlock(BlocksTC.fleshBlock)) ||
+                        item.equals(ItemsTC.salisMundus) ||
+                        (item.equals(TCAItems.redolent_bundle) && stack.getMetadata() == 1)) {
+                    tile.attemptMixIn(stack);
+                }
+            }
+        }
+        super.onEntityCollision(world, pos, state, entity);
+    }
+
+    @Override
+    public boolean isOpaqueCube(IBlockState state) {
+        return false;
+    }
+
+    @Override
+    public boolean isFullCube(IBlockState state) {
+        return false;
+    }
+
+    @Override
+    public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+        return BlockFaceShape.UNDEFINED;
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, @Nullable Entity entityIn, boolean isActualState)
+    {
+        addCollisionBoxToList(pos, entityBox, collidingBoxes, AABB_LEGS);
+        addCollisionBoxToList(pos, entityBox, collidingBoxes, AABB_WALL_WEST);
+        addCollisionBoxToList(pos, entityBox, collidingBoxes, AABB_WALL_NORTH);
+        addCollisionBoxToList(pos, entityBox, collidingBoxes, AABB_WALL_EAST);
+        addCollisionBoxToList(pos, entityBox, collidingBoxes, AABB_WALL_SOUTH);
+    }
+
+    @Override
+    public IBlockState getStateFromMeta(int meta) {
+        return this.getDefaultState()
+                .withProperty(BlockArcaneBrazier.STATUS, meta);
+    }
+
+    @Override
+    public int getMetaFromState(IBlockState state) {
+        return state.getValue(BlockArcaneBrazier.STATUS);
+    }
+
+
+
+}
