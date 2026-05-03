@@ -1,6 +1,7 @@
 package aromara.init;
 
 import aromara.common.blocks.BlockArcaneBrazier;
+import aromara.common.blocks.BlockCandleVat;
 import aromara.common.blocks.BlockPressingStone;
 import aromara.common.blocks.BlockVishroomCap;
 import aromara.common.blocks.BlockVishroomStem;
@@ -15,6 +16,7 @@ public class BlockInit {
     public static void initBlocks() {
         TCABlocks.arcane_brazier = registerBlock(new BlockArcaneBrazier());
         TCABlocks.pressing_stone = registerBlock(new BlockPressingStone());
+        TCABlocks.candle_vat = registerBlock(new BlockCandleVat());
 
         TCABlocks.vishroom_block_cap = registerBlock(new BlockVishroomCap());
         TCABlocks.vishroom_block_stem = registerBlock(new BlockVishroomStem());

@@ -22,6 +22,7 @@ public class ItemDebug extends ItemTCABase {
         if (tab != Main.TABTCA && tab != CreativeTabs.SEARCH) return;
 
         items.add(new ItemStack (Item.getItemFromBlock(TCABlocks.arcane_brazier)));
+        items.add(new ItemStack (Item.getItemFromBlock(TCABlocks.candle_vat)));
         items.add(new ItemStack (Item.getItemFromBlock(TCABlocks.pressing_stone)));
 
         items.add(new ItemStack (Item.getItemFromBlock(TCABlocks.vishroom_block_cap)));

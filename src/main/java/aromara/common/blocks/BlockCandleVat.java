@@ -10,6 +10,7 @@ import aromara.common.tiles.TileCandleVat;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockFaceShape;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -29,9 +30,9 @@ public class BlockCandleVat extends BlockTCADevice implements IBlockEnabled{
 
     public static String id = "candle_vat";
 
-    /* 0 -> empty, 1 -> melted, 2 -> rancid, 3 -> imbued */
+    /* 0 -> empty, 1 -> impure, 2 -> liquid, 3 -> rancid 4 -> imbued */
 
-    public static PropertyInteger STATUS = PropertyInteger.create("status", 0, 4);
+    public static PropertyInteger STATUS = PropertyInteger.create("status", 0, 5);
 
     protected static final AxisAlignedBB AABB_LEGS = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.3125D, 1.0D);
     protected static final AxisAlignedBB AABB_WALL_NORTH = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 0.125D);
@@ -39,11 +40,14 @@ public class BlockCandleVat extends BlockTCADevice implements IBlockEnabled{
     protected static final AxisAlignedBB AABB_WALL_EAST = new AxisAlignedBB(0.875D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
     protected static final AxisAlignedBB AABB_WALL_WEST = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.125D, 1.0D, 1.0D);
 
-    public BlockCandleVat(Material mat, Class tc, String name) {
-        super(Material.IRON, TileCandleVat.class, name);
+    public BlockCandleVat() {
+        super(Material.IRON, TileCandleVat.class, id);
+
+        this.setDefaultState(this.blockState.getBaseState().withProperty(STATUS, 0).withProperty(IBlockEnabled.ENABLED, true));
     }
 
-    public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
+    @Override
+    public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
         if (!world.isRemote) {
             TileCandleVat tile = (TileCandleVat)world.getTileEntity(pos);
             if (tile != null && entity instanceof EntityItem && !(entity instanceof EntitySpecialItem)) {
@@ -55,11 +59,13 @@ public class BlockCandleVat extends BlockTCADevice implements IBlockEnabled{
                 if (item.equals(Item.getItemFromBlock(BlocksTC.fleshBlock)) ||
                         item.equals(ItemsTC.salisMundus) ||
                         (item.equals(TCAItems.redolent_bundle) && stack.getMetadata() == 1)) {
-                    tile.attemptMixIn(stack);
+
+                    if (tile.attemptMixIn(stack)) {
+                        entity.setDead();
+                    }
                 }
             }
         }
-        super.onEntityCollision(world, pos, state, entity);
     }
 
     @Override
@@ -89,14 +95,19 @@ public class BlockCandleVat extends BlockTCADevice implements IBlockEnabled{
     }
 
     @Override
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, BlockCandleVat.STATUS, IBlockEnabled.ENABLED);
+    }
+
+    @Override
     public IBlockState getStateFromMeta(int meta) {
         return this.getDefaultState()
-                .withProperty(BlockArcaneBrazier.STATUS, meta);
+                .withProperty(BlockCandleVat.STATUS, meta);
     }
 
     @Override
     public int getMetaFromState(IBlockState state) {
-        return state.getValue(BlockArcaneBrazier.STATUS);
+        return state.getValue(BlockCandleVat.STATUS);
     }
 
 

@@ -30,8 +30,6 @@ public class TileArcaneBrazier extends TileThaumcraftInventory {
     public int burningTime;
     public static String burningTimeKey = "burningTime";
 
-    //0 -> cinderpearl, 1 -> shimmerleaf, 2 -> vishroom
-
     String effect;
     public static String effectKey = "effect";
 

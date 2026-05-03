@@ -11,6 +11,7 @@ item.aromara.debug.name=Icon
 #BLOCKS
 tile.aromara.arcane_brazier.name=Arcane Brazier
 tile.aromara.pressing_stone.name=Pressing Stone
+tile.aromara.candle_vat.name=Candle Vat
 
 tile.aromara.vishroom_block_cap.name=Huge Vishroom Cap
 tile.aromara.vishroom_block_stem.name=Huge Vishroom Stem

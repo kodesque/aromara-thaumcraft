@@ -3,13 +3,13 @@
 	"credit": "Made with Blockbench",
 	"ambientocclusion": false,
 	"textures": {
-		"5": "Downloads/candle_vat_side",
-		"9": "Downloads/material_bars",
-		"10": "Downloads/candle_vat_top",
-		"12": "Downloads/candle_vat_side_inner",
-		"13": "thaumcraft:blocks/flesh",
-		"bottom": "thaumcraft:Downloads/candle_vat_inner",
-		"particle": "metamechanica:blocks/material_iron"
+		"5": "aromara:blocks/candle_vat_side",
+		"9": "aromara:blocks/material_bars",
+		"10": "aromara:blocks/candle_vat_top",
+		"12": "aromara:blocks/candle_vat_side_inner",
+		"13": "#key",
+		"bottom": "aromara:blocks/candle_vat_inner",
+		"particle": "aromara:blocks/candle_vat_side"
 	},
 	"elements": [
 		{
@@ -275,7 +275,7 @@
 		{
 			"from": [8, 6.38118, 1.60808],
 			"to": [10, 8.38118, 7.60808],
-			"rotation": {"angle": 15, "axis": "x", "origin": [8, 10, 6.25]},
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [8, 10, 6.25]},
 			"faces": {
 				"north": {"uv": [12, 14, 14, 16], "texture": "#9"},
 				"east": {"uv": [2, 2, 4, 8], "rotation": 90, "texture": "#9"},
@@ -310,7 +310,21 @@
 				"up": {"uv": [2, 2, 14, 14], "texture": "#13"},
 				"down": {"uv": [2, 2, 14, 14], "texture": "#13"}
 			}
-		}
+		},
+        {
+            "name": "tube",
+            "from": [5, 1, 5],
+            "to": [11, 3, 11],
+            "rotation": {"angle": 0, "axis": "y", "origin": [8, 1, 5]},
+            "faces": {
+                "north": {"uv": [5, 4, 11, 6], "texture": "#13"},
+                "east": {"uv": [5, 4, 11, 6], "texture": "#13"},
+                "south": {"uv": [5, 4, 11, 6], "texture": "#13"},
+                "west": {"uv": [5, 4, 11, 6], "texture": "#13"},
+                "up": {"uv": [5, 5, 11, 11], "texture": "#13"},
+                "down": {"uv": [5, 5, 11, 11], "texture": "#13"}
+            }
+        }
 	],
 	"groups": [
 		0,
