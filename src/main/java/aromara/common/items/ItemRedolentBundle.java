@@ -43,7 +43,7 @@ public class ItemRedolentBundle extends ItemTCABase{
 
         if (item == null) return null;
 
-        return NBTManager.mutatePairs(stack, EnumFunc.APPLY, new ValuePair<>(EnumGroups.SCENTCRUDE, EnumGroups.ValuesCrude.MAIN, item.getRegistryName().toString()));
+        return NBTManager.mutatePairs(stack, EnumFunc.APPLY, new ValuePair<>(EnumGroups.SCENTCRUDE, EnumGroups.Crude.MAIN, item.getRegistryName().toString()));
     }
 
     public static ItemStack getComponentFromBundle(ItemStack stack) {
@@ -53,7 +53,7 @@ public class ItemRedolentBundle extends ItemTCABase{
         if (nbt != null) {
 
             for (Item plant : plants) {
-                if (NBTManager.get(stack, EnumGroups.SCENTCRUDE, EnumGroups.ValuesCrude.MAIN).equals(plant.getRegistryName().toString()))
+                if (NBTManager.get(stack, EnumGroups.SCENTCRUDE, EnumGroups.Crude.MAIN).equals(plant.getRegistryName().toString()))
                     return new ItemStack(plant);
             }
         }
@@ -77,7 +77,7 @@ public class ItemRedolentBundle extends ItemTCABase{
         if (nbt != null) {
 
             for (Item plant : plants) {
-                if (NBTManager.get(stack, EnumGroups.SCENTCRUDE, EnumGroups.ValuesCrude.MAIN).equals(plant.getRegistryName().toString())) {
+                if (NBTManager.get(stack, EnumGroups.SCENTCRUDE, EnumGroups.Crude.MAIN).equals(plant.getRegistryName().toString())) {
                     tooltip.add(TextFormatting.DARK_PURPLE + new ItemStack(plant).getDisplayName());
                 }
             }

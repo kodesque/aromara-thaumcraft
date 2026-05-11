@@ -1,0 +1,16 @@
+# Made in Blockbench 5.1.4
+newmtl m_19ac3727-2675-02e9-6b1e-493f308ab75f
+map_Kd aromara:blocks/accessories
+newmtl m_c5b3dc70-956f-491c-22b3-41e7ccd304de
+map_Kd aromara:research/parchment
+newmtl m_cbfe42ad-6508-ba28-18af-28256c15eaed
+map_Kd thaumcraft:blocks/base_wood_grain
+newmtl m_60ff763a-170f-732b-9600-8061e73917e0
+map_Kd thaumcraft:blocks/research_table_top
+newmtl m_78bf9aec-18f9-9a99-117b-a13be9c79d69
+map_Kd thaumcraft:blocks/research_table_front
+newmtl m_93ddd84a-afb4-6179-d956-febe89412a4f
+map_Kd aromara:blocks/wood_bottom
+newmtl m_f3eaa82e-e403-2dc1-2760-1a7f9f0ed7b5
+map_Kd thaumcraft:blocks/research_table_side
+newmtl none

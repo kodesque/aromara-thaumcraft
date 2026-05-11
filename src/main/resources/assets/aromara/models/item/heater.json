@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "aromara:items/liquid_tallow"
+        "layer0": "aromara:items/heater"
     }
 }

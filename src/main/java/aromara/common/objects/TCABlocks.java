@@ -7,6 +7,7 @@ public class TCABlocks {
     public static Block arcane_brazier;
     public static Block pressing_stone;
     public static Block candle_vat;
+    public static Block servoscrivener;
 
     public static Block vishroom_block_cap;
     public static Block vishroom_block_stem;

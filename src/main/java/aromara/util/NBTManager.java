@@ -21,7 +21,9 @@ public class NBTManager {
     }
 
     public enum EnumGroups {
-        SCENTCRUDE("scentcrude", ValuesCrude.class);
+        SCENTCRUDE("scentcrude", Crude.class),
+        OIL("oil", Oil.class),
+        KNOWLEDGE("knowledge", Knowledge.class);
 
         private final String groupName;
         private final Class<? extends INBTGroupValues> clazz;
@@ -39,13 +41,70 @@ public class NBTManager {
             return this.clazz;
         }
 
-        public enum ValuesCrude implements INBTGroupValues {
+        public enum Crude implements INBTGroupValues {
             MAIN(EnumGeneralNames.MAIN.getName(), String.class);
 
             private final String valueName;
             private final Class<?> clazz;
 
-            ValuesCrude(String valueName, Class<?> clazz) {
+            Crude(String valueName, Class<?> clazz) {
+                this.valueName = valueName;
+                this.clazz = clazz;
+            }
+
+            @Override
+            public String getValueName() {
+                return this.valueName;
+            }
+
+            @Override
+            public Class<?> getClazz() {
+                return this.clazz;
+            }
+
+            @Override
+            public boolean isSpecialCase() {
+                return false;
+            }
+        }
+
+
+        public enum Oil implements INBTGroupValues {
+            TYPE("type", String.class),
+            RANCID("rancid", Boolean.class);
+
+            private final String valueName;
+            private final Class<?> clazz;
+
+            Oil(String valueName, Class<?> clazz) {
+                this.valueName = valueName;
+                this.clazz = clazz;
+            }
+
+            @Override
+            public String getValueName() {
+                return this.valueName;
+            }
+
+            @Override
+            public Class<?> getClazz() {
+                return this.clazz;
+            }
+
+            @Override
+            public boolean isSpecialCase() {
+                return false;
+            }
+        }
+
+        public enum Knowledge implements INBTGroupValues {
+            NAME("name", String.class),
+            DONE("done", Boolean.class);
+
+            private final String valueName;
+            private final Class<?> clazz;
+
+            Knowledge(String valueName, Class<?> clazz) {
                 this.valueName = valueName;
                 this.clazz = clazz;
             }
@@ -349,6 +408,7 @@ public class NBTManager {
 
     public enum EnumFunc {
         APPLY,
+        APPLYSOFT,
         REMOVE
     }
 
@@ -357,6 +417,8 @@ public class NBTManager {
 
         if (func == EnumFunc.APPLY) {
             NBTManager.apply(copy, pair);
+        } else if (func == EnumFunc.APPLYSOFT) {
+            NBTManager.applySoft(copy, pair);
         } else if (func == EnumFunc.REMOVE) {
             NBTManager.remove(copy, pair);
         }

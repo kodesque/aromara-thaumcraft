@@ -14,7 +14,10 @@ public class ItemInit {
         iForgeRegistry.register(TCAItems.debug = new ItemDebug("debug"));
 
         iForgeRegistry.register((TCAItems.scent_phial = new ItemTCABase("scent_phial")));
-        iForgeRegistry.register((TCAItems.liquid_tallow = new ItemTCABase("liquid_tallow")));
+        iForgeRegistry.register((TCAItems.heater = new ItemTCABase("heater")));
+
+        iForgeRegistry.register((TCAItems.research_hint = new ItemTCABase("research_hint")));
+        iForgeRegistry.register((TCAItems.research_brief = new ItemTCABase("research_brief")));
 
         iForgeRegistry.register((TCAItems.redolent_bundle = new ItemRedolentBundle("redolent_bundle", "raw", "dry")));
 

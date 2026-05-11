@@ -21,6 +21,7 @@ public class ItemDebug extends ItemTCABase {
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
         if (tab != Main.TABTCA && tab != CreativeTabs.SEARCH) return;
 
+        items.add(new ItemStack (Item.getItemFromBlock(TCABlocks.servoscrivener)));
         items.add(new ItemStack (Item.getItemFromBlock(TCABlocks.arcane_brazier)));
         items.add(new ItemStack (Item.getItemFromBlock(TCABlocks.candle_vat)));
         items.add(new ItemStack (Item.getItemFromBlock(TCABlocks.pressing_stone)));
@@ -32,7 +33,7 @@ public class ItemDebug extends ItemTCABase {
             items.add(ItemRedolentBundle.getBundleDried(ItemRedolentBundle.getBundleFromComponent(plant)));
         }
 
-        items.add(new ItemStack(TCAItems.liquid_tallow));
+        items.add(new ItemStack(TCAItems.heater));
         items.add(new ItemStack (TCAItems.scent_phial));
     }
 

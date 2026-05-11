@@ -159,9 +159,6 @@ public class TileArcaneBrazier extends TileThaumcraftInventory {
         if ((attacker != null && attacker.isEntityAlive()) && (target != null && target.isEntityAlive())) {
             attacker.setAttackTarget(target);
         }
-
-
-
     }
 
     public void applyShimmer(AxisAlignedBB box) {

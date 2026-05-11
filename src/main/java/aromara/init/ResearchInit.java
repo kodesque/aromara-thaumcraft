@@ -1,6 +1,7 @@
 package aromara.init;
 
 import aromara.root.Main;
+import aromara.util.ResearchAppends;
 import net.minecraft.util.ResourceLocation;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -21,6 +22,8 @@ public class ResearchInit {
                 );
 
         registerResearchLocation(new ResourceLocation("aromara:research/scentmixing"));
+
+        ResearchAppends.initAppends();
 
     }
 

@@ -1,8 +1,14 @@
 package aromara.common.tiles;
 
 import aromara.common.blocks.BlockCandleVat;
+import aromara.common.items.ItemRedolentBundle;
 import aromara.common.objects.TCAItems;
+import aromara.util.NBTManager;
+import aromara.util.NBTManager.EnumFunc;
+import aromara.util.NBTManager.EnumGroups;
+import aromara.util.NBTManager.ValuePair;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -87,6 +93,22 @@ public class TileCandleVat extends TileThaumcraftInventory implements IAspectCon
 
     }
 
+    public ItemStack attemptScoop(ItemStack bucket) {
+        if (this.getStatus() == 4 && this.effect != null) {
+            this.effect = null;
+            this.setStatus(0);
+            return NBTManager.mutatePairs(bucket, EnumFunc.APPLYSOFT, new ValuePair<>(EnumGroups.OIL, EnumGroups.Oil.TYPE, this.effect.toString()));
+        }
+
+        if (this.getStatus() == 5) {
+            this.effect = null;
+            this.setStatus(0);
+            return NBTManager.mutatePairs(bucket, EnumFunc.APPLYSOFT, new ValuePair<>(EnumGroups.OIL, EnumGroups.Oil.RANCID, true));
+        }
+
+        return new ItemStack(Items.AIR);
+    }
+
     @Override
     public void update() {
         super.update();
@@ -116,7 +138,10 @@ public class TileCandleVat extends TileThaumcraftInventory implements IAspectCon
                         }
                         if (this.getStatus() == 3 && !this.getStackInSlot(0).isEmpty()) {
                             this.setStatus(5);
-                            this.decrStackSize(0, 1);
+
+                            Item comp = ItemRedolentBundle.getComponentFromBundle(this.getStackInSlot(0)).getItem();
+                            this.effect = comp.getRegistryName().toString();
+                            this.removeStackFromSlot(0);
                         }
                     }
 
