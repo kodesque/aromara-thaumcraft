@@ -1,12 +1,14 @@
 package aromara.common.tiles;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-import aromara.common.blocks.BlockArcaneBrazier;
 import aromara.common.blocks.BlockServoscrivener;
 import aromara.util.NBTManager;
 import aromara.util.NBTManager.EnumFunc;
 import aromara.util.NBTManager.EnumGroups;
+import aromara.util.NBTManager.INBTGroupValues;
 import aromara.util.NBTManager.ValuePair;
 import aromara.util.ResearchAppends;
 import aromara.util.RiddleHandler;
@@ -14,13 +16,23 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagInt;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.world.World;
+import net.minecraftforge.common.util.Constants;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.common.lib.SoundsTC;
 import thaumcraft.common.tiles.TileThaumcraftInventory;
 
-public class TileServoscrivener extends TileThaumcraftInventory{
+public class TileServoscrivener extends TileThaumcraftInventory {
+
+    public static final List<BlockPosExact> scriveners = new ArrayList<BlockPosExact>();
 
     public AspectList required;
     public static String requiredKey = "required";
@@ -28,9 +40,12 @@ public class TileServoscrivener extends TileThaumcraftInventory{
     public AspectList stored;
     public static String storedKey = "stored";
 
+    public List<Integer> chosenIndices;
+    public static String chosenIndicesKey = "chosenIndices";
+
     public boolean started;
     public int delay;
-    public int maxDelay = 30;
+    public final int maxDelay = 40;
 
     public TileServoscrivener() {
         super(1);
@@ -50,24 +65,35 @@ public class TileServoscrivener extends TileThaumcraftInventory{
         this.delay = 0;
     }
 
-    public int tryAddAspect(Aspect aspect, int amount) {
+    public int addAspectSmart(Aspect aspect, int amount) {
 
+        if (this.canAddAspect(aspect, amount)) {
+
+            int required = this.required.getAmount(aspect);
+
+            if (amount > required) {
+                this.stored.add(aspect, required);
+                return required;
+            } else {
+                this.stored.add(aspect, amount);
+                return amount;
+            }
+        }
+
+        return 0;
+    }
+
+    public boolean canAddAspect(Aspect aspect, int amount) {
         for (int i = 0; i < this.required.getAspects().length; i++) {
 
             if (this.required.getAspects()[i].equals(aspect)) {
                 int required = this.required.getAmount(this.required.getAspects()[i]);
 
-                if (required == 0)
-                    return -1;
-                else {
-
-                    this.stored.add(this.required.getAspects()[i], Math.max(required, amount));
-
-                    return Math.max(required, amount);
-                }
+                if (required != 0)
+                    return true;
             }
         }
-        return -1;
+        return false;
     }
 
     @Override
@@ -75,6 +101,10 @@ public class TileServoscrivener extends TileThaumcraftInventory{
         super.update();
 
         if (!this.world.isRemote) {
+
+            if (this.world.getWorldTime() % 10 == 0) {
+                this.conductCheck(this.pos, this.world);
+            }
 
             if (!this.getStackInSlot(0).isEmpty()) {
                 this.setStatus(true);
@@ -101,10 +131,7 @@ public class TileServoscrivener extends TileThaumcraftInventory{
 
                     if (this.required.visSize() == this.stored.visSize()) {
 
-                        ItemStack stack = this.getStackInSlot(0);
-
-                        this.setInventorySlotContents(0, NBTManager.mutatePairs(stack, EnumFunc.APPLY, new ValuePair<>(EnumGroups.KNOWLEDGE, EnumGroups.Knowledge.DONE, true)));
-                        this.annul();
+                        this.endResearch();
 
                     }
                 }
@@ -112,13 +139,45 @@ public class TileServoscrivener extends TileThaumcraftInventory{
         }
     }
 
-    public void startResearch() {
+    private void conductCheck(BlockPos pos, World world) {
+
+        BlockPosExact myPos = new BlockPosExact(this.pos, this.world);
+
+        if (!scriveners.contains(myPos)) {
+            scriveners.add(myPos);
+        }
+
+    }
+
+    public void startResearch(World world) {
         ItemStack stack = this.getStackInSlot(0);
 
         String research = NBTManager.get(stack, EnumGroups.KNOWLEDGE, EnumGroups.Knowledge.NAME);
 
         AspectList list = ResearchAppends.getList(research);
-        this.required = list;
+
+        List<Integer> chosen = RiddleHandler.roll(list, this.world);
+
+        AspectList actual = new AspectList();
+
+        for (int i = 0; i < 3; i++) {
+
+            Aspect aspect = list.getAspects()[chosen.get(i)];
+
+            actual.add(aspect, list.getAmount(aspect));
+        }
+
+        world.playSound (
+                null,
+                this.pos,
+                SoundsTC.write,
+                SoundCategory.BLOCKS,
+                2.0F,
+                1.0F
+                );
+
+        this.required = actual;
+        this.chosenIndices = chosen;
     }
 
     public void inform(EntityPlayer player) {
@@ -127,7 +186,16 @@ public class TileServoscrivener extends TileThaumcraftInventory{
 
         TextComponentTranslation message = new TextComponentTranslation("riddle" + "." + key + "." + "text");
 
-        player.sendMessage(RiddleHandler.process(message));
+        player.getEntityWorld().playSound(
+                null,
+                this.pos,
+                SoundsTC.chant,
+                SoundCategory.BLOCKS,
+                0.5F,
+                5.0F
+                );
+
+        player.sendMessage(new TextComponentString(RiddleHandler.process(message, this.chosenIndices, this.required)));
     }
 
     public void endResearch() {
@@ -137,6 +205,8 @@ public class TileServoscrivener extends TileThaumcraftInventory{
         NBTManager.apply(stack, new ValuePair<>(EnumGroups.KNOWLEDGE, EnumGroups.Knowledge.DONE, true));
 
         this.setInventorySlotContents(0, stack);
+
+        this.annul();
 
     }
 
@@ -158,14 +228,63 @@ public class TileServoscrivener extends TileThaumcraftInventory{
         AspectList required = new AspectList();
         required.readFromNBT(nbttagcompound, requiredKey);
         this.required = required;
+
+        NBTTagList tagList = nbttagcompound.getTagList(chosenIndicesKey, Constants.NBT.TAG_INT);
+        this.chosenIndices = readIntList(tagList);
     }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound nbttagcompound) {
         super.writeToNBT(nbttagcompound);
-        this.stored.writeToNBT(nbttagcompound, storedKey);
-        this.required.writeToNBT(nbttagcompound, requiredKey);
+        if (this.stored != null) {
+            this.stored.writeToNBT(nbttagcompound, storedKey);
+        }
+        if (this.required != null) {
+            this.required.writeToNBT(nbttagcompound, requiredKey);
+        }
+        nbttagcompound.setTag(chosenIndicesKey, writeIntList(this.chosenIndices));
         return nbttagcompound;
+    }
+
+    public static NBTTagList writeIntList(List<Integer> list) {
+
+        NBTTagList tagList = new NBTTagList();
+
+        for (Integer i : list) {
+            tagList.appendTag(new NBTTagInt(i));
+        }
+
+        return tagList;
+    }
+
+    public static List<Integer> readIntList(NBTTagList tagList) {
+
+        List<Integer> result = new ArrayList<>();
+
+        for (int i = 0; i < tagList.tagCount(); i++) {
+            result.add(tagList.getIntAt(i));
+        }
+
+        return result;
+    }
+
+    public static class BlockPosExact {
+        BlockPos pos;
+        World world;
+
+        public BlockPosExact(BlockPos pos, World world) {
+            this.pos = pos;
+            this.world = world;
+        }
+
+        public BlockPos getPos() {
+            return this.pos;
+        }
+
+        public World getWorld() {
+            return this.world;
+        }
+
     }
 
 }

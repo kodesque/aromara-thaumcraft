@@ -2,15 +2,17 @@ package aromara.events.front;
 
 import aromara.common.objects.TCABlocks;
 import aromara.common.tiles.TileServoscrivener;
+import aromara.common.tiles.TileServoscrivener.BlockPosExact;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.blocks.BlocksTC;
+import thaumcraft.common.blocks.essentia.BlockJar;
 import thaumcraft.common.tiles.essentia.TileJarFillable;
 
 @Mod.EventBusSubscriber
@@ -24,35 +26,39 @@ public class GenericEventHandler {
 
         int radius = 10;
 
-        if (state.getBlock().equals(BlocksTC.jarNormal)) {
+        if (state.getBlock() instanceof BlockJar &&
+                event.getWorld().getTileEntity(pos) instanceof TileJarFillable &&
+                event.getEntityPlayer().isSneaking() &&
+                event.getEntityPlayer().getHeldItemMainhand().isEmpty()) {
 
             TileJarFillable jar = (TileJarFillable)event.getWorld().getTileEntity(pos);
 
-            Aspect aspect = jar.getAspects().getAspects()[0];
-            int amount = jar.getAspects().getAmount(aspect);
+            if (jar.getAspects() == null)
+                return;
 
-            for (int x = -radius; x <= radius; x++) {
-                for (int y = -radius; y <= radius; y++) {
-                    for (int z = -radius; z <= radius; z++) {
+            Aspect aspect = jar.aspect;
+            int amount = jar.amount;
 
-                        BlockPos postable = pos.add(x, y, z);
+            for (BlockPosExact bpe : TileServoscrivener.scriveners) {
+                BlockPos posActual = bpe.getPos();
+                if (event.getWorld().isBlockLoaded(posActual)) {
+                    if (pos.getDistance(posActual.getX(), posActual.getY(), posActual.getZ()) <= radius) {
 
-                        IBlockState statetable = event.getWorld().getBlockState(postable);
+                        TileServoscrivener tile = (TileServoscrivener)event.getWorld().getTileEntity(posActual);
 
-                        if (statetable.getBlock().equals(TCABlocks.servoscrivener)) {
-                            TileServoscrivener tile = (TileServoscrivener)event.getWorld().getTileEntity(postable);
+                        jar.takeFromContainer(aspect, tile.addAspectSmart(aspect, amount));
 
-                            int actual = tile.tryAddAspect(aspect, amount);
-
-                            if (actual == 0) {
-                                jar.takeFromContainer(aspect, actual);
-                            }
-
-                            return;
-                        }
+                        event.setCanceled(true);
                     }
                 }
             }
+        }
+    }
+
+    @SubscribeEvent
+    public static void removeScrivener(BreakEvent event) {
+        if (event.getState().getBlock().equals(TCABlocks.servoscrivener)) {
+            TileServoscrivener.scriveners.remove(new BlockPosExact(event.getPos(), event.getWorld()));
         }
     }
 

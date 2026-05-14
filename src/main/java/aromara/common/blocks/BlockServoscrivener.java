@@ -58,7 +58,7 @@ public class BlockServoscrivener extends BlockTCADevice implements IBlockFacingH
                         tile.setInventorySlotContents(0, held.copy());
                         held.shrink(held.getCount());
 
-                        tile.startResearch();
+                        tile.startResearch(world);
                     }
                 }
 
@@ -68,6 +68,10 @@ public class BlockServoscrivener extends BlockTCADevice implements IBlockFacingH
                 tile.annul();
                 if (!player.addItemStackToInventory(give)) {
                     player.dropItem(give, false);
+                }
+            } else {
+                if (state.getValue(HAS_PAPER)) {
+                    tile.inform(player);
                 }
             }
 

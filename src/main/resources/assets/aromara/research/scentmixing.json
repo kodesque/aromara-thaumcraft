@@ -17,12 +17,36 @@
         },
         
         {
+        "key": "TCA_RESEARCHER",
+        "name": "research.TCA_RESEARCHER.title",         
+        "icons": [ "aromara:textures/research/r_servoscrivener.png"],
+        "category": "SCENTMIXING",
+        "parents": [ "!CrimsonCultist", "TCA_BASESCENTMIXING" ], 
+        "meta": [ "ROUND", "HIDDEN" ],
+        "location": [ -1,-1 ],
+
+        "stages": [
+                {
+                    "text": "research.TCA_RESEARCHER.text.stage.1",
+                    "required_knowledge":["OBSERVATION;ELDRITCH;3"]
+                },
+                {
+                    "text": "research.TCA_RESEARCHER.text.stage.2",
+                    "required_knowledge":["THEORY;AUROMANCY;1"]
+                },
+                {
+                    "text": "research.TCA_RESEARCHER.text.stage.3"
+                }
+            ]
+        },
+        
+        {
             
         "key": "TCA_SCENTBURNING-H",
         "name": "research.TCA_SCENTBURNING-H.title",         
         "icons": [ "thaumcraft:enchanted_placeholder;1;0"],
         "category": "SCENTMIXING",
-        "parents": [ "TCA_BASESCENTMIXING", "BASEAUROMANCY" ], 
+        "parents": [ "TCA_BASESCENTMIXING", "TCA_RESEARCHER", "BASEAUROMANCY" ], 
         "meta": ["HEX", "HIDDEN"],
         "reward_item": [ "aromara:research_brief;1;0;{aromara:{knowledge:{name:'TCA_SCENTBURNING'}}}"],
         "location": [ -2,0 ],
@@ -30,8 +54,7 @@
         "stages": [
                 {
                     "text": "research.TCA_SCENTBURNING-H.text.stage.1",
-                    "required_item":["minecraft:paper"],
-                    "required_knowledge":["OBSERVATION;AUROMANCY;1"]
+                    "required_item":["minecraft:paper", "thaumcraft:shimmerleaf", "thaumcraft:cinderpearl", "thaumcraft:vishroom"]
                 }
             ]
         },
@@ -48,13 +71,31 @@
 
         "stages": [
                 {
-                    "text": "research.TCA_SCENTBURNING.text.stage.1",
-                    "required_item":["thaumcraft:shimmerleaf", "thaumcraft:cinderpearl", "thaumcraft:vishroom", "thaumcraft:research_brief"],
-                    "required_knowledge":["OBSERVATION;AUROMANCY;1"]
+                    "text": "research.TCA_SCENTBURNING-H.text.stage.1",
+                    "required_item":["aromara:research_brief;1;0;{aromara:{knowledge:{name:'TCA_SCENTBURNING'}}}"]
                 },
                 {
                     "text": "research.TCA_SCENTBURNING.text.stage.2",
                     "recipes": ["aromara:arcane_brazier", "aromara:redolent_bundle-0","aromara:redolent_bundle-1", "aromara:redolent_bundle-2"]
+                }
+            ]
+        },
+        
+        {
+            
+        "key": "TCA_SCENTBOILING-H",
+        "name": "research.TCA_SCENTBOILING-H.title",         
+        "icons": [ "thaumcraft:enchanted_placeholder;1;0"],
+        "category": "SCENTMIXING",
+        "parents": [ "TCA_SCENTBURNING"], 
+        "meta": ["HEX", "HIDDEN"],
+        "reward_item": [ "aromara:research_brief;1;0;{aromara:{knowledge:{name:'TCA_SCENTBOILING'}}}"],
+        "location": [ -6,0 ],
+
+        "stages": [
+                {
+                    "text": "research.TCA_SCENTBOILING-H.text.stage.1",
+                    "required_item":["minecraft:paper"]
                 }
             ]
         }

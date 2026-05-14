@@ -1,63 +1,71 @@
 package aromara.util;
 
-import net.minecraft.util.text.Style;
-import net.minecraft.util.text.TextComponentString;
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
 import thaumcraft.api.aspects.AspectList;
 
 public class RiddleHandler {
 
-    public static TextComponentString process(TextComponentTranslation ttc) {
+    public static String process(TextComponentTranslation ttc, List<Integer> chosen, AspectList list) {
 
         String formatted = ttc.getFormattedText();
 
-        TextComponentString root = new TextComponentString("");
+        StringBuilder actual = new StringBuilder();
+        actual.append(TextFormatting.ITALIC)
+        .append(TextFormatting.GRAY);
 
-        int count = 0;
-        int last = 0;
+        boolean purple = false;
+
+        int index = 0;
 
         for (int i = 0; i < formatted.length(); i++) {
 
-            if (formatted.charAt(i) == '@') {
+            char c = formatted.charAt(i);
 
-                if (i > last) {
-                    root.appendSibling(
-                            new TextComponentString(formatted.substring(last, i))
-                            );
+            if (c == '@') {
+
+                if (chosen.contains(index)) {
+                    purple = true;
+                    actual.append(TextFormatting.DARK_PURPLE)
+                    .append(TextFormatting.ITALIC);
                 }
 
-                TextFormatting color = TextFormatting.DARK_PURPLE;
+                index++;
+                continue;
+            }
 
-                int nextStart = i + 1;
+            if (purple && c == ' ') {
+                purple = false;
+                actual.append("(" + list.getAmount(list.getAspects()[index > list.size() ? list.size() - 1 : index]) + ")")
+                .append(TextFormatting.RESET)
+                .append(TextFormatting.GRAY)
+                .append(TextFormatting.ITALIC);
+            }
 
-                int nextAt = formatted.indexOf('@', nextStart);
-                int end = (nextAt == -1) ? formatted.length() : nextAt;
+            actual.append(c);
+        }
 
-                TextComponentString colored =
-                        new TextComponentString(formatted.substring(nextStart, end));
+        return actual.toString();
+    }
 
-                colored.setStyle(new Style().setColor(color));
+    public static List<Integer> roll(AspectList list, World world) {
+        List<Integer> result = new ArrayList<Integer>();
 
-                root.appendSibling(colored);
+        for (int i = 0; i < 3; i++) {
+            int r = world.rand.nextInt(list.size());
 
-                root.appendSibling(
-                        new TextComponentString(TextFormatting.RESET.toString())
-                        );
-
-                count++;
-                last = end;
-                i = end - 1;
+            if (!result.contains(r)) {
+                result.add(r);
+            } else {
+                result.add(Math.min(list.size(), r + 1));
             }
         }
 
-        if (last < formatted.length()) {
-            root.appendSibling(
-                    new TextComponentString(formatted.substring(last))
-                    );
-        }
-
-        return root;
+        return result;
     }
 
 }

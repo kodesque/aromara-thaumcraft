@@ -13,7 +13,6 @@ public class ResearchAppends {
 
         appendPairs.put("TCA_SCENTBURNING", new AspectList()
                 .add(Aspect.MAN, 15)
-                .add(Aspect.DESIRE, 5)
                 .add(Aspect.PLANT, 10)
                 .add(Aspect.FIRE, 20)
                 .add(Aspect.VOID, 5)
