@@ -1,17 +1,24 @@
 package aromara.events.back;
 
 import aromara.init.BlockInit;
+import aromara.init.EntityInit;
 import aromara.init.ItemInit;
 import aromara.init.RecipeInit;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber
 public class RegistryEvents {
+
+    public static void registerEntities() {
+        EntityInit.preInitEntities();
+    }
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
@@ -29,5 +36,13 @@ public class RegistryEvents {
         RecipeInit.initInfusion(event.getRegistry());
         RecipeInit.initCrucible(event.getRegistry());
     }
+
+    @SubscribeEvent
+    public static void onTextureStitch(TextureStitchEvent.Pre event) {
+        event.getMap().registerSprite(
+                new ResourceLocation("aromara", "blocks/brainvoid")
+                );
+    }
+
 
 }

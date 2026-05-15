@@ -40,7 +40,7 @@ public class RiddleHandler {
 
             if (purple && c == ' ') {
                 purple = false;
-                actual.append("(" + list.getAmount(list.getAspects()[index > list.size() ? list.size() - 1 : index]) + ")")
+                actual.append("(" + list.getAmount(list.getAspects()[index >= list.size() ? list.size() - 1 : index]) + ")")
                 .append(TextFormatting.RESET)
                 .append(TextFormatting.GRAY)
                 .append(TextFormatting.ITALIC);

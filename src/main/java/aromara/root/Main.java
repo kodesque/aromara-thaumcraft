@@ -2,7 +2,8 @@ package aromara.root;
 
 import aromara.common.objects.TCAItems;
 import aromara.common.worldgen.WorldGenVishroomHuge;
-import aromara.events.front.GenericEventHandler;
+import aromara.events.front.RiddleEvents;
+import aromara.init.EntityInit;
 import aromara.init.ResearchInit;
 import aromara.init.TileInit;
 import aromara.network.proxy.CommonProxy;
@@ -36,13 +37,16 @@ public class Main {
     @SidedProxy(clientSide = "aromara.network.proxy.ClientProxy", serverSide = "aromara.network.proxy.CommonProxy")
     public static CommonProxy proxy;
 
+    @Mod.Instance
+    public static Main instance;
+
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
 
         proxy.preInit(event);
 
         TileInit.preInitTiles();
-
+        EntityInit.preInitEntities();
     }
 
     @EventHandler
@@ -65,10 +69,4 @@ public class Main {
             return new ItemStack(TCAItems.debug);
         }
     };
-
-    public static void registerResearchLocation(ResourceLocation loc) {
-        if (!CommonInternals.jsonLocs.containsKey(loc.toString())) {
-            CommonInternals.jsonLocs.put(loc.toString(), loc);
-        }
-    }
 }

@@ -23,7 +23,8 @@ public class NBTManager {
     public enum EnumGroups {
         SCENTCRUDE("scentcrude", Crude.class),
         OIL("oil", Oil.class),
-        KNOWLEDGE("knowledge", Knowledge.class);
+        KNOWLEDGE("knowledge", Knowledge.class),
+        ENTITYCOMPONENT("entitycomponent", Component.class);
 
         private final String groupName;
         private final Class<? extends INBTGroupValues> clazz;
@@ -39,6 +40,33 @@ public class NBTManager {
 
         public Class<? extends INBTGroupValues> getClazz() {
             return this.clazz;
+        }
+
+        public enum Component implements INBTGroupValues {
+            MAIN(EnumGeneralNames.MAIN.getName(), Integer.class);
+
+            private final String valueName;
+            private final Class<?> clazz;
+
+            Component(String valueName, Class<?> clazz) {
+                this.valueName = valueName;
+                this.clazz = clazz;
+            }
+
+            @Override
+            public String getValueName() {
+                return this.valueName;
+            }
+
+            @Override
+            public Class<?> getClazz() {
+                return this.clazz;
+            }
+
+            @Override
+            public boolean isSpecialCase() {
+                return false;
+            }
         }
 
         public enum Crude implements INBTGroupValues {

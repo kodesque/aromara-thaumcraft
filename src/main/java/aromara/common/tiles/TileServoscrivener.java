@@ -58,44 +58,6 @@ public class TileServoscrivener extends TileThaumcraftInventory {
         this.started = false;
     };
 
-    public void annul() {
-        this.stored = new AspectList();
-        this.required = new AspectList();
-        this.started = false;
-        this.delay = 0;
-    }
-
-    public int addAspectSmart(Aspect aspect, int amount) {
-
-        if (this.canAddAspect(aspect, amount)) {
-
-            int required = this.required.getAmount(aspect);
-
-            if (amount > required) {
-                this.stored.add(aspect, required);
-                return required;
-            } else {
-                this.stored.add(aspect, amount);
-                return amount;
-            }
-        }
-
-        return 0;
-    }
-
-    public boolean canAddAspect(Aspect aspect, int amount) {
-        for (int i = 0; i < this.required.getAspects().length; i++) {
-
-            if (this.required.getAspects()[i].equals(aspect)) {
-                int required = this.required.getAmount(this.required.getAspects()[i]);
-
-                if (required != 0)
-                    return true;
-            }
-        }
-        return false;
-    }
-
     @Override
     public void update() {
         super.update();
@@ -103,7 +65,7 @@ public class TileServoscrivener extends TileThaumcraftInventory {
         if (!this.world.isRemote) {
 
             if (this.world.getWorldTime() % 10 == 0) {
-                this.conductCheck(this.pos, this.world);
+                this.conductCheck();
             }
 
             if (!this.getStackInSlot(0).isEmpty()) {
@@ -139,15 +101,40 @@ public class TileServoscrivener extends TileThaumcraftInventory {
         }
     }
 
-    private void conductCheck(BlockPos pos, World world) {
+    /* ESSENTIA HANDLING */
 
-        BlockPosExact myPos = new BlockPosExact(this.pos, this.world);
+    public int addAspectSmart(Aspect aspect, int amount) {
 
-        if (!scriveners.contains(myPos)) {
-            scriveners.add(myPos);
+        if (this.canAddAspect(aspect)) {
+
+            int required = this.required.getAmount(aspect);
+
+            if (amount > required) {
+                this.stored.add(aspect, required);
+                return required;
+            } else {
+                this.stored.add(aspect, amount);
+                return amount;
+            }
         }
 
+        return 0;
     }
+
+    public boolean canAddAspect(Aspect aspect) {
+        for (int i = 0; i < this.required.getAspects().length; i++) {
+
+            if (this.required.getAspects()[i].equals(aspect)) {
+                int required = this.required.getAmount(this.required.getAspects()[i]);
+
+                if (required != 0)
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    /* RESEARCH HANDLING */
 
     public void startResearch(World world) {
         ItemStack stack = this.getStackInSlot(0);
@@ -180,6 +167,24 @@ public class TileServoscrivener extends TileThaumcraftInventory {
         this.chosenIndices = chosen;
     }
 
+    public void endResearch() {
+
+        ItemStack stack = this.getStackInSlot(0);
+
+        NBTManager.apply(stack, new ValuePair<>(EnumGroups.KNOWLEDGE, EnumGroups.Knowledge.DONE, true));
+
+        this.setInventorySlotContents(0, stack);
+
+        this.annul();
+    }
+
+    public void annul() {
+        this.stored = new AspectList();
+        this.required = new AspectList();
+        this.started = false;
+        this.delay = 0;
+    }
+
     public void inform(EntityPlayer player) {
 
         String key = NBTManager.get(this.getStackInSlot(0), EnumGroups.KNOWLEDGE, EnumGroups.Knowledge.NAME);
@@ -198,17 +203,38 @@ public class TileServoscrivener extends TileThaumcraftInventory {
         player.sendMessage(new TextComponentString(RiddleHandler.process(message, this.chosenIndices, this.required)));
     }
 
-    public void endResearch() {
+    /* LIST STATUS HANDLING */
 
-        ItemStack stack = this.getStackInSlot(0);
+    private void conductCheck() {
 
-        NBTManager.apply(stack, new ValuePair<>(EnumGroups.KNOWLEDGE, EnumGroups.Knowledge.DONE, true));
+        BlockPosExact myPos = new BlockPosExact(this.pos, this.world);
 
-        this.setInventorySlotContents(0, stack);
-
-        this.annul();
+        if (!scriveners.contains(myPos)) {
+            scriveners.add(myPos);
+        }
 
     }
+
+    public static class BlockPosExact {
+        BlockPos pos;
+        World world;
+
+        public BlockPosExact(BlockPos pos, World world) {
+            this.pos = pos;
+            this.world = world;
+        }
+
+        public BlockPos getPos() {
+            return this.pos;
+        }
+
+        public World getWorld() {
+            return this.world;
+        }
+
+    }
+
+    /* NBT & STATE HANDLING */
 
     public void setStatus(boolean status) {
 
@@ -266,25 +292,6 @@ public class TileServoscrivener extends TileThaumcraftInventory {
         }
 
         return result;
-    }
-
-    public static class BlockPosExact {
-        BlockPos pos;
-        World world;
-
-        public BlockPosExact(BlockPos pos, World world) {
-            this.pos = pos;
-            this.world = world;
-        }
-
-        public BlockPos getPos() {
-            return this.pos;
-        }
-
-        public World getWorld() {
-            return this.world;
-        }
-
     }
 
 }
