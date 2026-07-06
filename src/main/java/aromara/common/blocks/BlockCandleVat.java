@@ -134,12 +134,19 @@ public class BlockCandleVat extends BlockTCADevice implements IBlockEnabled{
     @Override
     public IBlockState getStateFromMeta(int meta) {
         return this.getDefaultState()
-                .withProperty(BlockCandleVat.STATUS, meta);
+                .withProperty(BlockCandleVat.STATUS, meta & 0b111)
+                .withProperty(BlockCandleVat.ENABLED, (meta & 0b1000) != 0);
     }
 
     @Override
     public int getMetaFromState(IBlockState state) {
-        return state.getValue(BlockCandleVat.STATUS);
+        int meta = state.getValue(BlockCandleVat.STATUS);
+
+        if (state.getValue(BlockCandleVat.ENABLED)) {
+            meta |= 0b1000;
+        }
+
+        return meta;
     }
 
 

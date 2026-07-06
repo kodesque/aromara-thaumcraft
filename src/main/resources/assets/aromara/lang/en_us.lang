@@ -9,6 +9,7 @@ item.aromara.liquid_tallow.name=Liquid Tallow
 item.aromara.debug.name=Icon
 
 item.aromara.research_brief.name=Research Brief
+item.aromara.heater.name=Heating Element
 
 #BLOCKS
 tile.aromara.arcane_brazier.name=Arcane Brazier

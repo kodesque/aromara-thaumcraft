@@ -7,6 +7,7 @@ import aromara.common.blocks.BlockServoscrivener;
 import aromara.common.blocks.BlockVishroomCap;
 import aromara.common.blocks.BlockVishroomStem;
 import aromara.common.objects.TCABlocks;
+import aromara.common.templates.BlockTCABase;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;

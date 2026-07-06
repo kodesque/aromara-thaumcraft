@@ -30,7 +30,7 @@ import thaumcraft.api.research.ResearchCategories;
 public class Main {
     public static final String MODID = "aromara";
     public static final String NAME = "Aromara Thaumcraft";
-    public static final String VERSION = "0.0.1-INDEV";
+    public static final String VERSION = "0.1.4-ALPHA";
 
     public static SimpleNetworkWrapper packetHandler;
 

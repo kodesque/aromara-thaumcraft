@@ -30,7 +30,7 @@ public class RecipeInit {
                     new ResourceLocation("aromara:redolent_bundle" + "-" + i),
                     new ShapelessArcaneRecipe(
                             baseGroup,
-                            "TCA_CRUDESCENTS",
+                            "TCA_SCENTBURNING",
                             25,
                             new AspectList().add(Aspect.ORDER, 1).add(Aspect.EARTH, 1),
                             ItemRedolentBundle.getBundleFromComponent(ItemRedolentBundle.plants[i]),
@@ -49,7 +49,7 @@ public class RecipeInit {
                 new ResourceLocation("aromara:arcane_brazier"),
                 new ShapedArcaneRecipe(
                         baseGroup,
-                        "TCA_CRUDESCENTS",
+                        "TCA_SCENTBURNING",
                         50,
                         new AspectList().add(Aspect.FIRE, 2),
                         TCABlocks.arcane_brazier,
@@ -71,7 +71,7 @@ public class RecipeInit {
                 new ResourceLocation("aromara:pressing_stone"),
                 new ShapedArcaneRecipe(
                         baseGroup,
-                        "TCA_CRUDESCENTS",
+                        "TCA_SCENTBURNING",
                         50,
                         null,
                         new ItemStack(TCABlocks.pressing_stone),
@@ -93,7 +93,7 @@ public class RecipeInit {
                 new ResourceLocation("aromara:scent_phial"),
                 new ShapelessArcaneRecipe(
                         baseGroup,
-                        "TCA_CRUDESCENTS",
+                        "TCA_SCENTBOILING",
                         10,
                         null,
                         new ItemStack(TCAItems.scent_phial, 2),
@@ -103,6 +103,28 @@ public class RecipeInit {
                                 new ItemStack(ItemsTC.salisMundus),
                                 new ItemStack(ItemsTC.phial)
                         }
+                        )
+                );
+
+        ThaumcraftApi.addArcaneCraftingRecipe(
+                new ResourceLocation("aromara:heater"),
+                new ShapedArcaneRecipe(
+                        baseGroup,
+                        "TCA_SCENTBOILING",
+                        50,
+                        null,
+                        new ItemStack(TCAItems.heater),
+                        " C ",
+                        "PHP",
+                        " E ",
+                        'P',
+                        "plateIron",
+                        'C',
+                        new ItemStack(BlocksTC.crystalFire),
+                        'E',
+                        new ItemStack(ItemsTC.nuggets, 10),
+                        'H',
+                        new ItemStack(Blocks.TRIPWIRE_HOOK)
                         )
                 );
     }

@@ -68,6 +68,11 @@ public class TileArcaneBrazier extends TileThaumcraftInventory {
         this.removeStackFromSlot(1);
     }
 
+    public void extinguish() {
+        this.burningTime = 0;
+        this.effect = null;
+    }
+
     @Override
     public void update() {
         super.update();
@@ -192,7 +197,7 @@ public class TileArcaneBrazier extends TileThaumcraftInventory {
             }
         }
 
-        if (this.world.isRaining()) {
+        if (this.world.isRaining() && this.world.canSeeSky(this.pos)) {
 
             if (this.world.rand.nextInt(10) == 1) {
                 for (int a = 0; a < 10; ++a) {

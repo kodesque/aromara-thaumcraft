@@ -18,6 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagInt;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -28,11 +29,12 @@ import net.minecraftforge.common.util.Constants;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.lib.SoundsTC;
+import thaumcraft.common.lib.utils.InventoryUtils;
 import thaumcraft.common.tiles.TileThaumcraftInventory;
 
 public class TileServoscrivener extends TileThaumcraftInventory {
 
-    public static final List<BlockPosExact> scriveners = new ArrayList<BlockPosExact>();
+    public static final ArrayList<BlockPosExact> scriveners = new ArrayList<BlockPosExact>();
 
     public AspectList required;
     public static String requiredKey = "required";
@@ -64,10 +66,6 @@ public class TileServoscrivener extends TileThaumcraftInventory {
 
         if (!this.world.isRemote) {
 
-            if (this.world.getWorldTime() % 10 == 0) {
-                this.conductCheck();
-            }
-
             if (!this.getStackInSlot(0).isEmpty()) {
                 this.setStatus(true);
             } else {
@@ -90,35 +88,32 @@ public class TileServoscrivener extends TileThaumcraftInventory {
                             this.started = true;
                         }
                     }
-
-                    if (this.required.visSize() == this.stored.visSize()) {
-
-                        this.endResearch();
-
-                    }
                 }
+            }
+
+            if ((this.required == null || this.required.visSize() == 0) && (this.stored != null && this.stored.visSize() != 0)) {
+
+                this.endResearch();
             }
         }
     }
 
     /* ESSENTIA HANDLING */
 
-    public int addAspectSmart(Aspect aspect, int amount) {
+    public void addAspectSmart(Aspect aspect, int amount) {
 
-        if (this.canAddAspect(aspect)) {
+        int required = this.required.getAmount(aspect);
 
-            int required = this.required.getAmount(aspect);
+        if (amount > required) {
 
-            if (amount > required) {
-                this.stored.add(aspect, required);
-                return required;
-            } else {
-                this.stored.add(aspect, amount);
-                return amount;
-            }
+            this.stored.add(aspect, required);
+            this.required.remove(aspect, required);
+
+        } else {
+
+            this.stored.add(aspect, amount);
+            this.required.remove(aspect, amount);
         }
-
-        return 0;
     }
 
     public boolean canAddAspect(Aspect aspect) {
@@ -173,7 +168,18 @@ public class TileServoscrivener extends TileThaumcraftInventory {
 
         NBTManager.apply(stack, new ValuePair<>(EnumGroups.KNOWLEDGE, EnumGroups.Knowledge.DONE, true));
 
-        this.setInventorySlotContents(0, stack);
+        this.removeStackFromSlot(0);
+
+        this.world.playSound (
+                null,
+                this.pos,
+                SoundsTC.learn,
+                SoundCategory.BLOCKS,
+                3.0F,
+                1.0F
+                );
+
+        InventoryUtils.ejectStackAt(this.world, this.pos, EnumFacing.UP, stack);
 
         this.annul();
     }
@@ -181,6 +187,7 @@ public class TileServoscrivener extends TileThaumcraftInventory {
     public void annul() {
         this.stored = new AspectList();
         this.required = new AspectList();
+        this.chosenIndices = null;
         this.started = false;
         this.delay = 0;
     }
@@ -205,12 +212,10 @@ public class TileServoscrivener extends TileThaumcraftInventory {
 
     /* LIST STATUS HANDLING */
 
-    private void conductCheck() {
+    public static void conductCheck(BlockPosExact pos) {
 
-        BlockPosExact myPos = new BlockPosExact(this.pos, this.world);
-
-        if (!scriveners.contains(myPos)) {
-            scriveners.add(myPos);
+        if (!scriveners.contains(pos)) {
+            scriveners.add(pos);
         }
 
     }
@@ -268,7 +273,9 @@ public class TileServoscrivener extends TileThaumcraftInventory {
         if (this.required != null) {
             this.required.writeToNBT(nbttagcompound, requiredKey);
         }
-        nbttagcompound.setTag(chosenIndicesKey, writeIntList(this.chosenIndices));
+        if (this.chosenIndices != null) {
+            nbttagcompound.setTag(chosenIndicesKey, writeIntList(this.chosenIndices));
+        }
         return nbttagcompound;
     }
 

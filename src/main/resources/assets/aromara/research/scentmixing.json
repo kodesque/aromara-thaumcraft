@@ -76,7 +76,7 @@
                 },
                 {
                     "text": "research.TCA_SCENTBURNING.text.stage.2",
-                    "recipes": ["aromara:arcane_brazier", "aromara:redolent_bundle-0","aromara:redolent_bundle-1", "aromara:redolent_bundle-2"]
+                    "recipes": ["aromara:arcane_brazier", "aromara:pressing_stone", "aromara:redolent_bundle-0","aromara:redolent_bundle-1", "aromara:redolent_bundle-2"]
                 }
             ]
         },
@@ -96,6 +96,24 @@
                 {
                     "text": "research.TCA_SCENTBOILING-H.text.stage.1",
                     "required_item":["minecraft:paper"]
+                }
+            ]
+        },
+        
+        {
+            
+        "key": "TCA_SCENTBOILING",
+        "name": "research.TCA_SCENTBOILING.title",         
+        "icons": [ "aromara:candle_vat", "aromara:scent_phial"],
+        "category": "SCENTMIXING",
+        "parents": [ "TCA_SCENTBOILING-H"], 
+        "meta": ["HIDDEN"],
+        "location": [ -8,0 ],
+
+        "stages": [
+                {
+                    "text": "research.TCA_SCENTBOILING.text.stage.1",
+                    "required_item":["aromara:research_brief;1;0;{aromara:{knowledge:{name:'TCA_SCENTBOILING'}}}"]
                 }
             ]
         }

@@ -15,12 +15,15 @@ public class RiddleHandler {
         String formatted = ttc.getFormattedText();
 
         StringBuilder actual = new StringBuilder();
-        actual.append(TextFormatting.ITALIC)
-        .append(TextFormatting.GRAY);
+
+        actual
+        .append(TextFormatting.GRAY)
+        .append(TextFormatting.ITALIC);
 
         boolean purple = false;
 
-        int index = 0;
+        int keyIn = 0;
+        int aspectIn = 0;
 
         for (int i = 0; i < formatted.length(); i++) {
 
@@ -28,22 +31,32 @@ public class RiddleHandler {
 
             if (c == '@') {
 
-                if (chosen.contains(index)) {
+                if (chosen.contains(keyIn)) {
                     purple = true;
                     actual.append(TextFormatting.DARK_PURPLE)
                     .append(TextFormatting.ITALIC);
                 }
 
-                index++;
+                keyIn++;
                 continue;
             }
 
             if (purple && c == ' ') {
+
+                if (aspectIn >= list.getAspects().length) {
+                    aspectIn--;
+                }
+
                 purple = false;
-                actual.append("(" + list.getAmount(list.getAspects()[index >= list.size() ? list.size() - 1 : index]) + ")")
-                .append(TextFormatting.RESET)
-                .append(TextFormatting.GRAY)
-                .append(TextFormatting.ITALIC);
+                if (list.getAspects().length != 0) {
+                    actual.append("(" + list.getAmount(list.getAspects()[aspectIn]) + ")")
+                    .append(TextFormatting.RESET)
+                    .append(TextFormatting.GRAY)
+                    .append(TextFormatting.ITALIC);
+
+                    aspectIn++;
+                }
+
             }
 
             actual.append(c);

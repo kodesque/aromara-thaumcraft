@@ -80,6 +80,10 @@ public class BlockArcaneBrazier extends BlockTCADevice {
                         tile.setInventorySlotContents(1, held.copy());
                         held.shrink(held.getCount());
                     }
+                } else if (held.getItem().equals(Items.WATER_BUCKET) && state.getValue(STATUS) == 2) {
+                    tile.extinguish();
+
+                    player.setHeldItem(EnumHand.MAIN_HAND, new ItemStack(Items.BUCKET));
                 }
             } else if (state.getValue(STATUS) != 2) {
 
