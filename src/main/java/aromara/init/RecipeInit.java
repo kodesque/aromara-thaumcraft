@@ -127,6 +127,23 @@ public class RecipeInit {
                         new ItemStack(Blocks.TRIPWIRE_HOOK)
                         )
                 );
+
+        ThaumcraftApi.addArcaneCraftingRecipe(
+                new ResourceLocation("aromara:parchment"),
+                new ShapelessArcaneRecipe(
+                        baseGroup,
+                        "TCA_RESEARCHER",
+                        10,
+                        new AspectList().add(Aspect.ENTROPY, 2),
+                        new ItemStack(TCAItems.parchment, 1),
+                        new Object[] {
+                                new ItemStack(Items.SUGAR),
+                                new ItemStack(ItemsTC.nuggets, 5),
+                                new ItemStack(ItemsTC.nuggets, 9),
+                                new ItemStack(Items.ROTTEN_FLESH)
+                        }
+                        )
+                );
     }
 
     public static void initInfusion(IForgeRegistry<IRecipe> iForgeRegistry) {

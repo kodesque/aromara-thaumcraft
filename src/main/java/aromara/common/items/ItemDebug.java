@@ -28,6 +28,7 @@ public class ItemDebug extends ItemTCABase {
 
         items.add(new ItemStack (Item.getItemFromBlock(TCABlocks.vishroom_block_cap)));
         items.add(new ItemStack (Item.getItemFromBlock(TCABlocks.vishroom_block_stem)));
+        items.add(new ItemStack (TCAItems.parchment));
 
         for (Item plant : ItemRedolentBundle.plants) {
             items.add(ItemRedolentBundle.getBundleDried(ItemRedolentBundle.getBundleFromComponent(plant)));

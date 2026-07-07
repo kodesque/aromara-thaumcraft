@@ -17,6 +17,7 @@ public class ItemInit {
         iForgeRegistry.register((TCAItems.scent_phial = new ItemTCABase("scent_phial")));
         iForgeRegistry.register((TCAItems.heater = new ItemTCABase("heater")));
 
+        iForgeRegistry.register((TCAItems.parchment = new ItemTCABase("parchment")));
         iForgeRegistry.register((TCAItems.research_hint = new ItemTCABase("research_hint")));
         iForgeRegistry.register((TCAItems.research_brief = new ItemResearchBrief("research_brief")));
 
