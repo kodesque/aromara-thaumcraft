@@ -33,7 +33,7 @@ public class BlockCandleVat extends BlockTCADevice implements IBlockEnabled{
 
     public static String id = "candle_vat";
 
-    /* 0 -> empty, 1 -> impure, 2 -> liquid, 3 -> rancid 4 -> imbued */
+    /* 0 -> empty, 1 -> flesh, 2 -> impure, 3 -> liquid, 4 -> rancid 5 -> imbued */
 
     public static PropertyInteger STATUS = PropertyInteger.create("status", 0, 5);
 

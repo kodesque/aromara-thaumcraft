@@ -1,6 +1,7 @@
 package aromara.common.tiles;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -104,10 +105,24 @@ public class TileServoscrivener extends TileThaumcraftInventory {
 
         int required = this.required.getAmount(aspect);
 
-        if (amount > required) {
+        if (amount >= required) {
+
+            int index = -1;
+            Aspect[] aspects = this.required.getAspects();
+
+            for (int i = 0; i < aspects.length; i++) {
+                if (aspects[i] == aspect) {
+                    index = i;
+                    break;
+                }
+            }
 
             this.stored.add(aspect, required);
             this.required.remove(aspect, required);
+
+            if (index != -1) {
+                this.chosenIndices.remove(index);
+            }
 
         } else {
 
@@ -138,7 +153,9 @@ public class TileServoscrivener extends TileThaumcraftInventory {
 
         AspectList list = ResearchAppends.getList(research);
 
-        List<Integer> chosen = RiddleHandler.roll(list, this.world);
+
+        List<Integer> chosen = RiddleHandler.roll(list, world);
+        Collections.sort(chosen);
 
         AspectList actual = new AspectList();
 

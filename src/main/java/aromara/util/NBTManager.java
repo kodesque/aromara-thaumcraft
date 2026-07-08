@@ -23,8 +23,7 @@ public class NBTManager {
     public enum EnumGroups {
         SCENTCRUDE("scentcrude", Crude.class),
         OIL("oil", Oil.class),
-        KNOWLEDGE("knowledge", Knowledge.class),
-        ENTITYCOMPONENT("entitycomponent", Component.class);
+        KNOWLEDGE("knowledge", Knowledge.class);
 
         private final String groupName;
         private final Class<? extends INBTGroupValues> clazz;

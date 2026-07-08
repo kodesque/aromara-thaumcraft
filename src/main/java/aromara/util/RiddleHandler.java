@@ -6,6 +6,7 @@ import java.util.List;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 
 public class RiddleHandler {
@@ -16,14 +17,13 @@ public class RiddleHandler {
 
         StringBuilder actual = new StringBuilder();
 
-        actual
-        .append(TextFormatting.GRAY)
+        actual.append(TextFormatting.GRAY)
         .append(TextFormatting.ITALIC);
 
         boolean purple = false;
 
         int keyIn = 0;
-        int aspectIn = 0;
+        int chosenIn = 0;
 
         for (int i = 0; i < formatted.length(); i++) {
 
@@ -31,10 +31,13 @@ public class RiddleHandler {
 
             if (c == '@') {
 
-                if (chosen.contains(keyIn)) {
+                if (chosenIn < chosen.size() && keyIn == chosen.get(chosenIn)) {
                     purple = true;
+
                     actual.append(TextFormatting.DARK_PURPLE)
                     .append(TextFormatting.ITALIC);
+
+                    chosenIn++;
                 }
 
                 keyIn++;
@@ -43,23 +46,27 @@ public class RiddleHandler {
 
             if (purple && c == ' ') {
 
-                if (aspectIn >= list.getAspects().length) {
-                    aspectIn--;
-                }
-
                 purple = false;
-                if (list.getAspects().length != 0) {
-                    actual.append("(" + list.getAmount(list.getAspects()[aspectIn]) + ")")
-                    .append(TextFormatting.RESET)
-                    .append(TextFormatting.GRAY)
-                    .append(TextFormatting.ITALIC);
 
-                    aspectIn++;
-                }
+                Aspect aspect = list.getAspects()[chosenIn - 1];
 
+                actual.append("(")
+                .append(list.getAmount(aspect))
+                .append(")")
+                .append(TextFormatting.RESET)
+                .append(TextFormatting.GRAY)
+                .append(TextFormatting.ITALIC);
             }
 
             actual.append(c);
+        }
+
+        if (purple) {
+            Aspect aspect = list.getAspects()[chosenIn - 1];
+
+            actual.append("(")
+            .append(list.getAmount(aspect))
+            .append(")");
         }
 
         return actual.toString();

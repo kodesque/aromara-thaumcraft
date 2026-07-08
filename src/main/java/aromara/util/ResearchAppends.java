@@ -21,7 +21,19 @@ public class ResearchAppends {
                 .add(Aspect.AIR, 10)
                 .add(Aspect.SENSES, 20)
                 .add(Aspect.FLUX, 15));
+
+        appendPairs.put("TCA_SCENTBOILING", new AspectList()
+                .add(Aspect.BEAST, 20)
+                .add(Aspect.MAGIC, 10)
+                .add(Aspect.PROTECT, 30)
+                .add(Aspect.AVERSION, 5)
+                .add(Aspect.SOUL, 5)
+                .add(Aspect.MOTION, 20)
+                .add(Aspect.FIRE, 20)
+                .add(Aspect.FLIGHT, 5));
     }
+
+
 
     public static AspectList getList(String name) {
         return appendPairs.get(name);

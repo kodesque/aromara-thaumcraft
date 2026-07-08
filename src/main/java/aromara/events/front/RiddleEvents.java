@@ -11,6 +11,7 @@ import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import thaumcraft.api.aspects.Aspect;
+import thaumcraft.client.fx.FXDispatcher;
 import thaumcraft.common.blocks.essentia.BlockJar;
 import thaumcraft.common.entities.monster.EntityWisp;
 import thaumcraft.common.tiles.essentia.TileJarFillable;
@@ -52,10 +53,9 @@ public class RiddleEvents {
                             tile.addAspectSmart(aspect, amount);
                             jar.takeFromContainer(aspect, amount);
 
-                            EntityWisp wisp = new EntityWisp(event.getWorld());
-                            event.getWorld().spawnEntity(wisp);
-                            wisp.setDropItemsWhenDead(false);
-                            wisp.setDead();
+                            if (event.getWorld().isRemote) {
+                                FXDispatcher.INSTANCE.burst(event.getPos().getX(), event.getPos().getY() + 0.44999998807907104, event.getPos().getZ(), 1.0f);
+                            }
 
                             event.setCanceled(true);
                         }

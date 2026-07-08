@@ -42,7 +42,7 @@ public class TileCandleVat extends TileThaumcraftInventory implements IAspectCon
     public int essentiaMax = 30;
     public Aspect typeAllowed = Aspect.FIRE;
 
-    /* 0 -> empty, 1 -> impure, 2 -> liquid, 3 -> rancid 4 -> imbued */
+    /* 0 -> empty, 1 -> flesh, 2 -> impure, 3 -> liquid, 4 -> rancid 5 -> imbued */
 
     public TileCandleVat() {
         super(1);
@@ -94,16 +94,24 @@ public class TileCandleVat extends TileThaumcraftInventory implements IAspectCon
     }
 
     public ItemStack attemptScoop(ItemStack bucket) {
-        if (this.getStatus() == 4 && this.effect != null) {
+        if (this.getStatus() == 4) {
+            //            ItemStack result = NBTManager.mutatePairs(bucket, EnumFunc.APPLYSOFT, new ValuePair<>(EnumGroups.OIL, EnumGroups.Oil.TYPE, this.effect.toString()));
+
+            NBTManager.apply(bucket, new ValuePair<>(EnumGroups.OIL, EnumGroups.Oil.RANCID, true));
+
             this.effect = null;
             this.setStatus(0);
-            return NBTManager.mutatePairs(bucket, EnumFunc.APPLYSOFT, new ValuePair<>(EnumGroups.OIL, EnumGroups.Oil.TYPE, this.effect.toString()));
+            return bucket;
         }
 
         if (this.getStatus() == 5) {
+            //            ItemStack result = NBTManager.mutatePairs(bucket, EnumFunc.APPLYSOFT, new ValuePair<>(EnumGroups.OIL, EnumGroups.Oil.RANCID, true));
+
+            NBTManager.apply(bucket, new ValuePair<>(EnumGroups.OIL, EnumGroups.Oil.TYPE, this.effect.toString()));
+
             this.effect = null;
             this.setStatus(0);
-            return NBTManager.mutatePairs(bucket, EnumFunc.APPLYSOFT, new ValuePair<>(EnumGroups.OIL, EnumGroups.Oil.RANCID, true));
+            return bucket;
         }
 
         return new ItemStack(Items.AIR);

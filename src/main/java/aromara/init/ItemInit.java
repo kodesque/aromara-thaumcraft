@@ -3,6 +3,7 @@ package aromara.init;
 import aromara.common.items.ItemDebug;
 import aromara.common.items.ItemRedolentBundle;
 import aromara.common.items.ItemResearchBrief;
+import aromara.common.items.ItemScentPhial;
 import aromara.common.objects.TCAItems;
 import aromara.common.templates.ItemTCABase;
 import net.minecraft.item.Item;
@@ -14,7 +15,7 @@ public class ItemInit {
 
         iForgeRegistry.register(TCAItems.debug = new ItemDebug("debug"));
 
-        iForgeRegistry.register((TCAItems.scent_phial = new ItemTCABase("scent_phial")));
+        iForgeRegistry.register((TCAItems.scent_phial = new ItemScentPhial("scent_phial")));
         iForgeRegistry.register((TCAItems.heater = new ItemTCABase("heater")));
 
         iForgeRegistry.register((TCAItems.parchment = new ItemTCABase("parchment")));

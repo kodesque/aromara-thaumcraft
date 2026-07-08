@@ -122,7 +122,7 @@ public class RecipeInit {
                         'C',
                         new ItemStack(BlocksTC.crystalFire),
                         'E',
-                        new ItemStack(ItemsTC.nuggets, 10),
+                        new ItemStack(ItemsTC.nuggets, 1, 10),
                         'H',
                         new ItemStack(Blocks.TRIPWIRE_HOOK)
                         )
@@ -138,9 +138,9 @@ public class RecipeInit {
                         new ItemStack(TCAItems.parchment, 1),
                         new Object[] {
                                 new ItemStack(Items.SUGAR),
-                                new ItemStack(ItemsTC.nuggets, 5),
-                                new ItemStack(ItemsTC.nuggets, 9),
-                                new ItemStack(Items.ROTTEN_FLESH)
+                                new ItemStack(ItemsTC.nuggets, 1, 5),
+                                new ItemStack(ItemsTC.nuggets, 1, 9),
+                                new ItemStack(Items.LEATHER)
                         }
                         )
                 );

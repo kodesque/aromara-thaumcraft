@@ -2,15 +2,14 @@ package aromara.root;
 
 import aromara.common.objects.TCAItems;
 import aromara.common.worldgen.WorldGenVishroomHuge;
-import aromara.events.front.RiddleEvents;
 import aromara.init.EntityInit;
 import aromara.init.ResearchInit;
 import aromara.init.TileInit;
 import aromara.network.proxy.CommonProxy;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.monster.EntityBlaze;
+import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -21,10 +20,10 @@ import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.aspects.AspectList;
-import thaumcraft.api.internal.CommonInternals;
-import thaumcraft.api.research.ResearchCategories;
+import thaumcraft.api.research.ScanBlockState;
+import thaumcraft.api.research.ScanEntity;
+import thaumcraft.api.research.ScanItem;
+import thaumcraft.api.research.ScanningManager;
 
 @Mod(modid = Main.MODID, dependencies = "required-after:thaumcraft", version = Main.VERSION, name = Main.NAME)
 public class Main {
@@ -55,6 +54,9 @@ public class Main {
         ResearchInit.initResearch();
 
         GameRegistry.registerWorldGenerator(new WorldGenVishroomHuge(), 3);
+
+        ScanningManager.addScannableThing(new ScanEntity("!HOG", EntityPig.class, true));
+        ScanningManager.addScannableThing(new ScanEntity("!BLAZE", EntityBlaze.class, true));
     }
 
     @EventHandler

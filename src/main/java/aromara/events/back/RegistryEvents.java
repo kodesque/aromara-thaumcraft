@@ -1,9 +1,11 @@
 package aromara.events.back;
 
+import aromara.common.recipes.RecipeToolArmorImbue;
 import aromara.init.BlockInit;
 import aromara.init.EntityInit;
 import aromara.init.ItemInit;
 import aromara.init.RecipeInit;
+import aromara.root.Main;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
@@ -35,6 +37,8 @@ public class RegistryEvents {
         RecipeInit.initWorkbench(event.getRegistry());
         RecipeInit.initInfusion(event.getRegistry());
         RecipeInit.initCrucible(event.getRegistry());
+
+        event.getRegistry().register(new RecipeToolArmorImbue().setRegistryName(new ResourceLocation(Main.MODID, RecipeToolArmorImbue.id)));
     }
 
     @SubscribeEvent

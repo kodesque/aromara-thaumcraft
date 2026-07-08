@@ -35,7 +35,8 @@
                     "required_knowledge":["THEORY;AUROMANCY;1"]
                 },
                 {
-                    "text": "research.TCA_RESEARCHER.text.stage.3"
+                    "text": "research.TCA_RESEARCHER.text.stage.3",
+                    "recipes": ["aromara:parchment"]
                 }
             ]
         },
@@ -54,7 +55,7 @@
         "stages": [
                 {
                     "text": "research.TCA_SCENTBURNING-H.text.stage.1",
-                    "required_item":["minecraft:paper", "thaumcraft:shimmerleaf", "thaumcraft:cinderpearl", "thaumcraft:vishroom"]
+                    "required_item":["aromara:parchment", "thaumcraft:shimmerleaf", "thaumcraft:cinderpearl", "thaumcraft:vishroom"]
                 }
             ]
         },
@@ -72,7 +73,7 @@
         "stages": [
                 {
                     "text": "research.TCA_SCENTBURNING-H.text.stage.1",
-                    "required_item":["aromara:research_brief;1;0;{aromara:{knowledge:{name:'TCA_SCENTBURNING'}}}"]
+                    "required_item":["aromara:research_brief;1;0;{aromara:{knowledge:{name:'TCA_SCENTBURNING',done:1b}}}"]
                 },
                 {
                     "text": "research.TCA_SCENTBURNING.text.stage.2",
@@ -95,7 +96,8 @@
         "stages": [
                 {
                     "text": "research.TCA_SCENTBOILING-H.text.stage.1",
-                    "required_item":["minecraft:paper"]
+                    "required_research":["!HOG", "!BLAZE"],
+                    "required_item":["aromara:parchment", "minecraft:lava_bucket"]
                 }
             ]
         },
@@ -112,8 +114,17 @@
 
         "stages": [
                 {
-                    "text": "research.TCA_SCENTBOILING.text.stage.1",
-                    "required_item":["aromara:research_brief;1;0;{aromara:{knowledge:{name:'TCA_SCENTBOILING'}}}"]
+                    "text": "research.TCA_SCENTBOILING-H.text.stage.1",
+                    "required_item":["aromara:research_brief;1;0;{aromara:{knowledge:{name:'TCA_SCENTBOILING',done:1b}}}"]
+                },
+                {
+                    "text": "research.TCA_SCENTBOILING.text.stage.2",
+                    "required_craft": ["aromara:heater"],
+                    "recipes": ["aromara:heater"]
+                },
+                {
+                    "text": "research.TCA_SCENTBOILING.text.stage.3",
+                    "recipes": ["aromara:heater", "aromara:scent_phial"]
                 }
             ]
         }
