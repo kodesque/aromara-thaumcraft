@@ -91,7 +91,7 @@
         "parents": [ "TCA_SCENTBURNING"], 
         "meta": ["HEX", "HIDDEN"],
         "reward_item": [ "aromara:research_brief;1;0;{aromara:{knowledge:{name:'TCA_SCENTBOILING'}}}"],
-        "location": [ -6,0 ],
+        "location": [ -5,1 ],
 
         "stages": [
                 {
@@ -110,7 +110,7 @@
         "category": "SCENTMIXING",
         "parents": [ "TCA_SCENTBOILING-H"], 
         "meta": ["HIDDEN"],
-        "location": [ -8,0 ],
+        "location": [ -3,1 ],
 
         "stages": [
                 {

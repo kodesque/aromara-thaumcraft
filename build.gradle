@@ -65,6 +65,7 @@ processResources {
 
 dependencies {
 	deobfCompile "curse.maven:thaumcraft-223628:2629023"
+	
 }
 
 task devJar(type: Jar) {

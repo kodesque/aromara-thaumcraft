@@ -8,7 +8,7 @@ import aromara.init.TileInit;
 import aromara.network.proxy.CommonProxy;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.monster.EntityBlaze;
-import net.minecraft.entity.passive.EntityPig;
+import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -20,9 +20,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import thaumcraft.api.research.ScanBlockState;
 import thaumcraft.api.research.ScanEntity;
-import thaumcraft.api.research.ScanItem;
 import thaumcraft.api.research.ScanningManager;
 
 @Mod(modid = Main.MODID, dependencies = "required-after:thaumcraft", version = Main.VERSION, name = Main.NAME)
@@ -55,7 +53,7 @@ public class Main {
 
         GameRegistry.registerWorldGenerator(new WorldGenVishroomHuge(), 3);
 
-        ScanningManager.addScannableThing(new ScanEntity("!HOG", EntityPig.class, true));
+        ScanningManager.addScannableThing(new ScanEntity("!ZOMBIE", EntityZombie.class, true));
         ScanningManager.addScannableThing(new ScanEntity("!BLAZE", EntityBlaze.class, true));
     }
 

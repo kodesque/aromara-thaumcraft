@@ -2,6 +2,7 @@ package aromara.events.front;
 
 import java.util.List;
 
+import aromara.common.items.ItemRedolentBundle;
 import aromara.util.NBTManager;
 import aromara.util.NBTManager.EnumGroups;
 import aromara.util.NBTManager.ValuePair;
@@ -34,41 +35,6 @@ public class ImbuedToolArmorEvents {
     /* SHIMMERLEAF */
 
     @SubscribeEvent
-    public static void hurtShimmer(LivingHurtEvent event) {
-
-        if (!(event.getEntityLiving() instanceof EntityPlayer))
-            return;
-
-        EntityPlayer player = (EntityPlayer) event.getEntityLiving();
-
-        int count = 0;
-
-        for (ItemStack stack : player.getArmorInventoryList()) {
-            if (!stack.isEmpty() && NBTManager.has(stack,
-                    new ValuePair<>(EnumGroups.OIL, EnumGroups.Oil.TYPE, "flower.shimmerleaf"))) {
-                count++;
-            }
-        }
-
-        if (count == 0)
-            return;
-
-        event.setAmount((float) (event.getAmount() * Math.pow(0.5D, count)));
-
-        double chance = Math.pow(0.5D, count);
-
-        for (ItemStack stack : player.getArmorInventoryList()) {
-            if (!stack.isEmpty()
-                    && NBTManager.has(stack,
-                            new ValuePair<>(EnumGroups.OIL, EnumGroups.Oil.TYPE, "flower.shimmerleaf"))
-                    && player.getRNG().nextDouble() < chance) {
-
-                stack.damageItem(1, player);
-            }
-        }
-    }
-
-    @SubscribeEvent
     public static void breakToolShimmer(PlayerDestroyItemEvent event) {
 
         EntityPlayer player = event.getEntityPlayer();
@@ -78,7 +44,7 @@ public class ImbuedToolArmorEvents {
             return;
 
         if (!NBTManager.has(destroyed,
-                new ValuePair<>(EnumGroups.OIL, EnumGroups.Oil.TYPE, "flower.shimmerleaf")))
+                new ValuePair<>(EnumGroups.OIL, EnumGroups.Oil.TYPE, ItemRedolentBundle.plants[1].getRegistryName().toString())))
             return;
 
         if (player.getFoodStats().getFoodLevel() <= 0)
@@ -121,7 +87,7 @@ public class ImbuedToolArmorEvents {
 
         for (ItemStack stack : player.getArmorInventoryList()) {
             if (!stack.isEmpty() && NBTManager.has(stack,
-                    new ValuePair<>(EnumGroups.OIL, EnumGroups.Oil.TYPE, "flower.cinderpearl"))) {
+                    new ValuePair<>(EnumGroups.OIL, EnumGroups.Oil.TYPE, ItemRedolentBundle.plants[0].getRegistryName().toString()))) {
                 count++;
             }
         }
@@ -136,65 +102,6 @@ public class ImbuedToolArmorEvents {
         for (EntityMob mob : mobs) {
             mob.setFire(count);
         }
-    }
-
-    public static void explodeCinder(World world, Entity source, BlockPos pos, int power) {
-
-        Explosion explosion = new Explosion(
-                world,
-                source,
-                pos.getX() + 0.5D,
-                pos.getY() + 0.5D,
-                pos.getZ() + 0.5D,
-                power,
-                false,
-                false);
-
-        explosion.doExplosionA();
-
-        List<Entity> entities = world.getEntitiesWithinAABBExcludingEntity(
-                source,
-                new AxisAlignedBB(pos).grow(power * 2));
-
-        for (Entity entity : entities) {
-            if (entity instanceof EntityPlayer) {
-                continue;
-            }
-
-            double distance = entity.getDistance(
-                    pos.getX() + 0.5D,
-                    pos.getY() + 0.5D,
-                    pos.getZ() + 0.5D);
-
-            if (distance > power * 2) {
-                continue;
-            }
-
-            double strength = 1.0D - distance / (power * 2);
-
-            entity.attackEntityFrom(DamageSource.causeExplosionDamage(explosion), (float) (power * strength * 4.0F));
-
-            entity.motionX += (entity.posX - (pos.getX() + 0.5D)) * 0.2D * strength;
-            entity.motionY += 0.3D * strength;
-            entity.motionZ += (entity.posZ - (pos.getZ() + 0.5D)) * 0.2D * strength;
-        }
-
-        world.playSound(
-                null,
-                pos,
-                SoundEvents.ENTITY_GENERIC_EXPLODE,
-                SoundCategory.BLOCKS,
-                1.0F,
-                1.0F);
-
-        world.spawnParticle(
-                EnumParticleTypes.EXPLOSION_HUGE,
-                pos.getX() + 0.5D,
-                pos.getY() + 0.5D,
-                pos.getZ() + 0.5D,
-                0,
-                0,
-                0);
     }
 
     /* VISHROOM */
@@ -214,7 +121,7 @@ public class ImbuedToolArmorEvents {
 
         for (ItemStack stack : player.getArmorInventoryList()) {
             if (!stack.isEmpty() && NBTManager.has(stack,
-                    new ValuePair<>(EnumGroups.OIL, EnumGroups.Oil.TYPE, "flower.vishroom"))) {
+                    new ValuePair<>(EnumGroups.OIL, EnumGroups.Oil.TYPE, ItemRedolentBundle.plants[2]))) {
                 count++;
             }
         }

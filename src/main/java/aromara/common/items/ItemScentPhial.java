@@ -21,8 +21,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemScentPhial extends ItemTCABase {
 
-    TextComponentTranslation base = new TextComponentTranslation("tooltip." + Main.MODID + ".oil" + ".base");
-    TextComponentTranslation rancid = new TextComponentTranslation("tooltip." + Main.MODID + ".oil" + ".rancid");
+    public static TextComponentTranslation base = new TextComponentTranslation("tooltip." + Main.MODID + ".oil" + ".base");
+    public static TextComponentTranslation rancid = new TextComponentTranslation("tooltip." + Main.MODID + ".oil" + ".rancid");
 
 
     public ItemScentPhial(String name, String... variants) {
@@ -43,12 +43,12 @@ public class ItemScentPhial extends ItemTCABase {
 
             for (Item plant : ItemRedolentBundle.plants) {
                 if (NBTManager.has(stack, new ValuePair<>( EnumGroups.OIL, EnumGroups.Oil.TYPE, plant.getRegistryName().toString()))) {
-                    tooltip.add(TextFormatting.DARK_PURPLE + this.base.getFormattedText() + " " + TextFormatting.DARK_PURPLE + new ItemStack(plant).getDisplayName());
+                    tooltip.add(TextFormatting.DARK_PURPLE + base.getFormattedText() + " " + TextFormatting.DARK_PURPLE + new ItemStack(plant).getDisplayName());
                     return;
                 }
             }
 
-            tooltip.add(TextFormatting.DARK_PURPLE + this.rancid.getFormattedText());
+            tooltip.add(TextFormatting.DARK_PURPLE + rancid.getFormattedText());
         }
     }
 }
