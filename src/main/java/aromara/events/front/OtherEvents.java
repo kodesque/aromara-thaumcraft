@@ -6,6 +6,7 @@ import aromara.common.items.ItemRedolentBundle;
 import aromara.common.items.ItemScentPhial;
 import aromara.common.objects.TCABlocks;
 import aromara.common.objects.TCAItems;
+import aromara.common.recipes.RecipeToolArmorImbue;
 import aromara.root.Main;
 import aromara.util.NBTManager;
 import aromara.util.NBTManager.EnumGroups;
@@ -53,11 +54,11 @@ public class OtherEvents {
 
         NBTTagCompound nbt = stack.getSubCompound(Main.MODID);
 
-        if (!stack.getItem().equals(TCAItems.redolent_bundle) && !stack.getItem().equals(TCAItems.scent_phial)) {
+        if (RecipeToolArmorImbue.isToolArmor(stack)) {
             if (nbt != null) {
 
                 for (Item plant : ItemRedolentBundle.plants) {
-                    if (NBTManager.get(stack, EnumGroups.SCENTCRUDE, EnumGroups.Crude.MAIN).equals(plant.getRegistryName().toString())) {
+                    if (NBTManager.get(stack, EnumGroups.OIL, EnumGroups.Oil.TYPE).equals(plant.getRegistryName().toString())) {
                         tips.add(TextFormatting.DARK_PURPLE + ItemScentPhial.base.getFormattedText() + " " + TextFormatting.DARK_PURPLE + new ItemStack(plant).getDisplayName());
                         return;
                     }

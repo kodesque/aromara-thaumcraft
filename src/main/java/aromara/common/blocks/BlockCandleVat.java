@@ -31,7 +31,7 @@ import thaumcraft.common.entities.EntitySpecialItem;
 
 public class BlockCandleVat extends BlockTCADevice implements IBlockEnabled{
 
-    public static String id = "candle_vat";
+    public static final String id = "candle_vat";
 
     /* 0 -> empty, 1 -> flesh, 2 -> impure, 3 -> liquid, 4 -> rancid 5 -> imbued */
 

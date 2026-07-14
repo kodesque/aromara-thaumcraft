@@ -8,7 +8,7 @@
 		"10": "aromara:blocks/candle_vat_top",
 		"12": "aromara:blocks/candle_vat_side_inner",
 		"13": "#key",
-		"bottom": "aromara:blocks/candle_vat_inner",
+		"bottom": "aromara:blocks/candle_vat_bottom",
 		"particle": "aromara:blocks/candle_vat_side"
 	},
 	"elements": [
@@ -33,7 +33,7 @@
                                "south": {"uv": [0, 0, 2, 13], "texture": "#13", "cullface": "south"},
                                "west": {"uv": [0, 0, 16, 13], "texture": "#13", "cullface": "west"},
                                "up": {"uv": [2, 2, 14, 14], "texture": "#bottom", "cullface": "up"},
-                               "down": {"uv": [2, 2, 14, 14], "texture": "#13", "cullface": "down"}
+                               "down": {"uv": [2, 2, 14, 14], "texture": "#bottom", "cullface": "down"}
 			}
 		},
 		{
@@ -317,12 +317,12 @@
             "to": [11, 2.9, 11],
             "rotation": {"angle": 0, "axis": "y", "origin": [8, 1, 5]},
             "faces": {
-                "north": {"uv": [5, 4, 11, 6], "texture": "#13"},
-                "east": {"uv": [5, 4, 11, 6], "texture": "#13"},
-                "south": {"uv": [5, 4, 11, 6], "texture": "#13"},
-                "west": {"uv": [5, 4, 11, 6], "texture": "#13"},
-                "up": {"uv": [5, 5, 11, 11], "texture": "#13"},
-                "down": {"uv": [5, 5, 11, 11], "texture": "#13"}
+                "north": {"uv": [5, 4, 11, 6], "texture": "#bottom"},
+                "east": {"uv": [5, 4, 11, 6], "texture": "#bottom"},
+                "south": {"uv": [5, 4, 11, 6], "texture": "#bottom"},
+                "west": {"uv": [5, 4, 11, 6], "texture": "#bottom"},
+                "up": {"uv": [5, 5, 11, 11], "texture": "#bottom"},
+                "down": {"uv": [5, 5, 11, 11], "texture": "#bottom"}
             }
         }
 	],

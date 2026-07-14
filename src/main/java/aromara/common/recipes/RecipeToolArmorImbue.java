@@ -33,7 +33,7 @@ public class RecipeToolArmorImbue extends IForgeRegistryEntry.Impl<IRecipe> impl
                 continue;
             }
 
-            if (this.isToolArmor(stack)) {
+            if (isToolArmor(stack)) {
                 if (!tool.isEmpty())
                     return false;
                 tool = stack;
@@ -66,7 +66,7 @@ public class RecipeToolArmorImbue extends IForgeRegistryEntry.Impl<IRecipe> impl
                 continue;
             }
 
-            if (this.isToolArmor(stack)) {
+            if (isToolArmor(stack)) {
                 tool = stack;
             } else if (stack.getItem() == TCAItems.scent_phial) {
                 oil = stack;
@@ -102,7 +102,7 @@ public class RecipeToolArmorImbue extends IForgeRegistryEntry.Impl<IRecipe> impl
         return ItemStack.EMPTY;
     }
 
-    public boolean isToolArmor(ItemStack stack) {
+    public static boolean isToolArmor(ItemStack stack) {
 
         Item item = stack.getItem();
 

@@ -24,12 +24,12 @@ import thaumcraft.api.blocks.BlocksTC;
 
 public class BlockVishroomCap extends BlockTCABase {
 
-    public static String name = "vishroom_block_cap";
+    public static final String id = "vishroom_block_cap";
 
     public static PropertyBool IS_BOTTOM = PropertyBool.create("is_bottom");
 
     public BlockVishroomCap() {
-        super(Material.CLAY, name);
+        super(Material.CLAY, id);
 
         this.setHardness(0.5F);
     }

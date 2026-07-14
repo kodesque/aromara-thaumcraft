@@ -18,10 +18,10 @@ import thaumcraft.api.blocks.BlocksTC;
 
 public class BlockVishroomStem extends BlockTCABase {
 
-    public static String name = "vishroom_block_stem";
+    public static final String id = "vishroom_block_stem";
 
     public BlockVishroomStem() {
-        super(Material.CLAY, name);
+        super(Material.CLAY, id);
 
         this.setHardness(0.5F);
     }

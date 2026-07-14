@@ -51,7 +51,7 @@ public class Main {
 
         ResearchInit.initResearch();
 
-        GameRegistry.registerWorldGenerator(new WorldGenVishroomHuge(), 3);
+        //        GameRegistry.registerWorldGenerator(new WorldGenVishroomHuge(), 3);
 
         ScanningManager.addScannableThing(new ScanEntity("!ZOMBIE", EntityZombie.class, true));
         ScanningManager.addScannableThing(new ScanEntity("!BLAZE", EntityBlaze.class, true));

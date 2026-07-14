@@ -100,7 +100,7 @@ public class ImbuedToolArmorEvents {
         List<EntityMob> mobs = player.world.getEntitiesWithinAABB(EntityMob.class, area);
 
         for (EntityMob mob : mobs) {
-            mob.setFire(count);
+            mob.setFire(count * 2);
         }
     }
 

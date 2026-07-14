@@ -27,7 +27,7 @@ import thaumcraft.common.items.casters.foci.FocusEffectFire;
 
 public class BlockArcaneBrazier extends BlockTCADevice {
 
-    public static String id = "arcane_brazier";
+    public static final String id = "arcane_brazier";
 
     public static PropertyInteger STATUS = PropertyInteger.create("status", 0, 2);
 

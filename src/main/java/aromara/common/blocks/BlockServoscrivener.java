@@ -29,7 +29,7 @@ import thaumcraft.common.blocks.IBlockFacingHorizontal;
 
 public class BlockServoscrivener extends BlockTCADevice implements IBlockFacingHorizontal{
 
-    public static String id = "servoscrivener";
+    public static final String id = "servoscrivener";
 
     public static PropertyBool HAS_PAPER = PropertyBool.create("has_paper");
 

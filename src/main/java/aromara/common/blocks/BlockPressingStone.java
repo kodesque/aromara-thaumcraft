@@ -24,7 +24,7 @@ public class BlockPressingStone extends BlockTCADevice {
 
     public static PropertyBool IS_DOWN = PropertyBool.create("is_down");
 
-    public static String id = "pressing_stone";
+    public static final String id = "pressing_stone";
 
     protected static final AxisAlignedBB AABB_DOWN =
             new AxisAlignedBB(0.0D, 0.0D, 0.0D,
