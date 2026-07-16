@@ -12,6 +12,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
@@ -70,7 +71,7 @@ public class ModifiedPortalEvents {
         float h = w.rand.nextFloat() * 0.33f;
 
         AxisAlignedBB box = entity.getEntityBoundingBox();
-        BlockPos c = new BlockPos(box.getCenter());
+        BlockPos c = new BlockPos(getCenter(box));
 
         if (entity instanceof EntityCultistPortalLesser && isModified(entity)) {
 
@@ -90,6 +91,11 @@ public class ModifiedPortalEvents {
                         );
             }
         }
+    }
+
+    public static Vec3d getCenter(AxisAlignedBB box)
+    {
+        return new Vec3d(box.minX + (box.maxX - box.minX) * 0.5D, box.minY + (box.maxY - box.minY) * 0.5D, box.minZ + (box.maxZ - box.minZ) * 0.5D);
     }
 
     @SubscribeEvent

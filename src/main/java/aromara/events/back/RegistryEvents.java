@@ -14,6 +14,8 @@ import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber
 public class RegistryEvents {
@@ -42,6 +44,7 @@ public class RegistryEvents {
     }
 
     @SubscribeEvent
+    @SideOnly(Side.CLIENT)
     public static void onTextureStitch(TextureStitchEvent.Pre event) {
         event.getMap().registerSprite(
                 new ResourceLocation("aromara", "blocks/brainvoid")

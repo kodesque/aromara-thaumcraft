@@ -22,6 +22,8 @@ import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.blocks.BlocksTC;
 
 @Mod.EventBusSubscriber
@@ -48,6 +50,7 @@ public class OtherEvents {
     }
 
     @SubscribeEvent
+    @SideOnly(Side.CLIENT)
     public static void renderImbuedWith(ItemTooltipEvent event) {
         List<String> tips = event.getToolTip();
         ItemStack stack = event.getItemStack();
