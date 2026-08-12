@@ -38,17 +38,17 @@ public class TileServoscrivener extends TileThaumcraftInventory {
     public static final ArrayList<BlockPosExact> scriveners = new ArrayList<BlockPosExact>();
 
     public AspectList required;
-    public static String requiredKey = "required";
+    public static final String requiredKey = "required";
 
     public AspectList stored;
-    public static String storedKey = "stored";
+    public static final String storedKey = "stored";
 
     public List<Integer> chosenIndices;
-    public static String chosenIndicesKey = "chosenIndices";
+    public static final String chosenIndicesKey = "chosenIndices";
 
     public boolean started;
     public int delay;
-    public final int maxDelay = 40;
+    public static final int maxDelay = 40;
 
     public TileServoscrivener() {
         super(1);
@@ -78,9 +78,9 @@ public class TileServoscrivener extends TileThaumcraftInventory {
                 if (this.required.size() > 0) {
 
                     if (!this.started) {
-                        if (this.delay != this.maxDelay) {
+                        if (this.delay != TileServoscrivener.maxDelay) {
                             this.delay++;
-                        } else if (this.delay == this.maxDelay) {
+                        } else if (this.delay == TileServoscrivener.maxDelay) {
                             List<EntityPlayer> players = this.world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(this.pos).grow(5));
 
                             for (EntityPlayer player : players) {

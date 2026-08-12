@@ -27,44 +27,44 @@ import thaumcraft.common.tiles.TileThaumcraftInventory;
 
 public class TileArcaneBrazier extends TileThaumcraftInventory {
 
-    public int burningTime;
-    public static String burningTimeKey = "burningTime";
+    int burningTime;
+    public static final String burningTimeKey = "burningTime";
 
     String effect;
-    public static String effectKey = "effect";
+    public static final String effectKey = "effect";
 
     //combustion rate of 1 coal in ticks
 
-    public int factor = 100;
-    public int burningTimeMax;
+    public static final int factor = 100;
+    int burningTimeMax;
 
     //slot 0 is for coal, slot 1 is for flowers
 
     public TileArcaneBrazier() {
         super(2);
         this.syncedSlots = new int[] {0, 1};
-        this.burningTimeMax = 64 * this.factor;
+        this.burningTimeMax = 64 * TileArcaneBrazier.factor;
     }
 
     @Override
     public void readFromNBT(NBTTagCompound nbttagcompound) {
         super.readFromNBT(nbttagcompound);
         this.burningTime = nbttagcompound.getShort(burningTimeKey);
-        this.effect = nbttagcompound.getString(effectKey);
+        this.effect = nbttagcompound.getString(TileArcaneBrazier.effectKey);
     }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound nbttagcompound) {
         super.writeToNBT(nbttagcompound);
         nbttagcompound.setShort(burningTimeKey, (short) this.burningTime);
-        nbttagcompound.setString(effectKey, this.effect == null ? "" : this.effect);
+        nbttagcompound.setString(TileArcaneBrazier.effectKey, this.effect == null ? "" : this.effect);
         return nbttagcompound;
     }
 
     public void ignite() {
         Item comp = ItemRedolentBundle.getComponentFromBundle(this.getStackInSlot(1)).getItem();
         this.effect = comp.getRegistryName().toString();
-        this.burningTime = this.getStackInSlot(0).getCount() * this.factor;
+        this.burningTime = this.getStackInSlot(0).getCount() * TileArcaneBrazier.factor;
         this.removeStackFromSlot(1);
     }
 
@@ -92,7 +92,7 @@ public class TileArcaneBrazier extends TileThaumcraftInventory {
             if (this.burningTime > 0) {
                 --this.burningTime;
 
-                if (this.burningTime % this.factor == 0) {
+                if (this.burningTime % TileArcaneBrazier.factor == 0) {
 
                     this.applyEffect();
                     this.decrStackSize(0, 1);

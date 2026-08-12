@@ -28,19 +28,19 @@ import thaumcraft.common.tiles.TileThaumcraftInventory;
 public class TileCandleVat extends TileThaumcraftInventory implements IAspectContainer, IEssentiaTransport {
 
     Aspect sucking;
-    public AspectList stored;
-    public static String storedKey = "storedKey";
+    AspectList stored;
+    public static final String storedKey = "storedKey";
 
-    public int boilingTime;
-    public static String boilingTimeKey = "boilingTime";
+    int boilingTime;
+    public static final String boilingTimeKey = "boilingTime";
 
     String effect;
-    public static String effectKey = "effect";
+    public static final String effectKey = "effect";
 
-    public int boilingTimeMax = 2400; /* two minutes between each boiling stage */
-    public int boilingTimeBreakdown = 200;
-    public int essentiaMax = 30;
-    public Aspect typeAllowed = Aspect.FIRE;
+    public static final int boilingTimeMax = 2400; /* two minutes between each boiling stage */
+    public static final int boilingTimeBreakdown = 200;
+    public static final int essentiaMax = 30;
+    public static final Aspect typeAllowed = Aspect.FIRE;
 
     /* 0 -> empty, 1 -> flesh, 2 -> impure, 3 -> liquid, 4 -> rancid 5 -> imbued */
 
@@ -56,7 +56,7 @@ public class TileCandleVat extends TileThaumcraftInventory implements IAspectCon
     public void readFromNBT(NBTTagCompound nbttagcompound) {
         super.readFromNBT(nbttagcompound);
         this.boilingTime = nbttagcompound.getShort(boilingTimeKey);
-        this.effect = nbttagcompound.getString(effectKey);
+        this.effect = nbttagcompound.getString(TileCandleVat.effectKey);
         AspectList list = new AspectList();
         list.readFromNBT(nbttagcompound, storedKey);
         this.stored = list;
@@ -66,7 +66,7 @@ public class TileCandleVat extends TileThaumcraftInventory implements IAspectCon
     public NBTTagCompound writeToNBT(NBTTagCompound nbttagcompound) {
         super.writeToNBT(nbttagcompound);
         nbttagcompound.setShort(boilingTimeKey, (short) this.boilingTime);
-        nbttagcompound.setString(effectKey, this.effect == null ? "" : this.effect);
+        nbttagcompound.setString(TileCandleVat.effectKey, this.effect == null ? "" : this.effect);
         this.stored.writeToNBT(nbttagcompound, storedKey);
         return nbttagcompound;
     }
@@ -77,15 +77,15 @@ public class TileCandleVat extends TileThaumcraftInventory implements IAspectCon
 
         if (item.equals(Item.getItemFromBlock(BlocksTC.fleshBlock)) && this.getStatus() == 0) {
             this.setStatus(1);
-            this.boilingTime = this.boilingTimeMax;
+            this.boilingTime = TileCandleVat.boilingTimeMax;
             return true;
         } else if (item.equals(ItemsTC.salisMundus) && this.getStatus() == 2) {
             this.setStatus(3);
-            this.boilingTime = this.boilingTimeMax;
+            this.boilingTime = TileCandleVat.boilingTimeMax;
             return true;
         } else if (item.equals(TCAItems.redolent_bundle) && this.getStatus() == 3) {
             this.setInventorySlotContents(0, stack);
-            this.boilingTime = this.boilingTimeMax;
+            this.boilingTime = TileCandleVat.boilingTimeMax;
             return true;
         }
 
@@ -125,19 +125,19 @@ public class TileCandleVat extends TileThaumcraftInventory implements IAspectCon
 
             if (this.isOn()) {
 
-                if (this.stored.getAmount(this.typeAllowed) < this.essentiaMax) {
-                    this.sucking = this.typeAllowed;
+                if (this.stored.getAmount(TileCandleVat.typeAllowed) < TileCandleVat.essentiaMax) {
+                    this.sucking = TileCandleVat.typeAllowed;
                     this.fill();
                 } else {
                     this.sucking = null;
                 }
 
-                if (this.stored.getAmount(this.typeAllowed) > 0 && this.getStatus() != 0) {
+                if (this.stored.getAmount(TileCandleVat.typeAllowed) > 0 && this.getStatus() != 0) {
 
                     this.boilingTime--;
 
                     if (this.world.getWorldTime() % 160 == 0) {
-                        this.stored.remove(this.typeAllowed, 1);
+                        this.stored.remove(TileCandleVat.typeAllowed, 1);
                     }
 
                     if (this.boilingTime == 0) {
@@ -153,7 +153,7 @@ public class TileCandleVat extends TileThaumcraftInventory implements IAspectCon
                         }
                     }
 
-                    if (this.boilingTime < -this.boilingTimeBreakdown) {
+                    if (this.boilingTime < -TileCandleVat.boilingTimeBreakdown) {
                         this.setStatus(4);
                         this.decrStackSize(0, 1);
 
@@ -161,8 +161,8 @@ public class TileCandleVat extends TileThaumcraftInventory implements IAspectCon
                         return;
                     }
 
-                    if (this.boilingTime > this.boilingTimeMax) {
-                        this.boilingTime = this.boilingTimeMax;
+                    if (this.boilingTime > TileCandleVat.boilingTimeMax) {
+                        this.boilingTime = TileCandleVat.boilingTimeMax;
                     }
 
                 }
@@ -236,12 +236,12 @@ public class TileCandleVat extends TileThaumcraftInventory implements IAspectCon
 
     @Override
     public Aspect getEssentiaType(EnumFacing face) {
-        return this.stored.getAmount(this.typeAllowed) > 0 ? this.typeAllowed : null;
+        return this.stored.getAmount(TileCandleVat.typeAllowed) > 0 ? TileCandleVat.typeAllowed : null;
     }
 
     @Override
     public int getEssentiaAmount(EnumFacing face) {
-        return this.stored.getAmount(this.typeAllowed);
+        return this.stored.getAmount(TileCandleVat.typeAllowed);
     }
 
     @Override
@@ -261,15 +261,15 @@ public class TileCandleVat extends TileThaumcraftInventory implements IAspectCon
 
     @Override
     public boolean doesContainerAccept(Aspect tag) {
-        return tag == this.typeAllowed;
+        return tag == TileCandleVat.typeAllowed;
     }
 
     @Override
     public int addToContainer(Aspect tt, int am) {
-        if (tt != this.typeAllowed) return am;
+        if (tt != TileCandleVat.typeAllowed) return am;
 
         int storedAmount = this.stored.getAmount(tt);
-        int space = this.essentiaMax - storedAmount;
+        int space = TileCandleVat.essentiaMax - storedAmount;
 
         if (space <= 0) return am;
 

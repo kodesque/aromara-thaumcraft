@@ -19,8 +19,8 @@ import thaumcraft.common.tiles.TileThaumcraftInventory;
 public class TilePressingStone extends TileThaumcraftInventory {
 
     public int dryingTime;
-    public static String dryingTimeKey = "dryingTime";
-    public int dryingTimeMax = 3600;
+    public static final String dryingTimeKey = "dryingTime";
+    public static final int dryingTimeMax = 3600;
 
     public AspectList toPull;
 
@@ -52,7 +52,7 @@ public class TilePressingStone extends TileThaumcraftInventory {
         ItemStack flower = this.getStackInSlot(1);
         ItemStack shards = this.getStackInSlot(0);
         if (!flower.isEmpty() && !shards.isEmpty() && !this.isDown()) {
-            this.dryingTime = this.dryingTimeMax;
+            this.dryingTime = TilePressingStone.dryingTimeMax;
             this.toPull = AspectHelper.getObjectAspects(ItemRedolentBundle.getComponentFromBundle(flower));
             this.world.setBlockState(this.pos, this.world.getBlockState(this.pos).withProperty(BlockPressingStone.IS_DOWN, true));
 
@@ -92,8 +92,8 @@ public class TilePressingStone extends TileThaumcraftInventory {
                 }
             }
 
-            if (this.dryingTime > this.dryingTimeMax) {
-                this.dryingTime = this.dryingTimeMax;
+            if (this.dryingTime > TilePressingStone.dryingTimeMax) {
+                this.dryingTime = TilePressingStone.dryingTimeMax;
             }
 
         }
