@@ -1,0 +1,57 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "aromara:candle_vat"
+  },
+  "variants": {
+
+    "enabled=false,status=0": { "model": "aromara:candle_vat" },
+    "enabled=true,status=0":  { "model": "aromara:candle_vat" },
+
+    "enabled=false,status=1": {
+      "model": "aromara:candle_vat_full",
+      "textures": { "key": "thaumcraft:blocks/flesh" }
+    },
+    "enabled=true,status=1": {
+      "model": "aromara:candle_vat_full",
+      "textures": { "key": "thaumcraft:blocks/flesh" }
+    },
+
+    "enabled=false,status=2": {
+      "model": "aromara:candle_vat_full",
+      "textures": { "key": "aromara:blocks/liquid_tallow_impure" }
+    },
+    "enabled=true,status=2": {
+      "model": "aromara:candle_vat_full",
+      "textures": { "key": "aromara:blocks/liquid_tallow_impure" }
+    },
+
+    "enabled=false,status=3": {
+      "model": "aromara:candle_vat_full",
+      "textures": { "key": "aromara:blocks/liquid_tallow" }
+    },
+    "enabled=true,status=3": {
+      "model": "aromara:candle_vat_full",
+      "textures": { "key": "aromara:blocks/liquid_tallow" }
+    },
+
+    "enabled=false,status=4": {
+      "model": "aromara:candle_vat_full",
+      "textures": { "key": "aromara:blocks/liquid_tallow_rancid" }
+    },
+    "enabled=true,status=4": {
+      "model": "aromara:candle_vat_full",
+      "textures": { "key": "aromara:blocks/liquid_tallow_rancid" }
+    },
+
+    "enabled=false,status=5": {
+      "model": "aromara:candle_vat_full",
+      "textures": { "key": "aromara:blocks/liquid_tallow_imbued" }
+    },
+    "enabled=true,status=5": {
+      "model": "aromara:candle_vat_full",
+      "textures": { "key": "aromara:blocks/liquid_tallow_imbued" }
+    }
+
+  }
+}

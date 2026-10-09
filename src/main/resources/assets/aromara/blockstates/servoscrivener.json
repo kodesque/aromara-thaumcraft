@@ -1,0 +1,57 @@
+{
+  "forge_marker" : 1,
+  "defaults" : {
+      "model" : "aromara:servoscrivener_table.obj",
+      "transform": "forge:default-block",
+              "custom": { "flip-v": true }
+  },
+  "variants": {
+    
+    "normal": {"model": "aromara:servoscrivener_table.obj"},        
+            "inventory":
+            [
+                {
+                    "transform" :
+                     {
+                        "thirdperson_righthand": {
+                            "rotation": [75, 45, 0],
+                            "scale": [0.375, 0.375, 0.375]
+                        },
+                        "thirdperson_lefthand": {
+                            "rotation": [75, 45, 0],
+                            "scale": [0.375, 0.375, 0.375]
+                        },
+                        "firstperson_righthand": {
+                            "rotation": [0, -135, 0],
+                            "scale": [0.4, 0.4, 0.4]
+                        },
+                        "firstperson_lefthand": {
+                            "rotation": [0, -135, 0],
+                            "scale": [0.4, 0.4, 0.4]
+                        },
+                        "ground": {
+                            "scale": [0.25, 0.25, 0.25]
+                        },
+                        "gui": {
+                            "rotation": [30, -135, 0],
+                            "scale": [0.5, 0.5, 0.5]
+                        },
+                        "fixed": {
+                            "scale": [0.5, 0.5, 0.5]
+                        }
+
+                     }
+                }        
+            ],
+            
+            "facing=north,has_paper=true": { "model": "aromara:servoscrivener_table.obj", "textures": { "#m_c5b3dc70-956f-491c-22b3-41e7ccd304de": "aromara:research/parchment_stained" }},
+            "facing=south,has_paper=true": { "model": "aromara:servoscrivener_table.obj", "y": 180, "textures": { "#m_c5b3dc70-956f-491c-22b3-41e7ccd304de": "aromara:research/parchment_stained" }},
+            "facing=west,has_paper=true":  { "model": "aromara:servoscrivener_table.obj", "y": 270, "textures": { "#m_c5b3dc70-956f-491c-22b3-41e7ccd304de": "aromara:research/parchment_stained" }},
+            "facing=east,has_paper=true":  { "model": "aromara:servoscrivener_table.obj", "y": 90, "textures": { "#m_c5b3dc70-956f-491c-22b3-41e7ccd304de": "aromara:research/parchment_stained" }},
+            
+            "facing=north,has_paper=false": { "model": "aromara:servoscrivener_table.obj", "textures": { "#m_c5b3dc70-956f-491c-22b3-41e7ccd304de": "aromara:research/parchment" }},
+            "facing=south,has_paper=false": { "model": "aromara:servoscrivener_table.obj", "y": 180, "textures": { "#m_c5b3dc70-956f-491c-22b3-41e7ccd304de": "aromara:research/parchment" }},
+            "facing=west,has_paper=false":  { "model": "aromara:servoscrivener_table.obj", "y": 270, "textures": { "#m_c5b3dc70-956f-491c-22b3-41e7ccd304de": "aromara:research/parchment" }},
+            "facing=east,has_paper=false":  { "model": "aromara:servoscrivener_table.obj", "y": 90, "textures": { "#m_c5b3dc70-956f-491c-22b3-41e7ccd304de": "aromara:research/parchment" }}
+  }
+  }

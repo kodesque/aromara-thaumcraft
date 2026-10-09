@@ -1,0 +1,64 @@
+#CREATIVE TAB
+itemGroup.tabAromara=Aromara Thaumcraft
+
+#ITEMS
+item.aromara.redolent_bundle.name=Redolent Bundle
+
+item.aromara.scent_phial.name=Wax Phial
+item.aromara.liquid_tallow.name=Liquid Tallow
+item.aromara.debug.name=Icon
+
+item.aromara.research_brief.name=Research Brief
+item.aromara.parchment.name=Parchment
+item.aromara.heater.name=Heating Element
+
+#BLOCKS
+tile.aromara.arcane_brazier.name=Arcane Brazier
+tile.aromara.pressing_stone.name=Pressing Stone
+tile.aromara.candle_vat.name=Candle Vat
+
+tile.aromara.vishroom_block_cap.name=Huge Vishroom Cap
+tile.aromara.vishroom_block_stem.name=Huge Vishroom Stem
+
+tile.aromara.servoscrivener.name=Servoscrivener
+
+#RESEARCHES
+tc.research_category.SCENTMIXING=Scentmixing
+
+research.TCA_BASESCENTMIXING.title=Miasma Theory
+research.TCA_BASESCENTMIXING.title.subtitle=[TCA] Frontal assault on the seven senses
+research.TCA_BASESCENTMIXING.text.stage.1=Since discovering alchemy, I've become accustomed to ignoring the smells emanating from the crucible, as most of the materials I work with have a pleasant aroma on their own. Flux, however, is something extraordinary. Its stench, which is unlike to anything I know, makes my muscles twitch in pain. When I first smelled it, I tried to cover my face with the first thing I could find - a parchment stained with aspect-bearing ink. And then... my headache went away?<BR>I must research this further.
+
+research.TCA_SCENTBURNING-H.title=Hypothese: Aromatic Vapors
+research.TCA_SCENTBURNING-H.text.stage.1=I want to seriously tackle flux using scent, I should study in more detail the three magical plants from which the alchemical components are derived. If my understanding is correct, their properties should be far more pronounced than those of ordinary flowers common in the non-arcana world.
+
+research.TCA_SCENTBURNING.title=Burning Scents
+research.TCA_SCENTBURNING.title.subtitle=[TCA] Tribute to Sumerians
+research.TCA_SCENTBURNING.text.stage.2=Nitors are simple magical light sources, but how many hidden properties do they possess?<BR>While searching for a quick way to dry found plants, I noticed that in the absence of air, nitors begin to displace aspects from objects. Under normal conditions, they simply become flux, but in the presence of a vis resonator, they seem to react to quartz...<PAGE>I applied this principle to the Pressing Stone.<BR>To use this device, I must insert quartz shards into it and place the Redolent Bundle underneath. Then, I should command it to descend, while wearing my gauntlet.<BR>The Pressing Stone always takes exactly two minutes to dry the Redolent Bundle. In the process, it will dispence crystals of the aspects from the Bundle into the world.<PAGE>The second device I created is the Arcane Brazier. Like a simple furnace, it requires fuel to operate, but I can't use wood or alumentum; only coal will do.<BR>Not only that, but according to my observations this thing consumes it two times faster than a normal furnace. Well, maybe it's worth it.<BR>By placing coal and a dried Redolent Bundle in the Brazier bowl I can set it alight. However, it seems a simple flint and steel isn't enough... I need a magical source.<BR>Perhaps a lens with the right effect will do the trick?<BR>Different plants burned in Brazier create different effects in the environment:<PAGE>Cinderpearl<BR><DIV>My goal is achieved. The vapors of this desert shrub ignite upon contact with taint in the atmosphere. Furthermore, any tainted abomination will also burn if nearby.<BR>But there's one thing that could backfire on me... what if it rains on the brazier that's condensing the taint? I don't want to end up in a pool of poison!<PAGE>Shimmerleaf<BR><DIV>The mercury vapor has a dual effect: on the one hand, I miraculously stop feeling hungry when near the brazier. On the other hand, the aura surrounding me gradually fades.<BR>Is it some kind of... alchemical metabolism? The wonders of equivalent exchange, I guess.<PAGE>Vishroom<BR><DIV>Unexpectedly, the nauseating mushrooms have done me a favor. Well... sort of. The aggressive entities around the burner seem to get lost in the vishroom vapors, unable to distinguish their own kind from their enemies. But with that in mind, I shouldn't forget about the creepers' properties...<BR>Also, why do I keep seeing "things" when I'm standing nearby?
+
+research.TCA_RESEARCHER.title=Servoscriveners
+research.TCA_RESEARCHER.title.subtitle=[TCA] Ace up the sleeve
+research.TCA_RESEARCHER.text.stage.1=*What is this? I don't recall this page being here...*<BR>Ever since your first encounter with the Crimson Cult, a question has gnawed at you: what lies on the other side of their portals? However, it quickly became apparent that the Crimson Cult's practices bore no resemblance to the portal magic that had, until now, allowed you to travel between worlds without hindrance. The grim vortex acts as an insurmountable barrier; the moment you touch it, it begins to inexorably burn through your very flesh. And no matter how hard you try to force yourself to look, your head begins to throb, and your vision goes dark.<BR>But must you necessarily risk your own life? A thought occurred to you—one that seemed absurd at first. (To be honest, it still sounds that way now.) What if you tried sending *someone else* into the portal? Ideally, it would be something no longer living, yet still capable of seeing and remembering...<BR>It struck you: a brain, a peal, and a set of scribing tools.<BR>*All that remains is to manage to toss them inside.*
+research.TCA_RESEARCHER.text.stage.2=You are not entirely certain what exactly the brain witnessed within that violet abyss; however, it yielded no direct knowledge to you. Instead, you found yourself in possession of a strange device - resembling a research table, yet featuring a small, mechanized brain hovering above it. It had somehow fused with the ender pearl.<BR>*The brain looks... charred? Whatever transpired, it seems this "being" now serves you.*
+research.TCA_RESEARCHER.text.stage.3=After some time, you managed to figure out the capabilities of the "Servoscrivener" - as you have named it.<BR>This contraption, which appeared useless at first glance, can aid you in your research into Miasma Theory. To be more precisely, perform the research *for* you. Or, well, almost.<BR>After discovering a research marked as "hypothese", you will acquire a research brief. If you place it into the Servoscrivener, after a short interval, it will present you with something of riddle. The premise of it is that highlighted words correspond to specific aspects, which you must identify based on their semantic similarity.<BR>Once you are ready with this part, place them into the jar situated near the Servoscrivener and then "clear" it, releasing the aspects into the atmosphere.<BR>If you have guessed correctly, the resulting vapors will not coalesce into flux.<BR>Continue this process the requisite number of times until the Servoscrivener indicates that the research is complete.<BR><IMG>aromara:textures/research/research_voidcraft.png:0:0:255:255:0.5</IMG><BR><PAGE><BR>§oAddendum 1§r<BR>It seems like a mind, corrupted by the void, is not particularly careful. I can't give it ordinary paper to work with, as the Servoscrivener would simply tear it to shreds from crazy scribbel. Therefore, I have developed a more durable material suitable for research.
+
+research.TCA_SCENTBOILING-H.title=Hypothese: Aromatic Oils
+research.TCA_SCENTBOILING-H.text.stage.1=Working with the mystical brazier I created earlier, it's easy to notice how fleeting and ephemeral the effect of the aromatic vapors is. Furthermore, it's completely static; I can't take the brazier into battle, which would be extremely useful in certain situations... So, here I am. Looking for a way to somehow encapsulate, to trap the scent in a substance. So I can carry it with me at all times, or even... smear it on my skin?
+
+research.TCA_SCENTBOILING.title=Imbuing Scents
+research.TCA_SCENTBOILING.title.subtitle=[TCA] Boil until the squeaking stops
+research.TCA_SCENTBOILING.text.stage.2=By boiling the aromatic compounds in the rendered fat, I can impart its flavor and preserve it for a long time.<BR>There's a problem, though. The problem that immediately comes to mind when I realize *where* I'm getting this fat from. Besides the impurities, which are certainly unpleasant, the fat itself is extremely nasty - a truly disgusting odor wafts around when you try to render rotting mean.<BR>Yeah. Why don't I use pork, for example? The technology is imperfect. Rotten flesh is much easier to work with in this regard; it breaks down faster and yields more product.<BR>Besides, animal products are much better for eating!
+research.TCA_SCENTBOILING.text.stage.3=So, the technical base is ready. The heating element must be placed in the crucible by right-clicking.<BR>The new device, called Candle Vat, can no longer be heated for free; it requires a constant supply of liquid Ignis essence to the port underneath. Once I've verified this requirement, the process can begin.<BR>I begin by dropping a block of flesh into the vat and waiting for it to melt. It's important not to overlook this, as after melting into liquid form, the fat will immediately begin to turn rancid, which will only take 20 seconds.<BR>Before this happens, I must toss a handful of Salis Mundus into the cauldron to remove its foul odor.<BR>Then, immediately afterward, I must drop a Dried Bundle of any kind directly into the mixture.<BR>After another two minutes, the fat will turn a pleasant pink color, after which I can scoop it up with the Scent Phial.<PAGE>Cinderpearl<BR><DIV>Aggression and brute force of this flower was perfect for armor as a reactionary defense agent.<BR>I can combine Scent Phial with any piece to achieve this unique effect.<BR>If, in the heat of battle, I carelessly step into a fire or am set on fire by an enemy, the power contained within my new armor will unleash its pent-up anger, igniting every enemy in 10 block radius.<BR>Despite the extreme dullness of the fire element itself, it seems that peaceful beings are unaffected by it, just like other players. However, it's still extremely interesting.<BR>The more pieces of armor treated with Cinderpearl oil I wear, the longer my enemies will suffer in the flames.<PAGE>Shimmerleaf<BR><DIV>A distorted mirror, a slow-acting poison. Shimmerleaf proved suitable for tools; while I initially assumed its effect simply prevented my gear from losing its final point of durability, my vision immediately began to darken.<BR>The oil from this plant brings both harm and benefit. When a weapon is on the verge of breaking, instead of wearing down the material, it begins to slowly drain the wielder, reducing their saturation level.<BR>I need to stock up on food if I dare to use my tools once they start to fall apart.<PAGE>Vishroom<BR><DIV>Surprisingly, the effect of the hallucinogenic mushroom proved to be the most controllable—and perhaps the most beneficial.<BR>When I coat my armor with this oil, it begins to evaporate gradually. While the fumes might make one’s head spin, they are virtually harmless to me. My enemies, however, find their motor functions disrupted by this strange plant; they will occasionally miss their mark, failing to deal me any damage.<BR>I ran some calculations and found that a single piece of armor reduces the chance of being hit by 5%. Consequently, a full set treated with Vishroom oil reduces that probability by 20% - effectively negating nearly one-quarter of all incoming blows.
+
+research.!ZOMBIE.text=Examine the source of free, but nasty, wild fat
+research.!BLAZE.text=Examine the creature that can melt fat
+
+# TOOLTIPS
+
+tooltip.aromara.oil.base=Imbued with:
+tooltip.aromara.oil.rancid=This oil burned too long and went rancid.
+
+# RIDDLES
+
+riddle.TCA_SCENTBURNING.text=@Man takes from the @nature its abundant gifts. He draws smoldering stones from the its @hollows. The @crimson jaws are devouring the harvest. The @dead crumble into a @gentle power. The @air sparks with new @feel and drives the @curse away.
+riddle.TCA_SCENTBOILING.text=@Feral fats absorb the @arcane gist. No longer @shields the winter wind, but bears the arsenal of @slaughter and @revival. New properties @pass from one thing to other, the latter grows hungry for @fervor. The blade glimmers with a @sudden change, yet smell of it remains the same.
