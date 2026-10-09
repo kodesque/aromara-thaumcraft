@@ -1,6 +1,6 @@
 package aromara.common.blocks;
 
-import aromara.common.objects.TCAItems;
+import aromara.init.TCAItems;
 import aromara.common.templates.BlockTCADevice;
 import aromara.common.tiles.TilePressingStone;
 import aromara.root.Main;

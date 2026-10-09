@@ -4,12 +4,22 @@ import aromara.common.items.ItemDebug;
 import aromara.common.items.ItemRedolentBundle;
 import aromara.common.items.ItemResearchBrief;
 import aromara.common.items.ItemScentPhial;
-import aromara.common.objects.TCAItems;
 import aromara.common.templates.ItemTCABase;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;
 
-public class ItemInit {
+public class TCAItems {
+
+    public static Item scent_phial;
+    public static Item heater;
+    public static Item research_brief;
+    public static Item research_hint;
+    public static Item parchment;
+
+    /* "raw", "dry" */
+    public static Item redolent_bundle;
+
+    public static Item debug;
 
     public static void initItems(IForgeRegistry<Item> iForgeRegistry) {
 
@@ -26,5 +36,6 @@ public class ItemInit {
 
 
     }
+
 
 }

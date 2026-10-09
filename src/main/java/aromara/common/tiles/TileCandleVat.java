@@ -2,7 +2,7 @@ package aromara.common.tiles;
 
 import aromara.common.blocks.BlockCandleVat;
 import aromara.common.items.ItemRedolentBundle;
-import aromara.common.objects.TCAItems;
+import aromara.init.TCAItems;
 import aromara.util.NBTManager;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Items;
@@ -22,7 +22,7 @@ import thaumcraft.common.blocks.IBlockEnabled;
 import thaumcraft.common.lib.utils.BlockStateUtils;
 import thaumcraft.common.tiles.TileThaumcraftInventory;
 
-public class TileCandleVat extends TileThaumcraftInventory implements IAspectContainer, IEssentiaTransport {
+public abstract class TileCandleVat extends TileThaumcraftInventory implements IAspectContainer, IEssentiaTransport {
 
     Aspect sucking;
     AspectList stored;

@@ -6,13 +6,20 @@ import aromara.common.blocks.BlockPressingStone;
 import aromara.common.blocks.BlockServoscrivener;
 import aromara.common.blocks.BlockVishroomCap;
 import aromara.common.blocks.BlockVishroomStem;
-import aromara.common.objects.TCABlocks;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import thaumcraft.Thaumcraft;
 
-public class BlockInit {
+public class TCABlocks {
+
+    public static Block arcane_brazier;
+    public static Block pressing_stone;
+    public static Block candle_vat;
+    public static Block servoscrivener;
+
+    public static Block vishroom_block_cap;
+    public static Block vishroom_block_stem;
 
     public static void initBlocks() {
         TCABlocks.arcane_brazier = registerBlock(new BlockArcaneBrazier());

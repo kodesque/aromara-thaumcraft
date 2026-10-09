@@ -1,6 +1,6 @@
 package aromara.common.recipes;
 
-import aromara.common.objects.TCAItems;
+import aromara.init.TCAItems;
 import aromara.util.NBTManager;
 import aromara.util.NBTManager.EnumGroups;
 import aromara.util.NBTManager.ValuePair;

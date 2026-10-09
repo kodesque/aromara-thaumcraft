@@ -3,6 +3,7 @@
 
 ---
 ### Fixed:
+- Arcane Brazier not recognizing Caster's Gauntlets from Thaumic Augmentation
 
 ### Changed:
 - Updated ingame description

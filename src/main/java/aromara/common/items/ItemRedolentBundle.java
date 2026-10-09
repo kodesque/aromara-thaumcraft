@@ -1,6 +1,6 @@
 package aromara.common.items;
 
-import aromara.common.objects.TCAItems;
+import aromara.init.TCAItems;
 import aromara.common.templates.ItemTCABase;
 import aromara.root.Main;
 import aromara.util.NBTManager;

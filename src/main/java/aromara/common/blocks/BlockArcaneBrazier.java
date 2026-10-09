@@ -1,8 +1,8 @@
 package aromara.common.blocks;
 
-import aromara.common.objects.TCAItems;
 import aromara.common.templates.BlockTCADevice;
 import aromara.common.tiles.TileArcaneBrazier;
+import aromara.init.TCAItems;
 import aromara.root.Main;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyInteger;
@@ -21,7 +21,6 @@ import net.minecraft.world.World;
 import thaumcraft.api.casters.FocusEffect;
 import thaumcraft.api.casters.FocusPackage;
 import thaumcraft.api.casters.ICaster;
-import thaumcraft.common.items.casters.ItemCaster;
 import thaumcraft.common.items.casters.ItemFocus;
 import thaumcraft.common.items.casters.foci.FocusEffectFire;
 
@@ -53,7 +52,7 @@ public class BlockArcaneBrazier extends BlockTCADevice {
 
                 if (held.getItem() instanceof ICaster) {
                     if (!tile.getStackInSlot(0).isEmpty() && !tile.getStackInSlot(1).isEmpty()) {
-                        ItemCaster caster = (ItemCaster) held.getItem();
+                        ICaster caster = (ICaster) held.getItem();
                         ItemStack focusStack = caster.getFocusStack(held);
                         FocusPackage pack = ItemFocus.getPackage(focusStack);
 

@@ -5,7 +5,7 @@ import aromara.root.Main;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
-public class EntityInit {
+public class TCAEntities {
 
     public static void preInitEntities() {
 

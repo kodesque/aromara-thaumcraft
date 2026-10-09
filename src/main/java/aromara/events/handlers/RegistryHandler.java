@@ -1,10 +1,10 @@
-package aromara.events.back;
+package aromara.events.handlers;
 
 import aromara.common.recipes.RecipeToolArmorImbue;
-import aromara.init.BlockInit;
-import aromara.init.EntityInit;
-import aromara.init.ItemInit;
-import aromara.init.RecipeInit;
+import aromara.init.TCAEntities;
+import aromara.init.TCARecipes;
+import aromara.init.TCABlocks;
+import aromara.init.TCAItems;
 import aromara.root.Main;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -18,27 +18,27 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber
-public class RegistryEvents {
+public class RegistryHandler {
 
     public static void registerEntities() {
-        EntityInit.preInitEntities();
+        TCAEntities.preInitEntities();
     }
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
-        BlockInit.initBlocks();
+        TCABlocks.initBlocks();
     }
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
-        ItemInit.initItems(event.getRegistry());
+        TCAItems.initItems(event.getRegistry());
     }
 
     @SubscribeEvent
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-        RecipeInit.initWorkbench(event.getRegistry());
-        RecipeInit.initInfusion(event.getRegistry());
-        RecipeInit.initCrucible(event.getRegistry());
+        TCARecipes.initWorkbench(event.getRegistry());
+        TCARecipes.initInfusion(event.getRegistry());
+        TCARecipes.initCrucible(event.getRegistry());
 
         event.getRegistry().register(new RecipeToolArmorImbue().setRegistryName(new ResourceLocation(Main.MODID, RecipeToolArmorImbue.id)));
     }

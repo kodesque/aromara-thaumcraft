@@ -1,7 +1,7 @@
 package aromara.common.items;
 
-import aromara.common.objects.TCABlocks;
-import aromara.common.objects.TCAItems;
+import aromara.init.TCABlocks;
+import aromara.init.TCAItems;
 import aromara.common.templates.ItemTCABase;
 import aromara.root.Main;
 import net.minecraft.creativetab.CreativeTabs;

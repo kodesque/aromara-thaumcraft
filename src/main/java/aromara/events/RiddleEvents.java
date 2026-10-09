@@ -1,6 +1,6 @@
-package aromara.events.front;
+package aromara.events;
 
-import aromara.common.objects.TCABlocks;
+import aromara.init.TCABlocks;
 import aromara.common.tiles.TileServoscrivener;
 import aromara.common.tiles.TileServoscrivener.BlockPosExact;
 import net.minecraft.block.state.IBlockState;
@@ -13,10 +13,8 @@ import thaumcraft.client.fx.FXDispatcher;
 import thaumcraft.common.blocks.essentia.BlockJar;
 import thaumcraft.common.tiles.essentia.TileJarFillable;
 
-@Mod.EventBusSubscriber
 public class RiddleEvents {
 
-    @SubscribeEvent
     public static void jarClear(PlayerInteractEvent.RightClickBlock event) {
 
         BlockPos pos = event.getPos();
@@ -62,7 +60,6 @@ public class RiddleEvents {
         }
     }
 
-    @SubscribeEvent
     public static void debugAspects(PlayerInteractEvent.RightClickBlock event) {
 
         BlockPos pos = event.getPos();

@@ -1,9 +1,9 @@
 package aromara.root;
 
-import aromara.common.objects.TCAItems;
-import aromara.init.EntityInit;
-import aromara.init.ResearchInit;
-import aromara.init.TileInit;
+import aromara.init.TCAItems;
+import aromara.init.TCAEntities;
+import aromara.init.TCAResearch;
+import aromara.init.TCATiles;
 import aromara.network.proxy.CommonProxy;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.monster.EntityBlaze;
@@ -40,14 +40,14 @@ public class Main {
 
         proxy.preInit(event);
 
-        TileInit.preInitTiles();
-        EntityInit.preInitEntities();
+        TCATiles.preInitTiles();
+        TCAEntities.preInitEntities();
     }
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
 
-        ResearchInit.initResearch();
+        TCAResearch.initResearch();
 
         //        GameRegistry.registerWorldGenerator(new WorldGenVishroomHuge(), 3);
 

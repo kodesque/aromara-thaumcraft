@@ -1,6 +1,6 @@
 package aromara.common.worldgen;
 
-import aromara.common.objects.TCABlocks;
+import aromara.init.TCABlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;

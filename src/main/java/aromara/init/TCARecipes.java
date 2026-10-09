@@ -1,8 +1,6 @@
 package aromara.init;
 
 import aromara.common.items.ItemRedolentBundle;
-import aromara.common.objects.TCABlocks;
-import aromara.common.objects.TCAItems;
 import aromara.root.Main;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -19,7 +17,7 @@ import thaumcraft.api.crafting.ShapedArcaneRecipe;
 import thaumcraft.api.crafting.ShapelessArcaneRecipe;
 import thaumcraft.api.items.ItemsTC;
 
-public class RecipeInit {
+public class TCARecipes {
 
     public static void initWorkbench(IForgeRegistry<IRecipe> iForgeRegistry) {
 

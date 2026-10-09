@@ -8,7 +8,7 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.internal.CommonInternals;
 import thaumcraft.api.research.ResearchCategories;
 
-public class ResearchInit {
+public class TCAResearch {
 
     public static void initResearch() {
 

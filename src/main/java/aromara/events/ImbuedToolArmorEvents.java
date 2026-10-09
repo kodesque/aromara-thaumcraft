@@ -1,4 +1,4 @@
-package aromara.events.front;
+package aromara.events;
 
 import aromara.common.items.ItemRedolentBundle;
 import aromara.util.NBTManager;
@@ -21,12 +21,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.List;
 
-@Mod.EventBusSubscriber
 public class ImbuedToolArmorEvents {
 
     /* SHIMMERLEAF */
-
-    @SubscribeEvent
     public static void breakToolShimmer(PlayerDestroyItemEvent event) {
 
         EntityPlayer player = event.getEntityPlayer();
@@ -63,8 +60,6 @@ public class ImbuedToolArmorEvents {
     }
 
     /* CINDERPEARL */
-
-    @SubscribeEvent
     public static void hurtCinder(LivingHurtEvent event) {
 
         if (!(event.getEntityLiving() instanceof EntityPlayer))
@@ -97,8 +92,6 @@ public class ImbuedToolArmorEvents {
     }
 
     /* VISHROOM */
-
-    @SubscribeEvent
     public static void hurtVishroom(LivingHurtEvent event) {
 
         if (!(event.getEntityLiving() instanceof EntityPlayer))

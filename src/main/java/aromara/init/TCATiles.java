@@ -12,7 +12,7 @@ import aromara.root.Main;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class TileInit {
+public class TCATiles {
 
     public static void preInitTiles() {
         GameRegistry.registerTileEntity(TileArcaneBrazier.class, new ResourceLocation(Main.MODID, BlockArcaneBrazier.id));

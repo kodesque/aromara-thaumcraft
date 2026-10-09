@@ -1,9 +1,9 @@
-package aromara.events.front;
+package aromara.events;
 
 import aromara.common.items.ItemRedolentBundle;
 import aromara.common.items.ItemScentPhial;
-import aromara.common.objects.TCABlocks;
-import aromara.common.objects.TCAItems;
+import aromara.init.TCABlocks;
+import aromara.init.TCAItems;
 import aromara.common.recipes.RecipeToolArmorImbue;
 import aromara.root.Main;
 import aromara.util.NBTManager;
@@ -26,10 +26,8 @@ import thaumcraft.api.blocks.BlocksTC;
 
 import java.util.List;
 
-@Mod.EventBusSubscriber
 public class OtherEvents {
 
-    @SubscribeEvent
     public static void crucibleTransform(PlayerInteractEvent.RightClickBlock event) {
 
         World world = event.getWorld();
@@ -49,8 +47,6 @@ public class OtherEvents {
         }
     }
 
-    @SubscribeEvent
-    @SideOnly(Side.CLIENT)
     public static void renderImbuedWith(ItemTooltipEvent event) {
         List<String> tips = event.getToolTip();
         ItemStack stack = event.getItemStack();
