@@ -60,11 +60,5 @@ public class Main {
 
     }
 
-    public static CreativeTabs TABTCA = new CreativeTabs("tabAromara") {
-        @Override
-        @SideOnly(Side.CLIENT)
-        public ItemStack createIcon() {
-            return new ItemStack(TCAItems.debug);
-        }
-    };
+    public static CreativeTabs TABTCA = new TCACreativeTab("tabAromara");
 }

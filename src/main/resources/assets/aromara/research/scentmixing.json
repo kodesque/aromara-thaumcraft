@@ -22,7 +22,7 @@
         "icons": [ "aromara:textures/research/r_servoscrivener.png"],
         "category": "SCENTMIXING",
         "parents": [ "!CrimsonCultist", "TCA_BASESCENTMIXING" ], 
-        "meta": [ "ROUND", "HIDDEN" ],
+        "meta": [ "ROUND"],
         "location": [ -1,-1 ],
 
         "stages": [
@@ -48,7 +48,7 @@
         "icons": [ "thaumcraft:enchanted_placeholder;1;0"],
         "category": "SCENTMIXING",
         "parents": [ "TCA_BASESCENTMIXING", "TCA_RESEARCHER", "BASEAUROMANCY" ], 
-        "meta": ["HEX", "HIDDEN"],
+        "meta": ["HEX"],
         "reward_item": [ "aromara:research_brief;1;0;{aromara:{knowledge:{name:'TCA_SCENTBURNING'}}}"],
         "location": [ -2,0 ],
 
